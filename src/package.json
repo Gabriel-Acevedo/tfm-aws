@@ -1,8 +1,8 @@
 {
-  "name": "aws-dynamodb-test",
+  "name": "tfm-aws",
   "version": "1.0.0",
-  "description": "Application to test DynamoDB in AWS",
-  "author": "Francisco Robles",
+  "description": "Application with API Gateway and AWS LAMBDAs",
+  "author": "Gabriel Gordo",
   "license": "Apache-2.0",
   "dependencies": {
     "aws-sdk": "^2.564.0",
