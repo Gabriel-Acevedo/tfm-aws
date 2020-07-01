@@ -1,8 +1,9 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
+const REGION = "us-east-1";
 
 AWS.config.update({
-    endpoint: "https://dynamodb.us-east-1.amazonaws.com"
+    endpoint: "https://dynamodb." + REGION + ".amazonaws.com"
 });
 
 
@@ -31,13 +32,13 @@ const getCustomer = (customerid) => {
 };
 
 
-const addCustomer = (data) => {
+const addCustomer = (customer) => {
     const params = {
         TableName: table,
         Item: {
             "customerid": uuid.v1(),
-            "name": data.name,
-            "age": data.age
+            "name": customer.name,
+            "age": customer.age
         }
     };
 
