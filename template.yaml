@@ -55,10 +55,10 @@ Resources:
         Properties:
             TableName: customers
             AttributeDefinitions:
-                -   AttributeName: customerid
+                -   AttributeName: customerId
                     AttributeType: S
             KeySchema:
-                -   AttributeName: customerid
+                -   AttributeName: customerId
                     KeyType: HASH
             ProvisionedThroughput:
                 ReadCapacityUnits: 5
@@ -68,5 +68,5 @@ Outputs:
   # Find out more about other implicit resources you can reference within SAM
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   PublicApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/entries/"
+    Description: "API Gateway endpoint URL for Prod stage for Customers function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customers/"
