@@ -1,6 +1,6 @@
 'use strict';
 
-const dbManager = require('./dbCustomerManager');
+const dbManager = require('./dbManager');
 
 
 exports.entriesHandler = (event, context, callback) => {
@@ -14,7 +14,6 @@ exports.entriesHandler = (event, context, callback) => {
             break;
         case 'POST':
             addCustomer(event.body, callback);
-            }
             break;
         default:
             sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
