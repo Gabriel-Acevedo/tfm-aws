@@ -1,13 +1,13 @@
 Transform: 'AWS::Serverless-2016-10-31'
 Resources:
-    entriesFunction:
+    customerFunction:
         # This resource creates a Lambda function.
         Type: 'AWS::Serverless::Function'
         Properties:
             # This function uses the Nodejs v8.10 runtime.
             Runtime: nodejs12.x
             # This is the Lambda function's handler.
-            Handler: index.entriesHandler
+            Handler: index.customerHandler
             # The location of the Lambda function code.
             CodeUri: ./src
             # Event sources to attach to this function. In this case, we are attaching
@@ -50,15 +50,15 @@ Resources:
                                         -   Ref: 'AWS::AccountId'
                                         -   ':table/customers'
     
-    entriesTable:
+    customerTable:
         Type: 'AWS::DynamoDB::Table'
         Properties:
             TableName: customers
             AttributeDefinitions:
-                -   AttributeName: customerId
+                -   AttributeName: customerid
                     AttributeType: S
             KeySchema:
-                -   AttributeName: customerId
+                -   AttributeName: customerid
                     KeyType: HASH
             ProvisionedThroughput:
                 ReadCapacityUnits: 5
@@ -69,4 +69,4 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   PublicApi:
     Description: "API Gateway endpoint URL for Prod stage for Customers function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customers/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customers"
