@@ -3,7 +3,7 @@
 const dbManager = require('./dbManager');
 
 
-exports.entriesHandler = (event, context, callback) => {
+exports.customerHandler = (event, context, callback) => {
     switch (event.httpMethod) {     
         case 'GET':
             if (event.pathParameters && event.pathParameters.customerid){
