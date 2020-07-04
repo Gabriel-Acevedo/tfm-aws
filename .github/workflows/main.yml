@@ -23,7 +23,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: sam build
-      uses: Gabriel-Acevedo/tfm-aws/node12@master
+      uses: | 
+        actions/setup-node@v1
+        Gabriel-Acevedo/tfm-aws/node12@master
       with:
         sam_command: build
       env:
