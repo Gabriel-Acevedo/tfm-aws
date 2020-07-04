@@ -23,7 +23,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: sam build
-      uses: youyo/aws-sam-action@master
+      uses:  Gabriel-Acevedo/tfm-aws/node12@master
       with:
         sam_command: build
       env:
