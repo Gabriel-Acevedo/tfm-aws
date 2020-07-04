@@ -20,7 +20,10 @@ jobs:
         cd src
         npm install
         cd ..
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        brew --version
+        brew tap aws/tap
+        brew install aws-sam-cli
         sam build
         sam deploy --confirm-changeset
       env:
