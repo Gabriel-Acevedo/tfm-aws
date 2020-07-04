@@ -1,0 +1,61 @@
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  customerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      Handler: index.customerHandler
+      CodeUri: customerFunction
+      Events:
+        lambdaGetAllCustomers:
+          Type: Api
+          Properties:
+            Path: /customers
+            Method: GET
+        lambdaGetCustomer:
+          Type: Api
+          Properties:
+            Path: /customer/{customerid}
+            Method: GET
+        lambdaAddCustomer:
+          Type: Api
+          Properties:
+            Path: /customer
+            Method: POST
+      Policies:
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - dynamodb:Scan
+          - dynamodb:Query
+          - dynamodb:DeleteItem
+          - dynamodb:GetItem
+          - dynamodb:PutItem
+          - dynamodb:UpdateItem
+          Resource:
+            Fn::Join:
+            - ''
+            - - 'arn:aws:dynamodb:'
+              - Ref: AWS::Region
+              - ':'
+              - Ref: AWS::AccountId
+              - :table/customers
+  customerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: customers
+      AttributeDefinitions:
+      - AttributeName: customerid
+        AttributeType: S
+      KeySchema:
+      - AttributeName: customerid
+        KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+Outputs:
+  PublicApi:
+    Description: API Gateway endpoint URL for Prod stage for Customers function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/customers
