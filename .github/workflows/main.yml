@@ -9,7 +9,7 @@ jobs:
     name: build node
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkot
       uses: actions/checkout@v2
     - name: Set up Node 12
       uses: actions/setup-node@v1
