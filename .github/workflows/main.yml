@@ -20,6 +20,10 @@ jobs:
         cd src
         npm install
         cd ..
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+        brew --version
+        brew tap aws/tap
+        brew install aws-sam-cli
 
   build_sam:
     name: Build Lambda with AWS SAM  
