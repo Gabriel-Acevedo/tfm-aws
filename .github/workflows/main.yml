@@ -16,10 +16,7 @@ jobs:
       with:
         node-version: '12'
     - name: Run npm install
-      run: |
-        cd src
-        npm install
-        cd ..
+      run: npm install
     - name: Checkout
       uses: actions/checkout@master
     - name: sam build

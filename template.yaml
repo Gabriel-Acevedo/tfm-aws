@@ -9,7 +9,7 @@ Resources:
             # This is the Lambda function's handler.
             Handler: index.customerHandler
             # The location of the Lambda function code.
-            CodeUri: ./src
+            CodeUri: ./
             # Event sources to attach to this function. In this case, we are attaching
             # multiple API Gateway endpoints to the Lambda function. The function is
             # called when a HTTP request is made to the API Gateway endpoint.
