@@ -9,10 +9,11 @@ jobs:
     name: build node
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Set up Node 12
       uses: actions/setup-node@v1
       with:
         node-version: '12'
     - name: Run npm install
-    - run: npm install
+      run: npm install
