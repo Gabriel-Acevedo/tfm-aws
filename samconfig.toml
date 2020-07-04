@@ -3,7 +3,7 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "tfm-aws-lambda"
-s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-15y0x5rlb4y1i"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-tfm2020"
 s3_prefix = "tfm-aws-lambda"
 region = "us-east-1"
 confirm_changeset = true
