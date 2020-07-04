@@ -16,11 +16,16 @@ jobs:
       with:
         node-version: '12'
     - name: Run npm install
-      run: npm install
+      run: |
+        cd src
+        npm install
+        cd ..
     - name: Checkout
       uses: actions/checkout@master
     - name: sam build
-      uses: r0zar/sam-deploy-action@v1.0
+      uses: youyo/aws-sam-action@master
+      with:
+        sam_command: build
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
