@@ -39,7 +39,9 @@ const addCustomer = (customer) => {
             "customerid": uuid.v1(),
             "name": customer.name,
             "lastname": customer.lastname,
-            "age": customer.age
+            "phone": customer.phone,
+            "email": customer.email,
+            "company": customer.company
         }
     };
 
