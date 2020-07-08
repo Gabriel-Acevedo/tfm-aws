@@ -32,7 +32,7 @@ Se ha añadido una coleccion de postman para la ejecucion de los endpoints de la
 
 Para la integración continua de este proyecto se utiliza **GitHub Actions**, configurando una serie de [workflows] (.github/workflows), para los diferentes eventos de interacción que se utilizaran en este repositorio.
 
-- [**push.yml**](.github/workflows/push.yml): Se ejecutará por cada *push* realizado en la rama *master*, y esta dividido en los siguientes jobs:
+- [**main.yml**](.github/workflows/main.yml): Se ejecutará por cada *push* o *merge* realizado en la rama *master*, y esta dividido en los siguientes jobs:
 
 	- ***Setup Node 12***: Descarga las librerias necesarias para ejecutar la aplicacion node.
 	
@@ -104,6 +104,3 @@ Para la integración continua de este proyecto se utiliza **GitHub Actions**, co
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 	```
-
-- [**pull_request.yml**](.github/workflows/pull_request.yml): Se ejecutará por cada *merge* realizado en la rama *master* y contiene los mismos jobs que el fichero **push.yml**.
-
