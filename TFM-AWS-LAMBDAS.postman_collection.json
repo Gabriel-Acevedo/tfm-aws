@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "1c39bac2-ed71-47a3-a0e5-0ca8427a9d07",
+		"name": "TFM-AWS-LAMBDAS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Return all Customers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": [
+						{
+							"key": "service",
+							"value": "CloudFormation",
+							"type": "string"
+						},
+						{
+							"key": "region",
+							"value": "{{AWS_REGION}}",
+							"type": "string"
+						},
+						{
+							"key": "sessionToken",
+							"value": "{{AWS_SESSION}}",
+							"type": "string"
+						},
+						{
+							"key": "secretKey",
+							"value": "{{AWS_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "accessKey",
+							"value": "{{AWS_ACCESS}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/Prod/customers",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Prod",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Return Customer By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": [
+						{
+							"key": "service",
+							"value": "CloudFormation",
+							"type": "string"
+						},
+						{
+							"key": "region",
+							"value": "{{AWS_REGION}}",
+							"type": "string"
+						},
+						{
+							"key": "sessionToken",
+							"value": "{{AWS_SESSION}}",
+							"type": "string"
+						},
+						{
+							"key": "secretKey",
+							"value": "{{AWS_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "accessKey",
+							"value": "{{AWS_ACCESS}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/Prod/customer/1d399b80-c13a-11ea-bd38-e716ee6b6e50",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Prod",
+						"customer",
+						"1d399b80-c13a-11ea-bd38-e716ee6b6e50"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new Customer",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": [
+						{
+							"key": "service",
+							"value": "CloudFormation",
+							"type": "string"
+						},
+						{
+							"key": "region",
+							"value": "{{AWS_REGION}}",
+							"type": "string"
+						},
+						{
+							"key": "sessionToken",
+							"value": "{{AWS_SESSION}}",
+							"type": "string"
+						},
+						{
+							"key": "secretKey",
+							"value": "{{AWS_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "accessKey",
+							"value": "{{AWS_ACCESS}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"David\",\r\n    \"lastname\": \"Garcia\",\r\n    \"phone\": 123456789,\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"company\": \"Acevedo\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/Prod/customer",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"Prod",
+						"customer"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "awsv4",
+		"awsv4": [
+			{
+				"key": "service",
+				"value": "CloudFormation",
+				"type": "string"
+			},
+			{
+				"key": "region",
+				"value": "{{AWS_REGION}}",
+				"type": "string"
+			},
+			{
+				"key": "sessionToken",
+				"value": "{{AWS_SESSION}}",
+				"type": "string"
+			},
+			{
+				"key": "secretKey",
+				"value": "{{AWS_SECRET}}",
+				"type": "string"
+			},
+			{
+				"key": "accessKey",
+				"value": "{{AWS_ACCESS}}",
+				"type": "string"
+			}
+		]
+	},
+	"protocolProfileBehavior": {}
+}
