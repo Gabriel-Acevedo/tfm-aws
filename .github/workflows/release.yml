@@ -26,7 +26,7 @@ jobs:
       - name: Get the current version
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
-      - name: Zip Folder
+      - name: Zip Application Data
         run: |
           zip -r release-${{ steps.get_version.outputs.VERSION }}.zip . -x ".git/*" ".github/*" ".aws-sam/*"
       - name: Release to Github
