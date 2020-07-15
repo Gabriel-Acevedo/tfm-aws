@@ -31,3 +31,13 @@ jobs:
           zip -r release-${{ steps.get_version.outputs.VERSION }}.zip . -x ".git/*" ".github/*" ".aws-sam/*"
       - name: Release to Github
         run: echo "Release ${{ steps.get_version.outputs.VERSION }}"
+      - name: Upload Zip file to AWS
+        uses: zdurham/s3-upload-github-action@master
+        with:
+          args: --acl public-read
+        env:
+          FILE: release-${{ steps.get_version.outputs.VERSION }}.zip
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+          S3_BUCKET: ${{ secrets.AWS_RELEASE_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
