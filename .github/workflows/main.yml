@@ -1,4 +1,4 @@
-name: Push CI
+name: "CI: Publish modifications to AWS Lambdas"
 
 on:
   push:

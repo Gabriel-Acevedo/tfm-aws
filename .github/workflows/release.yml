@@ -34,6 +34,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Zip Folder
-      run: zip -r release-${{ steps.get_version.outputs.VERSION }}.zip . -x ".git/*" ".github/*"
+      run: |
+        echo version=${{ jobs.release_version.steps.get_version.outputs.VERSION }}
+        zip -r release-${version}.zip . -x ".git/*" ".github/*" ".aws-sam/*"
     - name: Release to Github
-      run: echo "Release ${{ steps.get_version.outputs.VERSION }}"
+      run: echo "Release ${{ jobs.release_version.steps.get_version.outputs.VERSION }}"
