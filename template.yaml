@@ -50,6 +50,49 @@ Resources:
                                         -   Ref: 'AWS::AccountId'
                                         -   ':table/customers'
     
+    productFunction:
+        # This resource creates a Lambda function.
+        Type: 'AWS::Serverless::Function'
+        Properties:
+            Runtime: nodejs12.x
+            Handler: index.productHandler
+            CodeUri: ./src
+            Events:
+                lambdaGetAllProducts:
+                    Type: Api
+                    Properties:
+                        Path: /products
+                        Method: GET
+                lambdaGetProduct:
+                    Type: Api
+                    Properties:
+                        Path: /product/{productid}
+                        Method: GET
+                lambdaAddProduct:
+                    Type: Api
+                    Properties:
+                        Path: /product
+                        Method: POST
+            Policies:
+                -   Version: '2012-10-17'
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   'dynamodb:Scan'
+                                -   'dynamodb:Query'
+                                -   'dynamodb:DeleteItem'
+                                -   'dynamodb:GetItem'
+                                -   'dynamodb:PutItem'
+                                -   'dynamodb:UpdateItem'
+                            Resource:
+                                'Fn::Join':
+                                    -   ''
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
+                                        -   ':table/products'
+    
     customerTable:
         Type: 'AWS::DynamoDB::Table'
         Properties:
@@ -59,6 +102,20 @@ Resources:
                     AttributeType: S
             KeySchema:
                 -   AttributeName: customerid
+                    KeyType: HASH
+            ProvisionedThroughput:
+                ReadCapacityUnits: 5
+                WriteCapacityUnits: 5
+    
+    productTable:
+        Type: 'AWS::DynamoDB::Table'
+        Properties:
+            TableName: products
+            AttributeDefinitions:
+                -   AttributeName: productid
+                    AttributeType: S
+            KeySchema:
+                -   AttributeName: productid
                     KeyType: HASH
             ProvisionedThroughput:
                 ReadCapacityUnits: 5
