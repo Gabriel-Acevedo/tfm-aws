@@ -49,7 +49,6 @@ const addProduct = (product) => {
 
 module.exports = {
     getAllProducts,
-    getProduct, 
     getProductByCode,
     addProduct
 };
