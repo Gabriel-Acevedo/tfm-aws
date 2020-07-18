@@ -19,19 +19,6 @@ const getAllProducts = () => {
     return docClient.scan(params).promise();
 };
 
-
-const getProduct = (productid) => {
-    const params = {
-        TableName: table,        
-        KeyConditionExpression: "productid = :productid",
-        ExpressionAttributeValues: {
-            ":productid": productid
-        },
-    };
-    return docClient.query(params).promise();
-};
-
-
 const getProductByCode = (productcode) => {
     const params = {
         TableName: table,        
