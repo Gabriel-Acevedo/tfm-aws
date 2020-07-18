@@ -25,8 +25,8 @@ exports.customerHandler = (event, context, callback) => {
 exports.productHandler = (event, context, callback) => {
     switch (event.httpMethod) {     
         case 'GET':
-            if(event.pathParameters && event.pathParameters.productcode){
-                getProductByCode(event.pathParameters.productcode, callback);
+            if (event.pathParameters && event.pathParameters.productid){
+                getProduct(event.pathParameters.productid, callback);
             }else{
                 getAllProducts(callback);         
             } 
@@ -92,8 +92,8 @@ const getAllProducts = (callback) => {
 };
 
 
-const getProductByCode = (productcode, callback) => {
-    dbProductManager.getProductByCode(productcode)
+const getProduct = (customerid, callback) => {
+    dbProductManager.getProduct(customerid)
     .then((res) => {
         sendResponse(200, res, callback);
     })

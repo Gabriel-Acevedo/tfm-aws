@@ -19,12 +19,13 @@ const getAllProducts = () => {
     return docClient.scan(params).promise();
 };
 
-const getProductByCode = (productcode) => {
+
+const getProduct = (productid) => {
     const params = {
         TableName: table,        
-        KeyConditionExpression: "productcode = :productcode",
+        KeyConditionExpression: "productid = :productid",
         ExpressionAttributeValues: {
-            ":productcode": productcode
+            ":productid": productid
         },
     };
     return docClient.query(params).promise();
@@ -49,6 +50,6 @@ const addProduct = (product) => {
 
 module.exports = {
     getAllProducts,
-    getProductByCode,
+    getProduct, 
     addProduct
 };
