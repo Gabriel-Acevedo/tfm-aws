@@ -27,9 +27,13 @@ exports.productHandler = (event, context, callback) => {
         case 'GET':
             if (event.pathParameters && event.pathParameters.productid){
                 getProduct(event.pathParameters.productid, callback);
-            }else{
-                getAllProducts(callback);         
-            } 
+            }else{ 
+                if(event.pathParameters && event.pathParameters.productcode){
+                    getProductByCode(event.pathParameters.productcode, callback);
+                }else{
+                    getAllProducts(callback);         
+                } 
+            }
             break;
         case 'POST':
             addProduct(event.body, callback);
@@ -92,8 +96,19 @@ const getAllProducts = (callback) => {
 };
 
 
-const getProduct = (customerid, callback) => {
-    dbProductManager.getProduct(customerid)
+const getProduct = (productid, callback) => {
+    dbProductManager.getProduct(productid)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+
+const getProductByCode = (productcode, callback) => {
+    dbProductManager.getProductByCode(productcode)
     .then((res) => {
         sendResponse(200, res, callback);
     })

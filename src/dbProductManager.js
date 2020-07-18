@@ -32,6 +32,18 @@ const getProduct = (productid) => {
 };
 
 
+const getProductByCode = (productcode) => {
+    const params = {
+        TableName: table,        
+        KeyConditionExpression: "productcode = :productcode",
+        ExpressionAttributeValues: {
+            ":productcode": productcode
+        },
+    };
+    return docClient.query(params).promise();
+};
+
+
 const addProduct = (product) => {
     const params = {
         TableName: table,
@@ -51,5 +63,6 @@ const addProduct = (product) => {
 module.exports = {
     getAllProducts,
     getProduct, 
+    getProductByCode,
     addProduct
 };
