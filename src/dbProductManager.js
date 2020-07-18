@@ -39,8 +39,8 @@ const addProduct = (product) => {
             "productid": uuid.v1(),
             "productcode": product.productcode,
             "name": product.name,
-            "description": customer.description,
-            "unitprice": customer.unitprice
+            "description": product.description,
+            "unitprice": product.unitprice
         }
     };
 
