@@ -6,182 +6,318 @@
 	},
 	"item": [
 		{
-			"name": "Return all Customers",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "service",
-							"value": "CloudFormation",
-							"type": "string"
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Create a new Customer",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "region",
-							"value": "{{AWS_REGION}}",
-							"type": "string"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"David\",\r\n    \"lastname\": \"Garcia\",\r\n    \"phone\": 123456789,\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"company\": \"Acevedo\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "sessionToken",
-							"value": "{{AWS_SESSION}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{AWS_SECRET}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AWS_ACCESS}}",
-							"type": "string"
+						"url": {
+							"raw": "{{URL}}/Prod/customer",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"Prod",
+								"customer"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Return all Customers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/Prod/customers",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"Prod",
+								"customers"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{URL}}/Prod/customers",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"Prod",
-						"customers"
-					]
+				{
+					"name": "Return Customer By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/Prod/customer/1d399b80-c13a-11ea-bd38-e716ee6b6e50",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"Prod",
+								"customer",
+								"1d399b80-c13a-11ea-bd38-e716ee6b6e50"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Return Customer By ID",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "service",
-							"value": "CloudFormation",
-							"type": "string"
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create a new Product",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "region",
-							"value": "{{AWS_REGION}}",
-							"type": "string"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productcode\": \"RESOURCES\",\r\n    \"name\": \"Asignacion de Recursos\",\r\n    \"description\": \"El módulo de Asignación de Recursos le permite medir la ocupación de sus recursos y las actividades en las que están comprometidos con fechas de inicio y fin para evitar sobresaturar sus recursos y enfrentar situaciones de duplicidad de asignación o falta de cumplimiento ocasionando molestias con sus Clientes.\",\r\n    \"unitprice\": 250 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "sessionToken",
-							"value": "{{AWS_SESSION}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{AWS_SECRET}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AWS_ACCESS}}",
-							"type": "string"
+						"url": {
+							"raw": "{{URL}}/Prod/product",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"Prod",
+								"product"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Return all Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/Prod/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"Prod",
+								"products"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{URL}}/Prod/customer/1d399b80-c13a-11ea-bd38-e716ee6b6e50",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"Prod",
-						"customer",
-						"1d399b80-c13a-11ea-bd38-e716ee6b6e50"
-					]
+				{
+					"name": "Return Product By ID",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/Prod/product/39f61630-c910-11ea-8d3e-99be64b3b56f",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"Prod",
+								"product",
+								"39f61630-c910-11ea-8d3e-99be64b3b56f"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create a new Customer",
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "service",
-							"value": "CloudFormation",
-							"type": "string"
-						},
-						{
-							"key": "region",
-							"value": "{{AWS_REGION}}",
-							"type": "string"
-						},
-						{
-							"key": "sessionToken",
-							"value": "{{AWS_SESSION}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{AWS_SECRET}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AWS_ACCESS}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"David\",\r\n    \"lastname\": \"Garcia\",\r\n    \"phone\": 123456789,\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"company\": \"Acevedo\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{URL}}/Prod/customer",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"Prod",
-						"customer"
-					]
-				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
