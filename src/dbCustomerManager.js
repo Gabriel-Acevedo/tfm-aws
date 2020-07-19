@@ -66,7 +66,7 @@ const addBudget = (customerid, data) => {
         TableName: tableProduct,        
         KeyConditionExpression: "productid = :productid",
         ExpressionAttributeValues: {
-            ":productid": data.budgetdetails.productid
+            ":productid": data.budgetdetails[0].productid
         },
     };
  
