@@ -15,7 +15,7 @@ exports.customerHandler = (event, context, callback) => {
             break;
         case 'POST':
             if (event.pathParameters && event.pathParameters.customerid){
-                addBudget(event.pathParameters.customerid, callback);
+                addBudget(event.pathParameters.customerid, event.body, callback);
             }else{
                 addCustomer(event.body, callback);
             }
