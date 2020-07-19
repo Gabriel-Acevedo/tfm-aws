@@ -123,8 +123,9 @@ async function getProductPrice(productid) {
             console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
             return 0;
         } else {
+            let priceBudget;
             data.Items.forEach(function(item){
-                let priceBudget = item.unitprice; 
+                priceBudget = item.unitprice; 
                 console.log("Price of the budget: " + priceBudget);
             });
 
