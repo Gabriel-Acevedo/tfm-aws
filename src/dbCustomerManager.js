@@ -54,7 +54,7 @@ const addCustomer = (customer) => {
 const addBudget = async (customerid, data) => {
 
     //Calculamos el importe del presupuesto segun los productos elegidos:
-    let priceBudget = await getProductPrice(data.budgetdetails[0].productid);
+    let totalPriceBudget = await getProductPrice(data.budgetdetails[0].productid);
 
     /*
    
@@ -79,14 +79,14 @@ const addBudget = async (customerid, data) => {
     });
     */
 
-    console.log("Price outside the calculator: " + priceBudget);
+    console.log("Price outside the calculator: " + totalPriceBudget);
     
 
     const budgetid = uuid.v1();
     const budget = {
         "description": data.description,
         "budgetdetails": data.budgetdetails,
-        "totalprice": priceBudget
+        "totalprice": totalPriceBudget
     };
 
     const params = {
