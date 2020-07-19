@@ -50,12 +50,12 @@ const addCustomer = (customer) => {
 };
 
 
-const addBudget = (customerid, budget) => {
+const addBudget = (customerid, data) => {
     const budgetid = uuid.v1();
     const budget = {
-        "description": budget.description,
-        "budgetdetails": budget.budgetdetails,
-        "totalprice": budget.totalprice
+        "description": data.description,
+        "budgetdetails": data.budgetdetails,
+        "totalprice": data.totalprice
     };
 
     const params = {
