@@ -77,6 +77,7 @@ const addBudget = (customerid, data) => {
             console.log("Query succeeded.");
             data.Items.forEach(function(item){
                 priceBudget = priceBudget + item.unitprice; 
+            console.log("Price of the budget: " + priceBudget);
             });
         }
     });
