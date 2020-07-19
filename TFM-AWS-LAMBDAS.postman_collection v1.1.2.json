@@ -185,6 +185,65 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create a New Budget",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"tercer budget para el cliente.\",\r\n    \"budgetdetails\": [ \r\n\t\t\t\t{\r\n\t\t\t\t \"productid\": \"85413420-c9e8-11ea-9e1b-ab06f07125dc\"\r\n\t\t\t\t}\r\n\t\t]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/Prod/customer/7f0d5fc0-c9e8-11ea-a75c-5d9eaa11689c/budget",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"Prod",
+								"customer",
+								"7f0d5fc0-c9e8-11ea-a75c-5d9eaa11689c",
+								"budget"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -229,7 +288,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"productcode\": \"RESOURCES\",\r\n    \"name\": \"Asignacion de Recursos\",\r\n    \"description\": \"El módulo de Asignación de Recursos le permite medir la ocupación de sus recursos y las actividades en las que están comprometidos con fechas de inicio y fin para evitar sobresaturar sus recursos y enfrentar situaciones de duplicidad de asignación o falta de cumplimiento ocasionando molestias con sus Clientes.\",\r\n    \"unitprice\": 250 \r\n}",
+							"raw": "{\r\n    \"productcode\": \"ADMINISTRATION\",\r\n    \"name\": \"Gestion de Sistemas\",\r\n    \"description\": \"Despliegue las mejoras que ha creado y comparta por medio de la solución documentos e información electrónica con el módulo de Gestión de Software donde podrá tener visibilidad del ciclo de vida de los incidentes que recibe y sus clientes podrán ver el status de avance / resolución de los mismos de manera autónoma.\",\r\n    \"unitprice\": 325 \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -303,14 +362,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/Prod/product/39f61630-c910-11ea-8d3e-99be64b3b56f",
+							"raw": "{{URL}}/Prod/product/88286670-c9a4-11ea-a14b-e94cb35c5b4c",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"Prod",
 								"product",
-								"39f61630-c910-11ea-8d3e-99be64b3b56f"
+								"88286670-c9a4-11ea-a14b-e94cb35c5b4c"
 							]
 						}
 					},
