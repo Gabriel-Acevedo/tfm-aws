@@ -51,7 +51,7 @@ const addCustomer = (customer) => {
 };
 
 
-const addBudget = (customerid, data) => {
+const addBudget = async (customerid, data) => {
 
     //Calculamos el importe del presupuesto segun los productos elegidos:
     let priceBudget = await getProductPrice(data.budgetdetails[0].productid);
