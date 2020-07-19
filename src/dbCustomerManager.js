@@ -117,21 +117,22 @@ async function getProductPrice(productid) {
         },
     };
  
-    let productPrice = await docClient.query(productData, async function(err, data) {
+    await docClient.query(productData, async function(err, data) {
         if (err) {
             console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
             return 0;
         } else {
             console.log("Query succeeded.");
             data.Items.forEach(function(item){
-                let priceBudget = item.unitprice; 
+            let priceBudget = item.unitprice; 
             console.log("Price of the budget: " + priceBudget);
 
-            return priceBudget;
+            productPrice = priceBudget;
 
             });
         }
     });
+    
     console.log("Product price value: " + productPrice);
     return productPrice;
 };
