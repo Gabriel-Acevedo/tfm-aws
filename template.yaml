@@ -29,6 +29,11 @@ Resources:
                     Properties:
                         Path: /customer
                         Method: POST
+                lambdaAddBudget:
+                    Type: Api
+                    Properties:
+                        Path: /customer/{customerid}/budget
+                        Method: POST
             Policies:
                 # Policies to allow the execution of the indicated actions to the table described in Resource
                 -   Version: '2012-10-17'

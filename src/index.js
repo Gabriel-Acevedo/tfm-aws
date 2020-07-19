@@ -14,7 +14,11 @@ exports.customerHandler = (event, context, callback) => {
             } 
             break;
         case 'POST':
-            addCustomer(event.body, callback);
+            if (event.pathParameters && event.pathParameters.customerid){
+                addBudget(event.pathParameters.customerid, callback);
+            }else{
+                addCustomer(event.body, callback);
+            }
             break;
         default:
             sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
@@ -68,6 +72,20 @@ const addCustomer = (data, callback) => {
     data = JSON.parse(data);
 
     dbCustomerManager.addCustomer(data)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+
+
+const addBudget = (customerid, data, callback) => {
+    data = JSON.parse(data);
+
+    dbCustomerManager.addBudget(customerid, data)
     .then((res) => {
         sendResponse(200, res, callback);
     })

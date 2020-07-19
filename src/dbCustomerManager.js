@@ -50,8 +50,35 @@ const addCustomer = (customer) => {
 };
 
 
+const addBudget = (customerid, budget) => {
+    const budgetid = uuid.v1();
+    const budget = {
+        "description": budget.description,
+        "budgetdetails": budget.budgetdetails,
+        "totalprice": budget.totalprice
+    };
+
+    const params = {
+        TableName: table,
+        Key: {
+            "customerid": customerid
+        },
+        UpdateExpression: 'set budgets.#budgetid = :budget',
+        ExpressionAttributeNames: {
+            "#budgetid": budgetid
+        },
+        ExpressionAttributeValues:{
+            ":budget": budget
+        },
+        ReturnValues: "UPDATED_NEW"
+    };
+    return docClient.update(params).promise();
+}
+
+
 module.exports = {
     getAllCustomers,
     getCustomer, 
-    addCustomer
+    addCustomer,
+    addBudget
 };
