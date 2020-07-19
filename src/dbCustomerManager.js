@@ -60,7 +60,7 @@ const addBudget = (customerid, data) => {
     };
 
     //Calculamos el importe del presupuesto segun los productos elegidos:
-    const priceBudget = 0;
+    let priceBudget = 0;
    
     const productData = {
         TableName: tableProduct,        
