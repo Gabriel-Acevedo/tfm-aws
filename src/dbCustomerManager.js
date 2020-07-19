@@ -51,10 +51,10 @@ const addCustomer = (customer) => {
 };
 
 
-const addBudget = async (customerid, data) => {
+const addBudget = (customerid, data) => {
 
     //Calculamos el importe del presupuesto segun los productos elegidos:
-    let totalPriceBudget = await getProductPrice(data.budgetdetails[0].productid);
+    let totalPriceBudget = getProductPrice(data.budgetdetails[0].productid);
 
     /*
    
@@ -109,6 +109,7 @@ const addBudget = async (customerid, data) => {
 
 
 async function getProductPrice(productid) {
+    
     const productData = {
         TableName: tableProduct,        
         KeyConditionExpression: "productid = :productid",
@@ -117,24 +118,22 @@ async function getProductPrice(productid) {
         },
     };
  
-    await docClient.query(productData, async function(err, data) {
+    let productPrice = docClient.query(productData, function(err, data) {
         if (err) {
             console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
             return 0;
         } else {
-            console.log("Query succeeded.");
             data.Items.forEach(function(item){
-            let priceBudget = item.unitprice; 
-            console.log("Price of the budget: " + priceBudget);
+                let priceBudget = item.unitprice; 
+                console.log("Price of the budget: " + priceBudget);
+            });
 
-            productPrice = priceBudget;
-
+            return new Promise(resolve => {
+                resolve(priceBudget);
             });
         }
     });
-    
-    console.log("Product price value: " + productPrice);
-    return productPrice;
+    return await productPrice;
 };
 
 
