@@ -53,7 +53,10 @@ Resources:
                                         -   Ref: 'AWS::Region'
                                         -   ':'
                                         -   Ref: 'AWS::AccountId'
-                                        -   ':table/customers'  
+                                        -   ':table/customers'
+                                        
+                                'Fn::Join':
+                                    -   ''
                                     -   -   'arn:aws:dynamodb:'
                                         -   Ref: 'AWS::Region'
                                         -   ':'
@@ -96,13 +99,8 @@ Resources:
                                 -   'dynamodb:PutItem'
                                 -   'dynamodb:UpdateItem'
                             Resource:
-                                'Fn::Join':
-                                    -   ''
-                                    -   -   'arn:aws:dynamodb:'
-                                        -   Ref: 'AWS::Region'
-                                        -   ':'
-                                        -   Ref: 'AWS::AccountId'
-                                        -   ':table/products'
+                                - "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/customers"
+                                - "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/products"
     
     customerTable:
         Type: 'AWS::DynamoDB::Table'
