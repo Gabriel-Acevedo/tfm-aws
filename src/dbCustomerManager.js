@@ -1,6 +1,7 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
 const REGION = "us-east-1";
+const tableProduct = 'products'
 
 AWS.config.update({
     endpoint: "https://dynamodb." + REGION + ".amazonaws.com"
@@ -58,7 +59,18 @@ const addBudget = (customerid, data) => {
         "totalprice": data.totalprice
     };
 
-    budget.totalprice = 0;
+    //Calculamos el importe del presupuesto segun los productos elegidos:
+    const priceBudget = 0;
+    const productPrice = 0;
+    for(var price in data.budgetdetails){
+        if(data.budgetdetails.hasOwnProperty(price)){
+        const product = getProductData(data.budgetdetails.productid);
+        productPrice = product.Items.unitprice;
+        priceBudget = priceBudget + productPrice;
+        }
+    }
+
+    budget.totalprice = priceBudget;
 
     const params = {
         TableName: table,
@@ -77,6 +89,17 @@ const addBudget = (customerid, data) => {
     return docClient.update(params).promise();
 }
 
+
+const getProductData = (productid) => {
+    const params = {
+        TableName: tableProduct,        
+        KeyConditionExpression: "productid = :productid",
+        ExpressionAttributeValues: {
+            ":productid": productid
+        },
+    };
+    return docClient.query(params).promise();
+};
 
 module.exports = {
     getAllCustomers,
