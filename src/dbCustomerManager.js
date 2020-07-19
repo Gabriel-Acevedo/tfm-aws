@@ -62,7 +62,7 @@ const addBudget = (customerid, data) => {
     //Calculamos el importe del presupuesto segun los productos elegidos:
     const priceBudget = 0;
    
-    const params = {
+    const productData = {
         TableName: tableProduct,        
         KeyConditionExpression: "productid = :productid",
         ExpressionAttributeValues: {
@@ -70,7 +70,7 @@ const addBudget = (customerid, data) => {
         },
     };
  
-    docClient.query(params, function(err, data) {
+    docClient.query(productData, function(err, data) {
         if (err) {
             console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
         } else {
