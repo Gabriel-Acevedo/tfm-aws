@@ -128,7 +128,7 @@ async function getProductPrice(productid) {
                 let priceBudget = item.unitprice; 
             console.log("Price of the budget: " + priceBudget);
 
-            return new Promise(priceBudget);
+            return Promise.resolve(priceBudget);
 
             });
         }
