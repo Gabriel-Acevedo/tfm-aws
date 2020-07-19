@@ -54,7 +54,7 @@ const addCustomer = (customer) => {
 const addBudget = (customerid, data) => {
 
     //Calculamos el importe del presupuesto segun los productos elegidos:
-    let priceBudget;
+    let priceBudget = 0;
    
     const productData = {
         TableName: tableProduct,        
@@ -75,6 +75,8 @@ const addBudget = (customerid, data) => {
             });
         }
     });
+
+    console.log("Price outside the calculator: " + priceBudget);
 
     const budgetid = uuid.v1();
     const budget = {
