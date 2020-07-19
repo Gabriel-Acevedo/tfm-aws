@@ -1,6 +1,6 @@
 'use strict';
 
-const dbManager = require('./dbManager');
+const dbCustomerManager = require('./dbCustomerManager');
 const dbProductManager = require('./dbProductManager');
 
 
@@ -41,7 +41,7 @@ exports.productHandler = (event, context, callback) => {
 
 //Customer Functions
 const getAllCustomers = (callback) => {
-    dbManager.getAllCustomers()
+    dbCustomerManager.getAllCustomers()
     .then((res) => {
         sendResponse(200, res, callback);
     })
@@ -53,7 +53,7 @@ const getAllCustomers = (callback) => {
 
 
 const getCustomer = (customerid, callback) => {
-    dbManager.getCustomer(customerid)
+    dbCustomerManager.getCustomer(customerid)
     .then((res) => {
         sendResponse(200, res, callback);
     })
@@ -67,7 +67,7 @@ const getCustomer = (customerid, callback) => {
 const addCustomer = (data, callback) => {
     data = JSON.parse(data);
 
-    dbManager.addCustomer(data)
+    dbCustomerManager.addCustomer(data)
     .then((res) => {
         sendResponse(200, res, callback);
     })
