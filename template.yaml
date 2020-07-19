@@ -54,6 +54,8 @@ Resources:
                                         -   ':'
                                         -   Ref: 'AWS::AccountId'
                                         -   ':table/customers'
+                                        -   ':table/products'
+                                        
     
     productFunction:
         # This resource creates a Lambda function.
