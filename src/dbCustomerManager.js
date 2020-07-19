@@ -78,7 +78,7 @@ const addBudget = (customerid, data) => {
         }
     });
     */
-   
+
     console.log("Price outside the calculator: " + priceBudget);
     
 
@@ -128,7 +128,7 @@ async function getProductPrice(productid) {
                 let priceBudget = item.unitprice; 
             console.log("Price of the budget: " + priceBudget);
 
-            return priceBudget;
+            return new Promise(priceBudget);
 
             });
         }
