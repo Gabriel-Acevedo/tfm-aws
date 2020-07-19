@@ -134,7 +134,11 @@ async function getProductPrice(productid) {
             });
         }
     });
-    return await productPrice;
+    await productPrice;
+    productPrice.then((value) => {
+      return value;  
+    })
+    //return await productPrice;
 };
 
 
