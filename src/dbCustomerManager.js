@@ -64,7 +64,9 @@ const addBudget = (customerid, data) => {
     const productPrice = 0;
     for(var price in data.budgetdetails){
         if(data.budgetdetails.hasOwnProperty(price)){
-        const product = getProductData(data.budgetdetails.productid);
+        const product = () => { 
+            getProductData(data.budgetdetails.productid) 
+        };
         productPrice = product.Items.unitprice;
         priceBudget = priceBudget + productPrice;
         }
