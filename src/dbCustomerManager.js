@@ -118,7 +118,7 @@ async function getProductPrice(productid) {
         },
     };
 
-    const productPrice = docClient.query(productData, function(err, data) {
+    const productPrice = await docClient.query(productData, function(err, data) {
         if (err) {
             console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
             return 0;
@@ -132,7 +132,6 @@ async function getProductPrice(productid) {
             return new Promise.resolve(priceBudget);
         }
     });
-    await productPrice;
     productPrice.then((value) => {
       return value;  
     })
