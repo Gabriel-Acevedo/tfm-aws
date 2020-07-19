@@ -58,6 +58,8 @@ const addBudget = (customerid, data) => {
         "totalprice": data.totalprice
     };
 
+    budget.totalprice = 0;
+
     const params = {
         TableName: table,
         Key: {
