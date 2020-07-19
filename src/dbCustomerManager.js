@@ -53,9 +53,8 @@ const addCustomer = (customer) => {
 
 const addBudget = (customerid, data) => {
 
-
     //Calculamos el importe del presupuesto segun los productos elegidos:
-    let priceBudget = 0;
+    let priceBudget;
    
     const productData = {
         TableName: tableProduct,        
@@ -71,7 +70,7 @@ const addBudget = (customerid, data) => {
         } else {
             console.log("Query succeeded.");
             data.Items.forEach(function(item){
-                priceBudget = priceBudget + item.unitprice; 
+                priceBudget = item.unitprice; 
             console.log("Price of the budget: " + priceBudget);
             });
         }
