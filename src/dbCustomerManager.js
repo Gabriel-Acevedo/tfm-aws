@@ -52,12 +52,7 @@ const addCustomer = (customer) => {
 
 
 const addBudget = (customerid, data) => {
-    const budgetid = uuid.v1();
-    const budget = {
-        "description": data.description,
-        "budgetdetails": data.budgetdetails,
-        "totalprice": data.totalprice
-    };
+
 
     //Calculamos el importe del presupuesto segun los productos elegidos:
     let priceBudget = 0;
@@ -82,7 +77,12 @@ const addBudget = (customerid, data) => {
         }
     });
 
-    budget.totalprice = priceBudget;
+    const budgetid = uuid.v1();
+    const budget = {
+        "description": data.description,
+        "budgetdetails": data.budgetdetails,
+        "totalprice": priceBudget
+    };
 
     const params = {
         TableName: table,
