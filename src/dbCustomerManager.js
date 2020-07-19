@@ -54,9 +54,7 @@ const addCustomer = (customer) => {
 const addBudget = (customerid, data) => {
 
     //Calculamos el importe del presupuesto segun los productos elegidos:
-    let totalPriceBudget = getProductPrice(data.budgetdetails[0].productid);
-
-    /*
+    let totalProductPrice = 0;
    
     const productData = {
         TableName: tableProduct,        
@@ -74,19 +72,18 @@ const addBudget = (customerid, data) => {
             data.Items.forEach(function(item){
                 priceBudget = item.unitprice; 
             console.log("Price of the budget: " + priceBudget);
+            totalProductPrice = priceBudget;
             });
         }
     });
-    */
 
-    console.log("Price outside the calculator: " + totalPriceBudget);
-    
+    console.log("Price outside the budget: " + totalProductPrice);
 
     const budgetid = uuid.v1();
     const budget = {
         "description": data.description,
         "budgetdetails": data.budgetdetails,
-        "totalprice": totalPriceBudget
+        "totalprice": totalProductPrice
     };
 
     const params = {
@@ -106,36 +103,6 @@ const addBudget = (customerid, data) => {
     return docClient.update(params).promise();
 }
 
-
-
-async function getProductPrice(productid) {
-    
-    const productData = {
-        TableName: tableProduct,        
-        KeyConditionExpression: "productid = :productid",
-        ExpressionAttributeValues: {
-            ":productid": productid
-        },
-    };
- 
-    let productPrice = docClient.query(productData, function(err, data) {
-        if (err) {
-            console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
-            return 0;
-        } else {
-            let priceBudget;
-            data.Items.forEach(function(item){
-                priceBudget = item.unitprice; 
-                console.log("Price of the budget: " + priceBudget);
-            });
-
-            return new Promise(resolve => {
-                resolve(priceBudget);
-            });
-        }
-    });
-    return await productPrice;
-};
 
 
 
