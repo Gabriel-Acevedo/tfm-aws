@@ -109,7 +109,6 @@ const addBudget = async (customerid, data) => {
 
 
 async function getProductPrice(productid) {
-
     const productData = {
         TableName: tableProduct,        
         KeyConditionExpression: "productid = :productid",
@@ -118,7 +117,7 @@ async function getProductPrice(productid) {
         },
     };
  
-    docClient.query(productData, function(err, data) {
+    let productPrice = await docClient.query(productData, async function(err, data) {
         if (err) {
             console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
             return 0;
@@ -128,21 +127,13 @@ async function getProductPrice(productid) {
                 let priceBudget = item.unitprice; 
             console.log("Price of the budget: " + priceBudget);
 
-                return new Promise((resolve, reject) => {
-                    resolve(priceBudget);
-                })
-                .then(value => {
-                    return value;
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+            return priceBudget;
 
             });
         }
     });
-
-
+    console.log("Product price value: " + productPrice);
+    return productPrice;
 };
 
 
