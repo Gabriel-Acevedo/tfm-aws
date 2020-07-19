@@ -41,7 +41,8 @@ const addCustomer = (customer) => {
             "lastname": customer.lastname,
             "phone": customer.phone,
             "email": customer.email,
-            "company": customer.company
+            "company": customer.company,
+            "budgets": customer.budgets || {}
         }
     };
 
