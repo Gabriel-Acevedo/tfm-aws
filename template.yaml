@@ -54,6 +54,11 @@ Resources:
                                         -   ':'
                                         -   Ref: 'AWS::AccountId'
                                         -   ':table/customers'
+                                    -   ''    
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
                                         -   ':table/products'
                                         
     
