@@ -129,7 +129,7 @@ async function getProductPrice(productid) {
                 console.log("Price of the budget: " + priceBudget);
             });
 
-            return new Promise.resolve(priceBudget);
+            return priceBudget.promise;
         }
     });
     productPrice.then((value) => {
