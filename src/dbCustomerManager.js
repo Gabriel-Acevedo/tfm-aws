@@ -62,15 +62,21 @@ const addBudget = (customerid, data) => {
     //Calculamos el importe del presupuesto segun los productos elegidos:
     const priceBudget = 0;
     const productPrice = 0;
-    for(var price in data.budgetdetails){
-        if(data.budgetdetails.hasOwnProperty(price)){
-        const product = () => { 
-            getProductData(data.budgetdetails.productid) 
+    const getProductData = () => {
+        const params = {
+            TableName: tableProduct,        
+            KeyConditionExpression: "productid = :productid",
+            ExpressionAttributeValues: {
+                ":productid": data.budgetdetails.productid
+            },
         };
-        productPrice = product.Items.unitprice;
-        priceBudget = priceBudget + productPrice;
-        }
-    }
+        return docClient.query(params).promise();
+    };
+
+    productPrice = getProductData.Items.unitprice;
+    priceBudget = priceBudget + productPrice;
+    
+    
 
     budget.totalprice = priceBudget;
 
@@ -92,16 +98,7 @@ const addBudget = (customerid, data) => {
 }
 
 
-const getProductData = (productid) => {
-    const params = {
-        TableName: tableProduct,        
-        KeyConditionExpression: "productid = :productid",
-        ExpressionAttributeValues: {
-            ":productid": productid
-        },
-    };
-    return docClient.query(params).promise();
-};
+
 
 module.exports = {
     getAllCustomers,

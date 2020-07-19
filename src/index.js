@@ -110,8 +110,8 @@ const getAllProducts = (callback) => {
 };
 
 
-const getProduct = (customerid, callback) => {
-    dbProductManager.getProduct(customerid)
+const getProduct = (productid, callback) => {
+    dbProductManager.getProduct(productid)
     .then((res) => {
         sendResponse(200, res, callback);
     })
