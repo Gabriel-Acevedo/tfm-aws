@@ -83,7 +83,7 @@ const addCustomer = (data, callback) => {
 
 
 const addCompanyToCustomer = (customerid, company, callback) => {
-    data = JSON.parse(data);
+    company = JSON.parse(company);
 
     dbCustomerManager.addCompanyToCustomer(customerid, company)
     .then((res) => {
