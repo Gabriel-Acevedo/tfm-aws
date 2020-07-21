@@ -1,18 +1,11 @@
 Transform: 'AWS::Serverless-2016-10-31'
 Resources:
     customerFunction:
-        # This resource creates a Lambda function.
         Type: 'AWS::Serverless::Function'
         Properties:
-            # This function uses the Nodejs v8.10 runtime.
             Runtime: nodejs12.x
-            # This is the Lambda function's handler.
             Handler: index.customerHandler
-            # The location of the Lambda function code.
             CodeUri: ./src
-            # Event sources to attach to this function. In this case, we are attaching
-            # multiple API Gateway endpoints to the Lambda function. The function is
-            # called when a HTTP request is made to the API Gateway endpoint.
             Events:
                 lambdaGetAllCustomers:
                     Type: Api
@@ -29,8 +22,12 @@ Resources:
                     Properties:
                         Path: /api/customer
                         Method: POST
+                lambdaAddCompanyToCustomer:
+                    Type: Api
+                    Properties:
+                        Path: /api/customer/{customerid}/company
+                        Method: POST
             Policies:
-                # Policies to allow the execution of the indicated actions to the table described in Resource
                 -   Version: '2012-10-17'
                     Statement: 
                         -   Effect: Allow
@@ -52,7 +49,6 @@ Resources:
                                         
     
     productFunction:
-        # This resource creates a Lambda function.
         Type: 'AWS::Serverless::Function'
         Properties:
             Runtime: nodejs12.x

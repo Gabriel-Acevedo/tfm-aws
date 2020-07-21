@@ -47,9 +47,34 @@ const addCustomer = (customer) => {
 };
 
 
+const addCompanyToCustomer = (customerid, company) => {
+
+    const company = {
+        "companyid": uuid.v1(),
+        "vatregnumber": company.vatregnumber,
+        "name": company.name,
+        "country": company.country,
+        "industry": company.industry
+    };
+
+    const params = {
+        TableName: table,
+        Key: {
+            "customerid": customerid
+        },
+        UpdateExpression: 'set company = :company',
+        ExpressionAttributeValues:{
+            ":company": company
+        },
+        ReturnValues: "UPDATED_NEW"
+    };
+    return docClient.update(params).promise();
+}
+
+
 module.exports = {
     getAllCustomers,
     getCustomer, 
     addCustomer,
-    addBudget
+    addCompanyToCustomer
 };

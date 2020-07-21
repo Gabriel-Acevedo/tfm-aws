@@ -14,7 +14,11 @@ exports.customerHandler = (event, context, callback) => {
             } 
             break;
         case 'POST':
-            addCustomer(event.body, callback);
+            if(event.pathParameters && event.pathParameters.customerid){
+                addCompanyToCustomer(event.pathParameters.customerid, event.body, callback) 
+            }else{
+                addCustomer(event.body, callback);
+            }
             break;
         default:
             sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
@@ -32,7 +36,7 @@ exports.productHandler = (event, context, callback) => {
             } 
             break;
         case 'POST':
-            addProduct(event.body, callback);
+            addProduct(event.body, callback);            
             break;
         default:
             sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
@@ -76,6 +80,21 @@ const addCustomer = (data, callback) => {
         sendResponse(200, err, callback);
     });
 };
+
+
+const addCompanyToCustomer = (customerid, company, callback) => {
+    data = JSON.parse(data);
+
+    dbCustomerManager.addCompanyToCustomer(customerid, company)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+
 
 //End Customer Functions
 
