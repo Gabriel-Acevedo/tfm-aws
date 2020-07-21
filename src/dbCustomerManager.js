@@ -40,7 +40,7 @@ const addCustomer = (customer) => {
             "name": customer.name,
             "lastname": customer.lastname,
             "email": customer.email,
-            "company": customer.company
+            "company": ""
         }
     };
     return docClient.put(params).promise();
