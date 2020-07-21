@@ -58,17 +58,17 @@ Resources:
                 lambdaGetAllProducts:
                     Type: Api
                     Properties:
-                        Path: /products
+                        Path: /api/products
                         Method: GET
                 lambdaGetProduct:
                     Type: Api
                     Properties:
-                        Path: /product/{productid}
+                        Path: /api/product/{productid}
                         Method: GET
                 lambdaAddProduct:
                     Type: Api
                     Properties:
-                        Path: /product
+                        Path: /api/product
                         Method: POST
             Policies:
                 -   Version: '2012-10-17'

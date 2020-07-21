@@ -68,6 +68,9 @@ const addCompanyToCustomer = (customerid, companyData) => {
         },
         ReturnValues: "UPDATED_NEW"
     };
+
+    //Create insert to company 
+
     return docClient.update(params).promise();
 }
 
