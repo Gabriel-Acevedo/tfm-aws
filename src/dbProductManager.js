@@ -32,15 +32,15 @@ const getProduct = (productid) => {
 };
 
 
-const addProduct = (product) => {
+const addProduct = (productData) => {
     const params = {
         TableName: table,
         Item: {
             "productid": uuid.v1(),
-            "productcode": product.productcode,
-            "name": product.name,
-            "description": product.description,
-            "unitprice": product.unitprice
+            "code": productData.code,
+            "name": productData.name,
+            "description": productData.description,
+            "expensehours": productData.expensehours
         }
     };
 
