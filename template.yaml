@@ -17,22 +17,17 @@ Resources:
                 lambdaGetAllCustomers:
                     Type: Api
                     Properties:
-                        Path: /customers
+                        Path: /api/customers
                         Method: GET
                 lambdaGetCustomer:
                     Type: Api
                     Properties:
-                        Path: /customer/{customerid}
+                        Path: /api/customer/{customerid}
                         Method: GET
                 lambdaAddCustomer:
                     Type: Api
                     Properties:
-                        Path: /customer
-                        Method: POST
-                lambdaAddBudget:
-                    Type: Api
-                    Properties:
-                        Path: /customer/{customerid}/budget
+                        Path: /api/customer
                         Method: POST
             Policies:
                 # Policies to allow the execution of the indicated actions to the table described in Resource
@@ -54,22 +49,6 @@ Resources:
                                         -   ':'
                                         -   Ref: 'AWS::AccountId'
                                         -   ':table/customers'
-                        -   Effect: Allow
-                            Action:
-                                -   'dynamodb:Scan'
-                                -   'dynamodb:Query'
-                                -   'dynamodb:DeleteItem'
-                                -   'dynamodb:GetItem'
-                                -   'dynamodb:PutItem'
-                                -   'dynamodb:UpdateItem'
-                            Resource:
-                                'Fn::Join':
-                                    -   ''
-                                    -   -   'arn:aws:dynamodb:'
-                                        -   Ref: 'AWS::Region'
-                                        -   ':'
-                                        -   Ref: 'AWS::AccountId'
-                                        -   ':table/products'
                                         
     
     productFunction:
