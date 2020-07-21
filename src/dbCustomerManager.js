@@ -35,7 +35,7 @@ const getCustomer = (customerid) => {
 const addCustomer = (customerData) => {
     const params = {
         TableName: table,
-        Customer: {
+        Item: {
             "customerid": uuid.v1(),
             "name": customerData.name,
             "lastname": customerData.lastname,
