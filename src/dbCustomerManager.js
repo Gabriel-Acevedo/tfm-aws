@@ -32,29 +32,29 @@ const getCustomer = (customerid) => {
 };
 
 
-const addCustomer = (customer) => {
+const addCustomer = (customerData) => {
     const params = {
         TableName: table,
         Customer: {
             "customerid": uuid.v1(),
-            "name": customer.name,
-            "lastname": customer.lastname,
-            "email": customer.email,
-            "company": ""
+            "name": customerData.name,
+            "lastname": customerData.lastname,
+            "email": customerData.email,
+            "company": customerData.company
         }
     };
     return docClient.put(params).promise();
 };
 
 
-const addCompanyToCustomer = (customerid, company) => {
+const addCompanyToCustomer = (customerid, companyData) => {
 
     const company = {
         "companyid": uuid.v1(),
-        "vatregnumber": company.vatregnumber,
-        "name": company.name,
-        "country": company.country,
-        "industry": company.industry
+        "vatregnumber": companyData.vatregnumber,
+        "name": companyData.name,
+        "country": companyData.country,
+        "industry": companyData.industry
     };
 
     const params = {
