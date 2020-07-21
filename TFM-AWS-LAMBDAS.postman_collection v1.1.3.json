@@ -9,7 +9,7 @@
 			"name": "Customers",
 			"item": [
 				{
-					"name": "Create a new Customer",
+					"name": "POST - Create a new Customer",
 					"request": {
 						"auth": {
 							"type": "awsv4",
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"David\",\r\n    \"lastname\": \"Garcia\",\r\n    \"phone\": 123456789,\r\n    \"email\": \"prueba@gmail.com\",\r\n    \"company\": \"Acevedo\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"David\",\r\n    \"lastname\": \"Garcia\",\r\n    \"email\": \"prueba@gmail.com\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -53,12 +53,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/Prod/customer",
+							"raw": "{{URL}}/api/customer",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"Prod",
+								"api",
 								"customer"
 							]
 						}
@@ -66,67 +66,7 @@
 					"response": []
 				},
 				{
-					"name": "Return all Customers",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "awsv4",
-							"awsv4": [
-								{
-									"key": "service",
-									"value": "CloudFormation",
-									"type": "string"
-								},
-								{
-									"key": "region",
-									"value": "{{AWS_REGION}}",
-									"type": "string"
-								},
-								{
-									"key": "sessionToken",
-									"value": "{{AWS_SESSION}}",
-									"type": "string"
-								},
-								{
-									"key": "secretKey",
-									"value": "{{AWS_SECRET}}",
-									"type": "string"
-								},
-								{
-									"key": "accessKey",
-									"value": "{{AWS_ACCESS}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/Prod/customers",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"Prod",
-								"customers"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Return Customer By ID",
+					"name": "GET - Return Customer By ID",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -187,7 +127,67 @@
 					"response": []
 				},
 				{
-					"name": "Create a New Budget",
+					"name": "GET - Return all Customers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/customers",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Add Company to Customer",
 					"request": {
 						"auth": {
 							"type": "awsv4",
@@ -223,7 +223,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"description\": \"tercer budget para el cliente.\",\r\n    \"budgetdetails\": [ \r\n\t\t\t\t{\r\n\t\t\t\t \"productid\": \"85413420-c9e8-11ea-9e1b-ab06f07125dc\"\r\n\t\t\t\t}\r\n\t\t]\r\n}",
+							"raw": "{\r\n    \"vatregnumber\": \"A1234567Z\",\r\n    \"name\": \"Acevedo\",\r\n    \"country\": \"SPAIN\",\r\n    \"industry\": \"TECNOLOGY\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -231,15 +231,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/Prod/customer/7f0d5fc0-c9e8-11ea-a75c-5d9eaa11689c/budget",
+							"raw": "{{URL}}/api/customer/0f373370-cb8b-11ea-9b84-25412d970888/company",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"Prod",
+								"api",
 								"customer",
-								"7f0d5fc0-c9e8-11ea-a75c-5d9eaa11689c",
-								"budget"
+								"0f373370-cb8b-11ea-9b84-25412d970888",
+								"company"
 							]
 						}
 					},
@@ -288,7 +288,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"productcode\": \"ADMINISTRATION\",\r\n    \"name\": \"Gestion de Sistemas\",\r\n    \"description\": \"Despliegue las mejoras que ha creado y comparta por medio de la solución documentos e información electrónica con el módulo de Gestión de Software donde podrá tener visibilidad del ciclo de vida de los incidentes que recibe y sus clientes podrán ver el status de avance / resolución de los mismos de manera autónoma.\",\r\n    \"unitprice\": 325 \r\n}",
+							"raw": "{\r\n    \"code\": \"ADMINISTRATION\",\r\n    \"name\": \"Gestion de Sistemas\",\r\n    \"description\": \"Despliegue las mejoras que ha creado y comparta por medio de la solución documentos e información electrónica con el módulo de Gestión de Software donde podrá tener visibilidad del ciclo de vida de los incidentes que recibe y sus clientes podrán ver el status de avance / resolución de los mismos de manera autónoma.\",\r\n    \"expensehours\": 80 \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -296,12 +296,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/Prod/product",
+							"raw": "{{URL}}/api/product",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"Prod",
+								"api",
 								"product"
 							]
 						}
@@ -314,12 +314,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/Prod/products",
+							"raw": "{{URL}}/api/products",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"Prod",
+								"api",
 								"products"
 							]
 						}
@@ -362,14 +362,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/Prod/product/88286670-c9a4-11ea-a14b-e94cb35c5b4c",
+							"raw": "{{URL}}/api/product/73edb9b0-cb90-11ea-85a1-4352e82ac7d8",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
-								"Prod",
+								"api",
 								"product",
-								"88286670-c9a4-11ea-a14b-e94cb35c5b4c"
+								"73edb9b0-cb90-11ea-85a1-4352e82ac7d8"
 							]
 						}
 					},
