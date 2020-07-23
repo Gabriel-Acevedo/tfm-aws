@@ -71,7 +71,7 @@ const addCompanyToCustomer = (customerid, companyData) => {
     };
 
     //Create insert to company 
-    addCompany(companyData);
+    addCompany(company);
 
     return docClient.update(params).promise();
 }
