@@ -10,7 +10,6 @@ Resources:
                 lambdaGetAllCustomers:
                     Type: Api
                     Properties:
-                        RestApiId: '!Ref lambdaGetAllCustomers'
                         Path: /api/customers
                         Method: GET
                 lambdaGetCustomer:
