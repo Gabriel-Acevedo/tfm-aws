@@ -8,11 +8,9 @@ exports.customerHandler = (event, context, callback) => {
     switch (event.httpMethod) {     
         case 'GET':
             if (event.pathParameters && event.pathParameters.customerid){
-                console.log('Path id: ' + event.RestApiId);
                 getCustomer(event.pathParameters.customerid, callback);
                 
-            }else{
-                console.log('Path id: ' + event.RestApiId);                
+            }else{             
                 getAllCustomers(callback);         
             } 
             break;
