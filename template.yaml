@@ -10,13 +10,12 @@ Resources:
                 lambdaGetAllCustomers:
                     Type: Api
                     Properties:
-                        RestApiId: getallcustomers
+                        RestApiId: '!Ref ApiGatewayApi'
                         Path: /api/customers
                         Method: GET
                 lambdaGetCustomer:
                     Type: Api
                     Properties:
-                        RestApiId: getcustomer
                         Path: /api/customer/{customerid}
                         Method: GET
                 lambdaAddCustomer:
