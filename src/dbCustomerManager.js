@@ -32,20 +32,6 @@ const getCustomer = (customerid) => {
     return docClient.query(params).promise();
 };
 
-const getCustomerByName = (name) => {
-    const params = {
-        TableName: customerTable,        
-        KeyConditionExpression: "#n = :name",
-        ExpressionAttributeNames:{
-            "#n": "name"
-        },
-        ExpressionAttributeValues: {
-            ":name": name
-        },
-    };
-    return docClient.query(params).promise();
-};
-
 
 const addCustomer = (customerData) => {
     const params = {
@@ -112,6 +98,5 @@ module.exports = {
     getAllCustomers,
     getCustomer, 
     addCustomer,
-    addCompanyToCustomer,
-    getCustomerByName
+    addCompanyToCustomer
 };

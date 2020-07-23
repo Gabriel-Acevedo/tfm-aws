@@ -9,13 +9,8 @@ exports.customerHandler = (event, context, callback) => {
         case 'GET':
             if (event.pathParameters && event.pathParameters.customerid){
                 getCustomer(event.pathParameters.customerid, callback);
-                
-            }else{ 
-                if(event.pathParameters && event.pathParameters.name){
-                getCustomerByName(event.pathParameters.name, callback);
-                }else{
-                    getAllCustomers(callback);         
-                }   
+            }else{
+                getAllCustomers(callback);            
             } 
             break;
         case 'POST':
@@ -63,17 +58,6 @@ const getAllCustomers = (callback) => {
 
 const getCustomer = (customerid, callback) => {
     dbCustomerManager.getCustomer(customerid)
-    .then((res) => {
-        sendResponse(200, res, callback);
-    })
-    .catch((err) => {
-        console.log(err);
-        sendResponse(200, err, callback);
-    });
-};
-
-const getCustomerByName = (name, callback) => {
-    dbCustomerManager.getCustomerByName(name)
     .then((res) => {
         sendResponse(200, res, callback);
     })
