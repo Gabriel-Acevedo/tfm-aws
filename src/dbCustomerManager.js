@@ -1,7 +1,6 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
 const REGION = "us-east-1";
-const tableProduct = 'products'
 
 AWS.config.update({
     endpoint: "https://dynamodb." + REGION + ".amazonaws.com"
@@ -9,12 +8,13 @@ AWS.config.update({
 
 
 const docClient = new AWS.DynamoDB.DocumentClient();
-const table = 'customers';
+const customerTable = 'customers';
+const companyTable = 'companies'
 
 
 const getAllCustomers = () => {
     const params = {
-        TableName: table
+        TableName: customerTable
     };
     return docClient.scan(params).promise();
 };
@@ -22,7 +22,7 @@ const getAllCustomers = () => {
 
 const getCustomer = (customerid) => {
     const params = {
-        TableName: table,        
+        TableName: customerTable,        
         KeyConditionExpression: "customerid = :customerid",
         ExpressionAttributeValues: {
             ":customerid": customerid
@@ -34,7 +34,7 @@ const getCustomer = (customerid) => {
 
 const addCustomer = (customerData) => {
     const params = {
-        TableName: table,
+        TableName: customerTable,
         Item: {
             "customerid": uuid.v1(),
             "name": customerData.name,
@@ -58,7 +58,7 @@ const addCompanyToCustomer = (customerid, companyData) => {
     };
 
     const params = {
-        TableName: table,
+        TableName: customerTable,
         Key: {
             "customerid": customerid
         },
@@ -70,14 +70,62 @@ const addCompanyToCustomer = (customerid, companyData) => {
     };
 
     //Create insert to company 
+    addCompany(companyData);
 
     return docClient.update(params).promise();
 }
+//END Customer APIs
+
+
+
+
+
+//Company APIs
+const addCompany = (companyData) => {
+   
+    const params = {
+        TableName: companyTable,
+        Item: {
+            "companyid": companyData.companyid,
+            "vatregnumber": companyData.vatregnumber,
+            "name": companyData.name,
+            "country": companyData.country,
+            "industry": companyData.industry
+        }
+    };
+    return docClient.put(params).promise();
+}
+
+
+const getCompany = (companyid) => {
+    const params = {
+        TableName: companyTable,        
+        KeyConditionExpression: "companyid = :companyid",
+        ExpressionAttributeValues: {
+            ":companyid": companyid
+        },
+    };
+    return docClient.query(params).promise();
+};
+
+
+const getAllCompanies = () => {
+    const params = {
+        TableName: companyTable
+    };
+    return docClient.scan(params).promise();
+};
+
+//END Company APIs
 
 
 module.exports = {
     getAllCustomers,
     getCustomer, 
     addCustomer,
-    addCompanyToCustomer
+    addCompanyToCustomer,
+    //
+    addCompany,
+    getCompany,
+    getAllCompanies
 };
