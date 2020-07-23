@@ -17,6 +17,11 @@ Resources:
                     Properties:
                         Path: /api/customer/{customerid}
                         Method: GET
+                lambdaGetCustomerByName:
+                    Type: Api
+                    Properties:
+                        Path: /api/customer/{name}
+                        Method: GET
                 lambdaAddCustomer:
                     Type: Api
                     Properties:

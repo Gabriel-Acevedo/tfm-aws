@@ -32,6 +32,20 @@ const getCustomer = (customerid) => {
     return docClient.query(params).promise();
 };
 
+const getCustomerByName = (name) => {
+    const params = {
+        TableName: customerTable,        
+        KeyConditionExpression: "#n = :name",
+        ExpressionAttributeNames:{
+            "#n": "name"
+        },
+        ExpressionAttributeValues: {
+            ":name": name
+        },
+    };
+    return docClient.query(params).promise();
+};
+
 
 const addCustomer = (customerData) => {
     const params = {
@@ -70,7 +84,7 @@ const addCompanyToCustomer = (customerid, companyData) => {
         ReturnValues: "UPDATED_NEW"
     };
 
-    //Create insert to company 
+    //Add the new company to Company Table:
     addCompany(company);
 
     return docClient.update(params).promise();
@@ -78,7 +92,6 @@ const addCompanyToCustomer = (customerid, companyData) => {
 //END Customer APIs
 
 
-//Company APIs
 const addCompany = (companyData) => {
    
     const params = {
@@ -95,35 +108,10 @@ const addCompany = (companyData) => {
 }
 
 
-const getCompany = (companyid) => {
-    const params = {
-        TableName: companyTable,        
-        KeyConditionExpression: "companyid = :companyid",
-        ExpressionAttributeValues: {
-            ":companyid": companyid
-        },
-    };
-    return docClient.query(params).promise();
-};
-
-
-const getAllCompanies = () => {
-    const params = {
-        TableName: companyTable
-    };
-    return docClient.scan(params).promise();
-};
-
-//END Company APIs
-
-
 module.exports = {
     getAllCustomers,
     getCustomer, 
     addCustomer,
     addCompanyToCustomer,
-    //
-    addCompany,
-    getCompany,
-    getAllCompanies
+    getCustomerByName
 };
