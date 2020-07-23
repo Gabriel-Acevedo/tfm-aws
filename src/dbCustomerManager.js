@@ -12,6 +12,7 @@ const customerTable = 'customers';
 const companyTable = 'companies'
 
 
+//Customer APIs
 const getAllCustomers = () => {
     const params = {
         TableName: customerTable
@@ -75,9 +76,6 @@ const addCompanyToCustomer = (customerid, companyData) => {
     return docClient.update(params).promise();
 }
 //END Customer APIs
-
-
-
 
 
 //Company APIs
