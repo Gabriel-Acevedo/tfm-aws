@@ -10,16 +10,19 @@ Resources:
                 lambdaGetAllCustomers:
                     Type: Api
                     Properties:
+                        name: getallcustomers
                         Path: /api/customers
                         Method: GET
                 lambdaGetCustomer:
                     Type: Api
                     Properties:
+                        name: getcustomer
                         Path: /api/customer/{customerid}
                         Method: GET
                 lambdaAddCustomer:
                     Type: Api
                     Properties:
+                        name: addcustomer
                         Path: /api/customer
                         Method: POST
                 lambdaAddCompanyToCustomer:
@@ -27,6 +30,16 @@ Resources:
                     Properties:
                         Path: /api/customer/{customerid}/company
                         Method: POST
+                lambdaGetCompany:
+                    Type: Api
+                    Properties:
+                        Path: /api/company/{companyid}
+                        Method: GET
+                lambdaGetAllCompanies:
+                    Type: Api
+                    Properties:
+                        Path: /api/companies
+                        Method: GET
             Policies:
                 -   Version: '2012-10-17'
                     Statement: 
