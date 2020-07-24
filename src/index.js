@@ -1,9 +1,9 @@
 'use strict';
 
 const dbCustomerManager = require('./dbCustomerManager');
-const dbProductManager = require('./dbProductManager');
-const dbCompanyManager = require('./dbCompanyManager');
-
+const dbProductManager  = require('./dbProductManager');
+const dbCompanyManager  = require('./dbCompanyManager');
+const dbBudgetManager   = require('./dbBudgetManager');
 
 exports.customerHandler = (event, context, callback) => {
     switch (event.httpMethod) {     
@@ -179,6 +179,48 @@ const getCompany = (companyid, callback) => {
     });
 };
 //END Company Functions
+
+
+
+exports.budgetHandler = (event, context, callback) => {
+    switch (event.httpMethod) {     
+        case 'GET':
+            if (event.pathParameters && event.pathParameters.budgetid){
+                getBudget(event.pathParameters.budgetid, callback);
+            }else{
+                getAllBudgets(callback);         
+            } 
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
+    }
+};
+
+
+//Budget Functions
+const getAllBudgets = (callback) => {
+    dbBudgetManager.getAllBudgets()
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+
+
+const getBudget = (budgetid, callback) => {
+    dbBudgetManager.getBudget(budgetid)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+//END Budget Functions
 
 
 const sendResponse = (statusCode, message, callback) => {
