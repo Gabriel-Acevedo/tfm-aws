@@ -15,11 +15,7 @@ exports.customerHandler = (event, context, callback) => {
             } 
             break;
         case 'POST':
-            if(event.pathParameters && event.pathParameters.customerid){
-                addCompanyToCustomer(event.pathParameters.customerid, event.body, callback) 
-            }else{
-                addCustomer(event.body, callback);
-            }
+            addCustomer(event.body, callback);
             break;
         default:
             sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
@@ -63,22 +59,6 @@ const addCustomer = (data, callback) => {
         sendResponse(200, err, callback);
     });
 };
-
-
-const addCompanyToCustomer = (customerid, company, callback) => {
-    company = JSON.parse(company);
-
-    dbCustomerManager.addCompanyToCustomer(customerid, company)
-    .then((res) => {
-        sendResponse(200, res, callback);
-    })
-    .catch((err) => {
-        console.log(err);
-        sendResponse(200, err, callback);
-    });
-};
-
-
 //End Customer Functions
 
 
@@ -149,6 +129,9 @@ exports.companyHandler = (event, context, callback) => {
                 getAllCompanies(callback);         
             } 
             break;
+        case 'POST':
+            addCompany(event.pathParameters.customerid, event.body, callback);            
+            break;
         default:
             sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
     }
@@ -178,6 +161,21 @@ const getCompany = (companyid, callback) => {
         sendResponse(200, err, callback);
     });
 };
+
+
+const addCompany = (customerid, data, callback) => {
+    data = JSON.parse(data);
+    
+    dbCompanyManager.addCompany(customerid, data)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+
 //END Company Functions
 
 
@@ -227,7 +225,7 @@ const getBudget = (budgetid, callback) => {
 
 const addBudget = (customerid, data, callback) => {
     data = JSON.parse(data);
-    
+
     dbBudgetManager.addBudget(customerid, data)
     .then((res) => {
         sendResponse(200, res, callback);

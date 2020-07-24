@@ -9,6 +9,7 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 const tableCompanies = 'companies';
+const customerTable = 'customers';
 
 
 const getAllCompanies = () => {
@@ -31,7 +32,45 @@ const getCompany = (companyid) => {
     return docClient.query(params).promise();
 };
 
+
+const addCompany = (customerid, companyData) => {
+
+    const params = {
+        TableName: tableCompanies,
+        Item: {
+            "companyid": uuid.v1(),
+            "vatregnumber": companyData.vatregnumber,
+            "name": companyData.name,
+            "country": companyData.country,
+            "industry": companyData.industry
+        }
+    };
+
+    addCompanyToCustomer(customerid, params);
+
+    return docClient.put(params).promise();
+};
+
+
+const addCompanyToCustomer = (customerid, companyData) => {
+    
+    const params = {
+        TableName: customerTable,
+        Key: {
+            "customerid": customerid
+        },
+        UpdateExpression: 'set company = :company',
+        ExpressionAttributeValues:{
+            ":company": companyData
+        },
+        ReturnValues: "UPDATED_NEW"
+    };
+    return docClient.update(params).promise();
+}
+
+
 module.exports = {
     getAllCompanies,
-    getCompany
+    getCompany,
+    addCompany
 };

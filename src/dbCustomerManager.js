@@ -46,52 +46,7 @@ const addCustomer = (customerData) => {
     };
     return docClient.put(params).promise();
 };
-
-
-const addCompanyToCustomer = (customerid, companyData) => {
-
-    const company = {
-        "companyid": uuid.v1(),
-        "vatregnumber": companyData.vatregnumber,
-        "name": companyData.name,
-        "country": companyData.country,
-        "industry": companyData.industry
-    };
-
-    const params = {
-        TableName: customerTable,
-        Key: {
-            "customerid": customerid
-        },
-        UpdateExpression: 'set company = :company',
-        ExpressionAttributeValues:{
-            ":company": company
-        },
-        ReturnValues: "UPDATED_NEW"
-    };
-
-    //Add the new company to Company Table:
-    addCompany(company);
-
-    return docClient.update(params).promise();
-}
 //END Customer APIs
-
-
-const addCompany = (companyData) => {
-   
-    const params = {
-        TableName: companyTable,
-        Item: {
-            "companyid": companyData.companyid,
-            "vatregnumber": companyData.vatregnumber,
-            "name": companyData.name,
-            "country": companyData.country,
-            "industry": companyData.industry
-        }
-    };
-    return docClient.put(params).promise();
-}
 
 
 module.exports = {
