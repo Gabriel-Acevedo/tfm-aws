@@ -9,6 +9,7 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 const tableBudgets = 'budgets';
+const customerTable = 'customers';
 
 
 const getAllBudgets = () => {
