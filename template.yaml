@@ -1,5 +1,6 @@
 Transform: 'AWS::Serverless-2016-10-31'
 Resources:
+
     customerFunction:
         Type: 'AWS::Serverless::Function'
         Properties:
@@ -145,6 +146,44 @@ Resources:
                                         -   ':'
                                         -   Ref: 'AWS::AccountId'
                                         -   ':table/companies'
+
+
+    budgetFunction:
+        Type: 'AWS::Serverless::Function'
+        Properties:
+            Runtime: nodejs12.x
+            Handler: index.budgetHandler
+            CodeUri: ./src
+            Events:
+                lambdaGetAllBudgets:
+                    Type: Api
+                    Properties:
+                        Path: /api/budgets
+                        Method: GET
+                lambdaGetBudget:
+                    Type: Api
+                    Properties:
+                        Path: /api/budget/{budgetid}
+                        Method: GET
+            Policies:
+                -   Version: '2012-10-17'
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   'dynamodb:Scan'
+                                -   'dynamodb:Query'
+                                -   'dynamodb:DeleteItem'
+                                -   'dynamodb:GetItem'
+                                -   'dynamodb:PutItem'
+                                -   'dynamodb:UpdateItem'
+                            Resource:
+                                'Fn::Join':
+                                    -   ''
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
+                                        -   ':table/budgets'
     
     customerTable:
         Type: 'AWS::DynamoDB::Table'
@@ -189,9 +228,22 @@ Resources:
             ProvisionedThroughput:
                 ReadCapacityUnits: 5
                 WriteCapacityUnits: 5
-
-
     
+
+    budgetTable:
+        Type: 'AWS::DynamoDB::Table'
+        Properties:
+            TableName: budgets
+            AttributeDefinitions:
+                -   AttributeName: budgetid
+                    AttributeType: S
+            KeySchema:
+                -   AttributeName: budgetid
+                    KeyType: HASH
+            ProvisionedThroughput:
+                ReadCapacityUnits: 5
+                WriteCapacityUnits: 5
+
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
