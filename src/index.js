@@ -2,6 +2,7 @@
 
 const dbCustomerManager = require('./dbCustomerManager');
 const dbProductManager = require('./dbProductManager');
+const dbCompanyManager = require('./dbCompanyManager');
 
 
 exports.customerHandler = (event, context, callback) => {
@@ -26,23 +27,6 @@ exports.customerHandler = (event, context, callback) => {
 };
 
 
-exports.productHandler = (event, context, callback) => {
-    switch (event.httpMethod) {     
-        case 'GET':
-            if (event.pathParameters && event.pathParameters.productid){
-                getProduct(event.pathParameters.productid, callback);
-            }else{
-                getAllProducts(callback);         
-            } 
-            break;
-        case 'POST':
-            addProduct(event.body, callback);            
-            break;
-        default:
-            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
-    }
-};
-
 //Customer Functions
 const getAllCustomers = (callback) => {
     dbCustomerManager.getAllCustomers()
@@ -54,7 +38,6 @@ const getAllCustomers = (callback) => {
         sendResponse(200, err, callback);
     });
 };
-
 
 const getCustomer = (customerid, callback) => {
     dbCustomerManager.getCustomer(customerid)
@@ -99,6 +82,24 @@ const addCompanyToCustomer = (customerid, company, callback) => {
 //End Customer Functions
 
 
+exports.productHandler = (event, context, callback) => {
+    switch (event.httpMethod) {     
+        case 'GET':
+            if (event.pathParameters && event.pathParameters.productid){
+                getProduct(event.pathParameters.productid, callback);
+            }else{
+                getAllProducts(callback);         
+            } 
+            break;
+        case 'POST':
+            addProduct(event.body, callback);            
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
+    }
+};
+
+
 //Product Functions
 const getAllProducts = (callback) => {
     dbProductManager.getAllProducts()
@@ -138,6 +139,46 @@ const addProduct = (data, callback) => {
 };
 //End Product Functions
 
+
+exports.companyHandler = (event, context, callback) => {
+    switch (event.httpMethod) {     
+        case 'GET':
+            if (event.pathParameters && event.pathParameters.companyid){
+                getCompany(event.pathParameters.companyid, callback);
+            }else{
+                getAllCompanies(callback);         
+            } 
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
+    }
+};
+
+
+//Company Functions
+const getAllCompanies = (callback) => {
+    dbCompanyManager.getAllCompanies()
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+
+
+const getCompany = (companyid, callback) => {
+    dbCompanyManager.getCompany(companyid)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+//END Company Functions
 
 
 const sendResponse = (statusCode, message, callback) => {
