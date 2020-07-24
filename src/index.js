@@ -191,6 +191,9 @@ exports.budgetHandler = (event, context, callback) => {
                 getAllBudgets(callback);         
             } 
             break;
+        case 'POST':
+            addBudget(event.pathParameters.customerid,event.body, callback);            
+            break;
         default:
             sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
     }
@@ -212,6 +215,20 @@ const getAllBudgets = (callback) => {
 
 const getBudget = (budgetid, callback) => {
     dbBudgetManager.getBudget(budgetid)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(200, err, callback);
+    });
+};
+
+
+const addBudget = (customerid, data, callback) => {
+    data = JSON.parse(data);
+    
+    dbBudgetManager.addBudget(customerid, data)
     .then((res) => {
         sendResponse(200, res, callback);
     })

@@ -31,7 +31,39 @@ const getBudget = (budgetid) => {
     return docClient.query(params).promise();
 };
 
+
+const addBudget = (customerid, budgetData) => {
+    const customer = getCustomerData(customerid);
+
+    //Pending calculate total budget amount
+
+    const params = {
+        TableName: tableBudgets,
+        Item: {
+            "budgetid": uuid.v1(),
+            "customer": customer,
+            "products": budgetData.products,
+            "date": budgetData.date,
+            "total": budgetData.total
+        }
+    };
+    return docClient.put(params).promise();
+};
+
+
+const getCustomerData = (customerid) => {
+    const params = {
+        TableName: customerTable,        
+        KeyConditionExpression: "customerid = :customerid",
+        ExpressionAttributeValues: {
+            ":customerid": customerid
+        },
+    };
+    return docClient.query(params).promise();
+};
+
 module.exports = {
     getAllBudgets,
-    getBudget
+    getBudget,
+    addBudget
 };
