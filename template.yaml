@@ -27,16 +27,6 @@ Resources:
                     Properties:
                         Path: /api/customer/{customerid}/company
                         Method: POST
-                lambdaGetCompany:
-                    Type: Api
-                    Properties:
-                        Path: /api/company/{companyid}
-                        Method: GET
-                lambdaGetAllCompanies:
-                    Type: Api
-                    Properties:
-                        Path: /api/companies
-                        Method: GET
             Policies:
                 -   Version: '2012-10-17'
                     Statement: 
@@ -117,6 +107,44 @@ Resources:
                                         -   ':'
                                         -   Ref: 'AWS::AccountId'
                                         -   ':table/products'
+
+
+    companyFunction:
+        Type: 'AWS::Serverless::Function'
+        Properties:
+            Runtime: nodejs12.x
+            Handler: index.companyHandler
+            CodeUri: ./src
+            Events:
+                lambdaGetAllCompanies:
+                    Type: Api
+                    Properties:
+                        Path: /api/companies
+                        Method: GET
+                lambdaGetCompany:
+                    Type: Api
+                    Properties:
+                        Path: /api/company/{companyid}
+                        Method: GET
+            Policies:
+                -   Version: '2012-10-17'
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   'dynamodb:Scan'
+                                -   'dynamodb:Query'
+                                -   'dynamodb:DeleteItem'
+                                -   'dynamodb:GetItem'
+                                -   'dynamodb:PutItem'
+                                -   'dynamodb:UpdateItem'
+                            Resource:
+                                'Fn::Join':
+                                    -   ''
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
+                                        -   ':table/companies'
     
     customerTable:
         Type: 'AWS::DynamoDB::Table'
@@ -133,6 +161,21 @@ Resources:
                 WriteCapacityUnits: 5
     
 
+    productTable:
+        Type: 'AWS::DynamoDB::Table'
+        Properties:
+            TableName: products
+            AttributeDefinitions:
+                -   AttributeName: productid
+                    AttributeType: S
+            KeySchema:
+                -   AttributeName: productid
+                    KeyType: HASH
+            ProvisionedThroughput:
+                ReadCapacityUnits: 5
+                WriteCapacityUnits: 5
+
+
     companyTable:
         Type: 'AWS::DynamoDB::Table'
         Properties:
@@ -148,19 +191,7 @@ Resources:
                 WriteCapacityUnits: 5
 
 
-    productTable:
-        Type: 'AWS::DynamoDB::Table'
-        Properties:
-            TableName: products
-            AttributeDefinitions:
-                -   AttributeName: productid
-                    AttributeType: S
-            KeySchema:
-                -   AttributeName: productid
-                    KeyType: HASH
-            ProvisionedThroughput:
-                ReadCapacityUnits: 5
-                WriteCapacityUnits: 5
+    
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
