@@ -52,6 +52,5 @@ const addCustomer = (customerData) => {
 module.exports = {
     getAllCustomers,
     getCustomer, 
-    addCustomer,
-    addCompanyToCustomer
+    addCustomer
 };
