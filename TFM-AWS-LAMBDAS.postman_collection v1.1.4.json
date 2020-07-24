@@ -9,7 +9,7 @@
 			"name": "Customers",
 			"item": [
 				{
-					"name": "POST - Create a new Customer",
+					"name": "POST - New Customer",
 					"request": {
 						"auth": {
 							"type": "awsv4",
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"David\",\r\n    \"lastname\": \"Garcia\",\r\n    \"email\": \"prueba@gmail.com\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Saray\",\r\n    \"lastname\": \"Perez\",\r\n    \"email\": \"prueba2@gmail.com\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -66,68 +66,7 @@
 					"response": []
 				},
 				{
-					"name": "GET - Return Customer By ID",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "awsv4",
-							"awsv4": [
-								{
-									"key": "service",
-									"value": "CloudFormation",
-									"type": "string"
-								},
-								{
-									"key": "region",
-									"value": "{{AWS_REGION}}",
-									"type": "string"
-								},
-								{
-									"key": "sessionToken",
-									"value": "{{AWS_SESSION}}",
-									"type": "string"
-								},
-								{
-									"key": "secretKey",
-									"value": "{{AWS_SECRET}}",
-									"type": "string"
-								},
-								{
-									"key": "accessKey",
-									"value": "{{AWS_ACCESS}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/Prod/customer/1d399b80-c13a-11ea-bd38-e716ee6b6e50",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"Prod",
-								"customer",
-								"1d399b80-c13a-11ea-bd38-e716ee6b6e50"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET - Return all Customers",
+					"name": "GET - All Customers",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -187,7 +126,68 @@
 					"response": []
 				},
 				{
-					"name": "POST - Add Company to Customer",
+					"name": "GET - Customer By ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/customer/747bdca0-cdc4-11ea-a745-a5dd0fdc15f2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"customer",
+								"747bdca0-cdc4-11ea-a745-a5dd0fdc15f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - Company to Customer",
 					"request": {
 						"auth": {
 							"type": "awsv4",
@@ -231,15 +231,247 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/customer/0f373370-cb8b-11ea-9b84-25412d970888/company",
+							"raw": "{{URL}}/api/customer/747bdca0-cdc4-11ea-a745-a5dd0fdc15f2/company",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"customer",
-								"0f373370-cb8b-11ea-9b84-25412d970888",
+								"747bdca0-cdc4-11ea-a745-a5dd0fdc15f2",
 								"company"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "GET - All Companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/companies",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Company By ID",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/company/e7b9db30-cdc5-11ea-a745-a5dd0fdc15f2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"company",
+								"e7b9db30-cdc5-11ea-a745-a5dd0fdc15f2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - New Company",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vatregnumber\": \"A1234567Z\",\r\n    \"name\": \"Acevedo\",\r\n    \"country\": \"SPAIN\",\r\n    \"industry\": \"TECNOLOGY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/1ea79a10-cdd5-11ea-a443-c5fcd8f3b80f/company",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"1ea79a10-cdd5-11ea-a443-c5fcd8f3b80f",
+								"company"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Budgets",
+			"item": [
+				{
+					"name": "GET - All Budgets",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/budgets",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"budgets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Budget by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/budget/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"budget",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - New Budget",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n        {\"product\": \"A\"},\r\n        {\"product\": \"b\"}\r\n    ],\r\n    \"date\": \"24-07-2020\",\r\n    \"total\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/747bdca0-cdc4-11ea-a745-a5dd0fdc15f2/budget",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"747bdca0-cdc4-11ea-a745-a5dd0fdc15f2",
+								"budget"
 							]
 						}
 					},
@@ -252,7 +484,74 @@
 			"name": "Products",
 			"item": [
 				{
-					"name": "Create a new Product",
+					"name": "GET - All Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/products",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Product By ID",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/product/73edb9b0-cb90-11ea-85a1-4352e82ac7d8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"product",
+								"73edb9b0-cb90-11ea-85a1-4352e82ac7d8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST - New Product",
 					"request": {
 						"auth": {
 							"type": "awsv4",
@@ -303,73 +602,6 @@
 							"path": [
 								"api",
 								"product"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Return all Products",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/products",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Return Product By ID",
-					"request": {
-						"auth": {
-							"type": "awsv4",
-							"awsv4": [
-								{
-									"key": "sessionToken",
-									"value": "{{AWS_SESSION}}",
-									"type": "string"
-								},
-								{
-									"key": "service",
-									"value": "CloudFormation",
-									"type": "string"
-								},
-								{
-									"key": "region",
-									"value": "{{AWS_REGION}}",
-									"type": "string"
-								},
-								{
-									"key": "secretKey",
-									"value": "{{AWS_SECRET}}",
-									"type": "string"
-								},
-								{
-									"key": "accessKey",
-									"value": "{{AWS_ACCESS}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/api/product/73edb9b0-cb90-11ea-85a1-4352e82ac7d8",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"product",
-								"73edb9b0-cb90-11ea-85a1-4352e82ac7d8"
 							]
 						}
 					},
