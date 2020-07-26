@@ -1,9 +1,9 @@
 'use strict';
 
-const dbCustomerManager = require('./dbCustomerManager');
-const dbProductManager  = require('./dbProductManager');
-const dbCompanyManager  = require('./dbCompanyManager');
-const dbBudgetManager   = require('./dbBudgetManager');
+const dbCustomerManager = require('./managers/dbCustomerManager');
+const dbProductManager  = require('./managers/dbProductManager');
+const dbCompanyManager  = require('./managers/dbCompanyManager');
+const dbBudgetManager   = require('./managers/dbBudgetManager');
 
 exports.customerHandler = (event, context, callback) => {
     switch (event.httpMethod) {     

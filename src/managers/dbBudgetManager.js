@@ -1,7 +1,6 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
 const REGION = "us-east-1";
-const undefined = 'undefined'
 
 AWS.config.update({
     endpoint: "https://dynamodb." + REGION + ".amazonaws.com"
