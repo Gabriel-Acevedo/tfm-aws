@@ -10,6 +10,7 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 const tableBudgets = 'budgets';
 const customerTable = 'customers';
+const productTable = 'products';
 
 
 const getAllBudgets = () => {
@@ -38,7 +39,7 @@ const addBudget = async (customerid, budgetData) => {
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
     const customer = await getCustomerData(customerid);
-    //Pending calculate total budget amount
+    var totalHours = await getTotalExpenseHours(budgetData.products);
 
     const params = {
         TableName: tableBudgets,
@@ -47,7 +48,7 @@ const addBudget = async (customerid, budgetData) => {
             "customer": customer,
             "products": budgetData.products,
             "date": finalDate,
-            "total": budgetData.total
+            "total": totalHours
         }
     };
     return docClient.put(params).promise();
@@ -65,6 +66,31 @@ function getCustomer(customerid){
         KeyConditionExpression: "customerid = :customerid",
         ExpressionAttributeValues: {
             ":customerid": customerid
+        },
+    };
+    return docClient.query(params).promise();
+}
+
+
+async function getTotalExpenseHours(products){
+    let hours;
+    let totalHours = 0;
+
+    for(var i = 0; i< products.length; i++){
+        var productData = await getProduct(products[i].productid);
+        hours = productData.Items[0].expensehours;
+        totalHours = totalHours + hours;
+    }
+    return totalHours;
+}
+
+
+function getProduct(productid){
+    const params = {
+        TableName: productTable,
+        KeyConditionExpression: "productid = :productid",
+        ExpressionAttributeValues: {
+            ":productid": productid
         },
     };
     return docClient.query(params).promise();
