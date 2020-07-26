@@ -9,7 +9,6 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 const customerTable = 'customers';
-const companyTable = 'companies'
 
 
 //Customer APIs

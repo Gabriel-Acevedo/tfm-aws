@@ -8,13 +8,13 @@ AWS.config.update({
 
 
 const docClient = new AWS.DynamoDB.DocumentClient();
-const tableCompanies = 'companies';
+const companyTable = 'companies';
 const customerTable = 'customers';
 
 
 const getAllCompanies = () => {
     const params = {
-        TableName: tableCompanies
+        TableName: companyTable
     };
 
     return docClient.scan(params).promise();
@@ -23,7 +23,7 @@ const getAllCompanies = () => {
 
 const getCompany = (companyid) => {
     const params = {
-        TableName: tableCompanies,        
+        TableName: companyTable,        
         KeyConditionExpression: "companyid = :companyid",
         ExpressionAttributeValues: {
             ":companyid": companyid
@@ -36,7 +36,7 @@ const getCompany = (companyid) => {
 const addCompany = (customerid, companyData) => {
 
     const params = {
-        TableName: tableCompanies,
+        TableName: companyTable,
         Item: {
             "companyid": uuid.v1(),
             "vatregnumber": companyData.vatregnumber,
@@ -46,11 +46,15 @@ const addCompany = (customerid, companyData) => {
         }
     };
 
-    addCompanyToCustomer(customerid, params);
+    setCompany(customerid, params);
 
     return docClient.put(params).promise();
 };
 
+
+async function setCompany(customerid, companyData){
+    return await addCompanyToCustomer(customerid, companyData);
+}
 
 const addCompanyToCustomer = (customerid, companyData) => {
     

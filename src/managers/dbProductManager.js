@@ -8,12 +8,12 @@ AWS.config.update({
 
 
 const docClient = new AWS.DynamoDB.DocumentClient();
-const table = 'products';
+const productTable = 'products';
 
 
 const getAllProducts = () => {
     const params = {
-        TableName: table
+        TableName: productTable
     };
 
     return docClient.scan(params).promise();
@@ -22,7 +22,7 @@ const getAllProducts = () => {
 
 const getProduct = (productid) => {
     const params = {
-        TableName: table,        
+        TableName: productTable,        
         KeyConditionExpression: "productid = :productid",
         ExpressionAttributeValues: {
             ":productid": productid
@@ -34,7 +34,7 @@ const getProduct = (productid) => {
 
 const addProduct = (productData) => {
     const params = {
-        TableName: table,
+        TableName: productTable,
         Item: {
             "productid": uuid.v1(),
             "code": productData.code,
