@@ -185,65 +185,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "POST - Company to Customer",
-					"request": {
-						"auth": {
-							"type": "awsv4",
-							"awsv4": [
-								{
-									"key": "sessionToken",
-									"value": "{{AWS_SESSION}}",
-									"type": "string"
-								},
-								{
-									"key": "service",
-									"value": "CloudFormation",
-									"type": "string"
-								},
-								{
-									"key": "region",
-									"value": "{{AWS_REGION}}",
-									"type": "string"
-								},
-								{
-									"key": "secretKey",
-									"value": "{{AWS_SECRET}}",
-									"type": "string"
-								},
-								{
-									"key": "accessKey",
-									"value": "{{AWS_ACCESS}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"vatregnumber\": \"A1234567Z\",\r\n    \"name\": \"Acevedo\",\r\n    \"country\": \"SPAIN\",\r\n    \"industry\": \"TECNOLOGY\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/customer/747bdca0-cdc4-11ea-a745-a5dd0fdc15f2/company",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"customer",
-								"747bdca0-cdc4-11ea-a745-a5dd0fdc15f2",
-								"company"
-							]
-						}
-					},
-					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -333,13 +274,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/1ea79a10-cdd5-11ea-a443-c5fcd8f3b80f/company",
+							"raw": "{{URL}}/api/0cc5f2f0-cf89-11ea-822b-5f42cbd5cb4d/company",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"1ea79a10-cdd5-11ea-a443-c5fcd8f3b80f",
+								"0cc5f2f0-cf89-11ea-822b-5f42cbd5cb4d",
 								"company"
 							]
 						}
@@ -456,7 +397,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"products\": [\r\n        {\"product\": \"A\"},\r\n        {\"product\": \"b\"}\r\n    ],\r\n    \"date\": \"24-07-2020\",\r\n    \"total\": 0\r\n}",
+							"raw": "{\r\n    \"products\": [\r\n        {\"productid\": \"f7c2b9e0-cf62-11ea-8e32-25a4d01107e6\"},\r\n        {\"productid\": \"355dd900-cf69-11ea-b1d4-df4fbf9c41dc\"}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -464,13 +405,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/747bdca0-cdc4-11ea-a745-a5dd0fdc15f2/budget",
+							"raw": "{{URL}}/api/37691020-cf5a-11ea-aa94-abf5b5595874/budget",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"747bdca0-cdc4-11ea-a745-a5dd0fdc15f2",
+								"37691020-cf5a-11ea-aa94-abf5b5595874",
 								"budget"
 							]
 						}
@@ -587,7 +528,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"ADMINISTRATION\",\r\n    \"name\": \"Gestion de Sistemas\",\r\n    \"description\": \"Despliegue las mejoras que ha creado y comparta por medio de la solución documentos e información electrónica con el módulo de Gestión de Software donde podrá tener visibilidad del ciclo de vida de los incidentes que recibe y sus clientes podrán ver el status de avance / resolución de los mismos de manera autónoma.\",\r\n    \"expensehours\": 80 \r\n}",
+							"raw": "{\r\n    \"code\": \"INVENTORY\",\r\n    \"name\": \"Gestion de Inventario\",\r\n    \"description\": \"Producto Gestion de Inventario\",\r\n    \"expensehours\": 120 \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
