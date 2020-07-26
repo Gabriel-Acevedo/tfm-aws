@@ -40,6 +40,7 @@ const addBudget = async (customerid, budgetData) => {
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
     const customer = await getCustomerData(customerid);
     if(customer == null){
+        console.log("Customer not found error!!");
         throw new Error("Customer not found");
     }
 
@@ -83,6 +84,7 @@ async function getTotalExpenseHours(products){
     for(var i = 0; i< products.length; i++){
         var productData = await getProduct(products[i].productid);
         if(productData == null){
+            console.log("Product not found error!!");
             throw new Error("Product selected not found");
         }
         hours = productData.Items[0].expensehours;
