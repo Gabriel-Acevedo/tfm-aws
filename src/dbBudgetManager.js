@@ -44,7 +44,7 @@ const addBudget = (customerid, budgetData) => {
             "budgetid": uuid.v1(),
             "customer": customer,
             "products": budgetData.products,
-            "date": budgetData.date,
+            "date": new Date(),
             "total": budgetData.total
         }
     };
