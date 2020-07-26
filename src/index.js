@@ -31,7 +31,7 @@ const getAllCustomers = (callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -42,7 +42,7 @@ const getCustomer = (customerid, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -56,7 +56,7 @@ const addCustomer = (data, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 //End Customer Functions
@@ -88,7 +88,7 @@ const getAllProducts = (callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -100,7 +100,7 @@ const getProduct = (productid, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -114,7 +114,7 @@ const addProduct = (data, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 //End Product Functions
@@ -146,7 +146,7 @@ const getAllCompanies = (callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -158,7 +158,7 @@ const getCompany = (companyid, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -172,7 +172,7 @@ const addCompany = (customerid, data, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -206,7 +206,7 @@ const getAllBudgets = (callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -218,7 +218,7 @@ const getBudget = (budgetid, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 
@@ -232,7 +232,7 @@ const addBudget = (customerid, data, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(200, err, callback);
+        sendResponse(400, err, callback);
     });
 };
 //END Budget Functions
