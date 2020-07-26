@@ -39,6 +39,10 @@ const addBudget = async (customerid, budgetData) => {
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
     const customer = await getCustomerData(customerid);
+    if(customer == null){
+        return new Error("Customer not found");
+    }
+
     var totalHours = await getTotalExpenseHours(budgetData.products);
 
     const params = {
