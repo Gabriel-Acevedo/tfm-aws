@@ -1,7 +1,6 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
 const REGION = "us-east-1";
-var wait = ms => new Promise((r, j)=>setTimeout(r, ms));
 
 AWS.config.update({
     endpoint: "https://dynamodb." + REGION + ".amazonaws.com"
@@ -35,10 +34,10 @@ const getBudget = (budgetid) => {
 
 
 const addBudget = async (customerid, budgetData) => {
-    const customer = await getCustomerData(customerid);
-    //await wait(5000);
+    function pad(s) { return (s < 10) ? '0' + s : s; }
     var newDate = new Date();
-    var finalDate = newDate.toString();
+    var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
+    const customer = await getCustomerData(customerid);
     //Pending calculate total budget amount
 
     const params = {
