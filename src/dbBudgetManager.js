@@ -82,6 +82,9 @@ async function getTotalExpenseHours(products){
 
     for(var i = 0; i< products.length; i++){
         var productData = await getProduct(products[i].productid);
+        if(productData == null){
+            return new Error("Product selected not found");
+        }
         hours = productData.Items[0].expensehours;
         totalHours = totalHours + hours;
     }
