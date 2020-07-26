@@ -1,6 +1,7 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
 const REGION = "us-east-1";
+const undefined = 'undefined'
 
 AWS.config.update({
     endpoint: "https://dynamodb." + REGION + ".amazonaws.com"
@@ -39,7 +40,7 @@ const addBudget = async (customerid, budgetData) => {
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
     const customer = await getCustomerData(customerid);
-    if(customer === undefined){
+    if(typeof customer === undefined){
         console.log("Customer not found error!!");
         throw new Error("Customer not found");
     }
@@ -83,7 +84,7 @@ async function getTotalExpenseHours(products){
 
     for(var i = 0; i< products.length; i++){
         var productData = await getProduct(products[i].productid);
-        if(productData === undefined){
+        if(typeof productData === undefined){
             console.log("Product not found error!!");
             throw new Error("Product selected not found");
         }
