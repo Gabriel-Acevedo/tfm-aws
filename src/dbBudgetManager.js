@@ -52,7 +52,12 @@ const addBudget = (customerid, budgetData) => {
 };
 
 
-const getCustomerData = (customerid) => {
+async function getCustomerData (customerid){
+    const customerData = await getCustomer(customerid);
+    return customerData;
+};
+
+function getCustomer(customerid){
     const params = {
         TableName: customerTable,        
         KeyConditionExpression: "customerid = :customerid",
@@ -61,7 +66,7 @@ const getCustomerData = (customerid) => {
         },
     };
     return docClient.query(params).promise();
-};
+}
 
 module.exports = {
     getAllBudgets,
