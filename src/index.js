@@ -31,7 +31,7 @@ const getAllCustomers = (callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(400, err, callback);
+        sendResponse(400, err, callback());
     });
 };
 
@@ -232,7 +232,7 @@ const addBudget = (customerid, data, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(400, err, callback);
+        sendResponse(400, err, callback(err));
     });
 };
 //END Budget Functions
