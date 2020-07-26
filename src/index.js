@@ -232,7 +232,7 @@ const addBudget = (customerid, data, callback) => {
     })
     .catch((err) => {
         console.log(err);
-        sendResponse(400, err, callback(err));
+        sendResponse(400, err, callback);
     });
 };
 //END Budget Functions
