@@ -14,10 +14,10 @@ const init = () => {
         TableName: productTable,
         Item: {
             "productid": uuid.v1(),
-            "code": productData.code,
-            "name": productData.name,
-            "description": productData.description,
-            "expensehours": productData.expensehours
+            "code": "AR",
+            "name": "Finanzas Avanzadas",
+            "description": "Orientado hacia empresas que requieran facturación recurrente a sus clientes.",
+            "expensehours": 30
         }
     };
 
@@ -25,10 +25,10 @@ const init = () => {
         TableName: productTable,
         Item: {
             "productid": uuid.v1(),
-            "code": productData.code,
-            "name": productData.name,
-            "description": productData.description,
-            "expensehours": productData.expensehours
+            "code": "AP",
+            "name": "Compras Avanzadas",
+            "description": "El módulo de Compras Avanzadas le ayudará llevando el control de sus compras relacionando las listas de precios autorizadas con los contratos que tiene activos.",
+            "expensehours": 40
         }
     };
 
@@ -36,10 +36,10 @@ const init = () => {
         TableName: productTable,
         Item: {
             "productid": uuid.v1(),
-            "code": productData.code,
-            "name": productData.name,
-            "description": productData.description,
-            "expensehours": productData.expensehours
+            "code": "GL",
+            "name": "Libros Contables",
+            "description": "Con el módulo de Contabilidad Múltiple no tendrá que preocuparse si registró los movimientos en los Libros correspondientes porque Netsuite lo hará de manera automática e inmediata sin crear duplicidades que deban ser eliminadas posteriormente.",
+            "expensehours": 55
         }
     };
 
@@ -47,10 +47,21 @@ const init = () => {
         TableName: productTable,
         Item: {
             "productid": uuid.v1(),
-            "code": productData.code,
-            "name": productData.name,
-            "description": productData.description,
-            "expensehours": productData.expensehours
+            "code": "ADMINISTRATION",
+            "name": "Gestión de Sistemas",
+            "description": "Despliegue las mejoras que ha creado y comparta por medio de la solución documentos e información electrónica con el módulo de Gestión de Software.",
+            "expensehours": 75
+        }
+    };
+
+    const prod5 = {
+        TableName: productTable,
+        Item: {
+            "productid": uuid.v1(),
+            "code": "RRHH",
+            "name": "Asignación de Recursos",
+            "description": "El módulo de Asignación de Recursos le permite medir la ocupación de sus recursos y las actividades en las que están comprometidos con fechas de inicio y fin.",
+            "expensehours": 25
         }
     };
 
