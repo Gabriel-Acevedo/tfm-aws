@@ -87,7 +87,7 @@ async function createCustomer(contador, customerid){
 }
 
 const addCustomer = (contador, customerid) => {
-    const params;
+    let params;
     if(contador == 1){
         params = {
             TableName: customerTable,
@@ -136,7 +136,7 @@ async function createCompany(contador, customerid){
 
 
 const addCompany = (contador, customerid) => {
-    const params;
+    let params;
     if(contador == 1){
         params = {
             TableName: companyTable,
