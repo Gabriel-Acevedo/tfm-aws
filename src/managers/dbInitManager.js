@@ -79,38 +79,47 @@ const init = () => {
 };
 
 
-async function createCustomer(contador, customerid){
-    let customerData;
-    customerData.customerid = customerid;
-    if(contador == 1){
-        customerData.name = "Saray";
-        customerData.lastname = "Gomez";
-        customerData.email = "saray@gmail.com";
-    }
-    if(contador == 2){
-        customerData.name = "David";
-        customerData.lastname = "Sanchez";
-        customerData.email = "david@gmail.com";
-    }
-    if(contador == 3){
-        customerData.name = "Claudia";
-        customerData.lastname = "Artano";
-        customerData.email = "claudia@gmail.com";
-    }
-    return await addCustomer(customerid, customerData);
+async function createCustomer(i, customerid){
+    return await addCustomer(i, customerid);
 }
 
-const addCustomer = (customerid, customerData) => {
-    const params = {
-        TableName: customerTable,
-        Item: {
-            "customerid": customerid,
-            "name": customerData.name,
-            "lastname": customerData.lastname,
-            "email": customerData.email,
-            "company": customerData.company
-        }
-    };
+const addCustomer = (i, customerid) => {
+    if(contador == 1){
+        const params = {
+            TableName: customerTable,
+            Item: {
+                "customerid": customerid,
+                "name": "Saray",
+                "lastname": "Gomez",
+                "email": "saray@gmail.com",
+                "company": ""
+            }
+        }; 
+    }
+    if(contador == 2){
+        const params = {
+            TableName: customerTable,
+            Item: {
+                "customerid": customerid,
+                "name": "David",
+                "lastname": "Sanchez",
+                "email": "david@gmail.com",
+                "company": ""
+            }
+        }; 
+    }
+    if(contador == 3){
+        const params = {
+            TableName: customerTable,
+            Item: {
+                "customerid": customerid,
+                "name": "Helio",
+                "lastname": "Artano",
+                "email": "helio@gmail.com",
+                "company": ""
+            }
+        }; 
+    }
     return docClient.put(params).promise();
 }
 
