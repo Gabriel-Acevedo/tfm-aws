@@ -1,6 +1,5 @@
 const uuid = require('uuid');
 const AWS = require('aws-sdk');
-const { addProduct } = require('./dbProductManager');
 const REGION = "us-east-1";
 
 AWS.config.update({
