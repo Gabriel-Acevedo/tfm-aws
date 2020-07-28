@@ -1,9 +1,36 @@
 'use strict';
 
+const dbInitManager     = require('./managers/dbInitManager');
 const dbCustomerManager = require('./managers/dbCustomerManager');
 const dbProductManager  = require('./managers/dbProductManager');
 const dbCompanyManager  = require('./managers/dbCompanyManager');
 const dbBudgetManager   = require('./managers/dbBudgetManager');
+
+
+exports.initHandler = (event, context, callback) => {
+    switch (event.httpMethod) {    
+        case 'POST':
+            init(callback);
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
+    }
+};
+
+//Initite the app with some data
+const init = (callback) => {
+    dbInitManager.init()
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+//END init
+
+
 
 exports.customerHandler = (event, context, callback) => {
     switch (event.httpMethod) {     
