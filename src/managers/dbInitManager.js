@@ -9,6 +9,7 @@ AWS.config.update({
 const docClient = new AWS.DynamoDB.DocumentClient();
 const productTable = 'products';
 const customerTable = 'customers';
+const companyTable = 'companies';
 
 const init = () => {
     const prod1 = {
@@ -74,6 +75,7 @@ const init = () => {
     for(var contador = 1; contador<=3; contador++){
         var customerid = uuid.v1();
         createCustomer(contador, customerid);
+        createCompany(contador, customerid);
     }
 
     return docClient.put(prod5).promise();
@@ -85,8 +87,9 @@ async function createCustomer(contador, customerid){
 }
 
 const addCustomer = (contador, customerid) => {
+    const params;
     if(contador == 1){
-        const params = {
+        params = {
             TableName: customerTable,
             Item: {
                 "customerid": customerid,
@@ -96,10 +99,10 @@ const addCustomer = (contador, customerid) => {
                 "company": ""
             }
         }; 
-        return docClient.put(params).promise();
     }
+
     if(contador == 2){
-        const params = {
+        params = {
             TableName: customerTable,
             Item: {
                 "customerid": customerid,
@@ -109,10 +112,10 @@ const addCustomer = (contador, customerid) => {
                 "company": ""
             }
         }; 
-        return docClient.put(params).promise();
     }
+
     if(contador == 3){
-        const params = {
+        params = {
             TableName: customerTable,
             Item: {
                 "customerid": customerid,
@@ -122,9 +125,76 @@ const addCustomer = (contador, customerid) => {
                 "company": ""
             }
         }; 
-        return docClient.put(params).promise();
     }
-    return null;
+    return docClient.put(params).promise();
+}
+
+
+async function createCompany(contador, customerid){
+    return await addCompany(contador, customerid);
+}
+
+
+const addCompany = (contador, customerid) => {
+    const params;
+    if(contador == 1){
+        params = {
+            TableName: companyTable,
+            Item: {
+                "companyid": uuid.v1(),
+                "vatregnumber": "A1234567Z",
+                "name": "ACEVEDO",
+                "country": "SPAIN",
+                "industry": "TECNOLOGY"
+            }
+        };
+    }
+
+    if(contador == 2){
+        params = {
+            TableName: companyTable,
+            Item: {
+                "companyid": uuid.v1(),
+                "vatregnumber": "H2465784C",
+                "name": "AMAZON",
+                "country": "AMERICA",
+                "industry": "LOGISTIC"
+            }
+        };
+    }
+
+    if(contador == 3){
+        params = {
+            TableName: companyTable,
+            Item: {
+                "companyid": uuid.v1(),
+                "vatregnumber": "W8749267L",
+                "name": "CARREFOUR",
+                "country": "FRANCE",
+                "industry": "FEEDING"
+            }
+        };
+    }
+
+    setCompany(customerid, params);
+
+    return docClient.put(params).promise();
+}
+
+const setCompany = (customerid, companyData) => {
+    
+    const params = {
+        TableName: customerTable,
+        Key: {
+            "customerid": customerid
+        },
+        UpdateExpression: 'set company = :company',
+        ExpressionAttributeValues:{
+            ":company": companyData
+        },
+        ReturnValues: "UPDATED_NEW"
+    };
+    return docClient.update(params).promise();
 }
 
 module.exports = {
