@@ -70,20 +70,20 @@ const init = () => {
     docClient.put(prod3).promise();
     docClient.put(prod4).promise();
 
-    for(var i = 1; i<=3; i++){
-        var customerId = uuid.v1();
-        createCustomer(i, customerId);
+    for(var contador = 1; contador<=3; contador++){
+        var customerid = uuid.v1();
+        createCustomer(contador, customerid);
     }
 
     return docClient.put(prod5).promise();
 };
 
 
-async function createCustomer(i, customerid){
-    return await addCustomer(i, customerid);
+async function createCustomer(contador, customerid){
+    return await addCustomer(contador, customerid);
 }
 
-const addCustomer = (i, customerid) => {
+const addCustomer = (contador, customerid) => {
     if(contador == 1){
         const params = {
             TableName: customerTable,
@@ -95,6 +95,7 @@ const addCustomer = (i, customerid) => {
                 "company": ""
             }
         }; 
+        return docClient.put(params).promise();
     }
     if(contador == 2){
         const params = {
@@ -107,6 +108,7 @@ const addCustomer = (i, customerid) => {
                 "company": ""
             }
         }; 
+        return docClient.put(params).promise();
     }
     if(contador == 3){
         const params = {
@@ -119,8 +121,9 @@ const addCustomer = (i, customerid) => {
                 "company": ""
             }
         }; 
+        return docClient.put(params).promise();
     }
-    return docClient.put(params).promise();
+    return null;
 }
 
 module.exports = {
