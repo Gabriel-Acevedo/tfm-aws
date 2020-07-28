@@ -12,7 +12,7 @@ const customerTable = 'customers';
 const companyTable = 'companies';
 
 const init = () => {
-
+    
     for(var contadorProd = 1; contadorProd<=5; contadorProd++){
         var productid = uuid.v1();
         createProduct(contadorProd, productid);
@@ -34,7 +34,7 @@ async function createProduct(contador, productid){
 
 const addProduct = (contador, productid) => {
     if(contador == 1){
-        const prod1 = {
+        const params = {
             TableName: productTable,
             Item: {
                 "productid": productid,
@@ -44,11 +44,11 @@ const addProduct = (contador, productid) => {
                 "expensehours": 30
             }
         };
-        return docClient.put(prod1).promise(); 
+        return docClient.put(params).promise(); 
     }
 
     if(contador == 2){
-        const prod2 = {
+        const params = {
             TableName: productTable,
             Item: {
                 "productid": productid,
@@ -58,10 +58,11 @@ const addProduct = (contador, productid) => {
                 "expensehours": 40
             }
         };
+        return docClient.put(params).promise();
     }
 
     if(contador == 3){
-        const prod3 = {
+        const params = {
             TableName: productTable,
             Item: {
                 "productid": productid,
@@ -75,7 +76,7 @@ const addProduct = (contador, productid) => {
     }
 
     if(contador == 4){
-        const prod4 = {
+        const params = {
             TableName: productTable,
             Item: {
                 "productid": productid,
@@ -89,7 +90,7 @@ const addProduct = (contador, productid) => {
     }
 
     if(contador == 5){
-        const prod5 = {
+        const params = {
             TableName: productTable,
             Item: {
                 "productid": productid,
