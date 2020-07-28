@@ -1,6 +1,92 @@
 Transform: 'AWS::Serverless-2016-10-31'
 Resources:
 
+    initFunction:
+        Type: 'AWS::Serverless::Function'
+        Properties:
+            Runtime: nodejs12.x
+            Handler: index.initHandler
+            CodeUri: ./src
+            Events:
+                lambdaAddCustomer:
+                    Type: Api
+                    Properties:
+                        Path: /api
+                        Method: POST
+            Policies:
+                -   Version: '2012-10-17'
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   'dynamodb:Scan'
+                                -   'dynamodb:Query'
+                                -   'dynamodb:DeleteItem'
+                                -   'dynamodb:GetItem'
+                                -   'dynamodb:PutItem'
+                                -   'dynamodb:UpdateItem'
+                            Resource:
+                                'Fn::Join':
+                                    -   ''
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
+                                        -   ':table/customers'
+                -   Version: '2012-10-17'
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   'dynamodb:Scan'
+                                -   'dynamodb:Query'
+                                -   'dynamodb:DeleteItem'
+                                -   'dynamodb:GetItem'
+                                -   'dynamodb:PutItem'
+                                -   'dynamodb:UpdateItem'
+                            Resource:
+                                'Fn::Join':
+                                    -   ''
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
+                                        -   ':table/products'
+                -   Version: '2012-10-17'
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   'dynamodb:Scan'
+                                -   'dynamodb:Query'
+                                -   'dynamodb:DeleteItem'
+                                -   'dynamodb:GetItem'
+                                -   'dynamodb:PutItem'
+                                -   'dynamodb:UpdateItem'
+                            Resource:
+                                'Fn::Join':
+                                    -   ''
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
+                                        -   ':table/companies'
+                -   Version: '2012-10-17'
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   'dynamodb:Scan'
+                                -   'dynamodb:Query'
+                                -   'dynamodb:DeleteItem'
+                                -   'dynamodb:GetItem'
+                                -   'dynamodb:PutItem'
+                                -   'dynamodb:UpdateItem'
+                            Resource:
+                                'Fn::Join':
+                                    -   ''
+                                    -   -   'arn:aws:dynamodb:'
+                                        -   Ref: 'AWS::Region'
+                                        -   ':'
+                                        -   Ref: 'AWS::AccountId'
+                                        -   ':table/budgets'
+
     customerFunction:
         Type: 'AWS::Serverless::Function'
         Properties:
