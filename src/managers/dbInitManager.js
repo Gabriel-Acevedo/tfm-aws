@@ -8,6 +8,7 @@ AWS.config.update({
 
 const docClient = new AWS.DynamoDB.DocumentClient();
 const productTable = 'products';
+const customerTable = 'customers';
 
 const init = () => {
     const prod1 = {
