@@ -24,7 +24,7 @@ const init = () => {
         createCompany(contador, customerid);
     }
 
-    return null;
+    return 0;
 };
 
 async function createProduct(contador, productid){
