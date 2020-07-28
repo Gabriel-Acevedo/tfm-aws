@@ -12,19 +12,28 @@ const customerTable = 'customers';
 const companyTable = 'companies';
 
 const init = () => {
-    
+    var productid;
+    var customerid
     for(var contadorProd = 1; contadorProd<=5; contadorProd++){
-        var productid = uuid.v1();
+        productid = uuid.v1();
         createProduct(contadorProd, productid);
     }
 
     for(var contador = 1; contador<=3; contador++){
-        var customerid = uuid.v1();
+        customerid = uuid.v1();
         createCustomer(contador, customerid);
         createCompany(contador, customerid);
     }
 
-    return 0;
+    const params = {
+        TableName: customerTable,        
+        KeyConditionExpression: "customerid = :customerid",
+        ExpressionAttributeValues: {
+            ":customerid": customerid
+        },
+    };
+
+    return docClient.query(params).promise();
 };
 
 async function createProduct(contador, productid){
@@ -225,30 +234,8 @@ const setCompany = (customerid, companyData) => {
 }
 
 
-async function createBudget(){
-
-}
 
 
-const addBudget = async (customerid, budgetData) => {
-    function pad(s) { return (s < 10) ? '0' + s : s; }
-    var newDate = new Date();
-    var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
-    const customer = await getCustomerData(customerid);
-    var totalHours = await getTotalExpenseHours(budgetData.products);
-
-    const params = {
-        TableName: tableBudgets,
-        Item: {
-            "budgetid": uuid.v1(),
-            "customer": customer,
-            "products": budgetData.products,
-            "date": finalDate,
-            "total": totalHours
-        }
-    };
-    return docClient.put(params).promise();
-};
 
 module.exports = {
     init
