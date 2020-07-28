@@ -70,9 +70,49 @@ const init = () => {
     docClient.put(prod3).promise();
     docClient.put(prod4).promise();
 
+    for(var i = 1; i<=3; i++){
+        var customerId = uuid.v1();
+        createCustomer(i, customerId);
+    }
+
     return docClient.put(prod5).promise();
 };
 
+
+async function createCustomer(contador, customerid){
+    let customerData;
+    customerData.customerid = customerid;
+    if(contador == 1){
+        customerData.name = "Saray";
+        customerData.lastname = "Gomez";
+        customerData.email = "saray@gmail.com";
+    }
+    if(contador == 2){
+        customerData.name = "David";
+        customerData.lastname = "Sanchez";
+        customerData.email = "david@gmail.com";
+    }
+    if(contador == 3){
+        customerData.name = "Claudia";
+        customerData.lastname = "Artano";
+        customerData.email = "claudia@gmail.com";
+    }
+    return await addCustomer(customerid, customerData);
+}
+
+const addCustomer = (customerid, customerData) => {
+    const params = {
+        TableName: customerTable,
+        Item: {
+            "customerid": customerid,
+            "name": customerData.name,
+            "lastname": customerData.lastname,
+            "email": customerData.email,
+            "company": customerData.company
+        }
+    };
+    return docClient.put(params).promise();
+}
 
 module.exports = {
     init
