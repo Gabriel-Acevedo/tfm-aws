@@ -87,9 +87,8 @@ async function createCustomer(contador, customerid){
 }
 
 const addCustomer = (contador, customerid) => {
-    let params;
     if(contador == 1){
-        params = {
+        const params = {
             TableName: customerTable,
             Item: {
                 "customerid": customerid,
@@ -98,7 +97,8 @@ const addCustomer = (contador, customerid) => {
                 "email": "saray@gmail.com",
                 "company": ""
             }
-        }; 
+        };
+        return docClient.put(params).promise(); 
     }
 
     if(contador == 2){
@@ -112,10 +112,11 @@ const addCustomer = (contador, customerid) => {
                 "company": ""
             }
         }; 
+        return docClient.put(params).promise();
     }
 
     if(contador == 3){
-        params = {
+        const params = {
             TableName: customerTable,
             Item: {
                 "customerid": customerid,
@@ -125,8 +126,9 @@ const addCustomer = (contador, customerid) => {
                 "company": ""
             }
         }; 
+        return docClient.put(params).promise();
     }
-    return docClient.put(params).promise();
+    return null;
 }
 
 
@@ -136,9 +138,8 @@ async function createCompany(contador, customerid){
 
 
 const addCompany = (contador, customerid) => {
-    let params;
     if(contador == 1){
-        params = {
+        const params = {
             TableName: companyTable,
             Item: {
                 "companyid": uuid.v1(),
@@ -148,10 +149,12 @@ const addCompany = (contador, customerid) => {
                 "industry": "TECNOLOGY"
             }
         };
+        setCompany(customerid, params);
+        return docClient.put(params).promise();
     }
 
     if(contador == 2){
-        params = {
+        const params = {
             TableName: companyTable,
             Item: {
                 "companyid": uuid.v1(),
@@ -161,10 +164,12 @@ const addCompany = (contador, customerid) => {
                 "industry": "LOGISTIC"
             }
         };
+        setCompany(customerid, params);
+        return docClient.put(params).promise();
     }
 
     if(contador == 3){
-        params = {
+        const params = {
             TableName: companyTable,
             Item: {
                 "companyid": uuid.v1(),
@@ -174,15 +179,13 @@ const addCompany = (contador, customerid) => {
                 "industry": "FEEDING"
             }
         };
+        setCompany(customerid, params);
+        return docClient.put(params).promise();
     }
-
-    setCompany(customerid, params);
-
-    return docClient.put(params).promise();
+    return null;
 }
 
 const setCompany = (customerid, companyData) => {
-    
     const params = {
         TableName: customerTable,
         Key: {
