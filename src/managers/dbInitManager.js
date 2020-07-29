@@ -10,6 +10,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 const productTable = 'products';
 const customerTable = 'customers';
 const companyTable = 'companies';
+const budgetTable = 'budgets'
 
 const init = () => {
     var productid;
@@ -25,15 +26,22 @@ const init = () => {
         createCompany(contador, customerid);
     }
 
-    const params = {
-        TableName: customerTable,        
-        KeyConditionExpression: "customerid = :customerid",
-        ExpressionAttributeValues: {
-            ":customerid": customerid
-        },
-    };
 
-    return docClient.query(params).promise();
+    let customerData = getCustomerData(customerid);
+    function pad(s) { return (s < 10) ? '0' + s : s; }
+    var newDate = new Date();
+    var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
+    const params = {
+        TableName: tableBudgets,
+        Item: {
+            "budgetid": uuid.v1(),
+            "customer": customerData,
+            "products": "[{productid: "+ productid +"}]",
+            "date": finalDate,
+            "total": 25
+        }
+    };
+    return docClient.put(params).promise();
 };
 
 async function createProduct(contador, productid){
@@ -234,8 +242,21 @@ const setCompany = (customerid, companyData) => {
 }
 
 
+async function getCustomerData (customerid){
+    const customerData = await getCustomer(customerid);
+    return customerData;
+};
 
-
+function getCustomer(customerid){
+    const params = {
+        TableName: customerTable,        
+        KeyConditionExpression: "customerid = :customerid",
+        ExpressionAttributeValues: {
+            ":customerid": customerid
+        },
+    };
+    return docClient.query(params).promise();
+}
 
 module.exports = {
     init
