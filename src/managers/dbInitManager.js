@@ -36,7 +36,7 @@ const init = () => {
         Item: {
             "budgetid": uuid.v1(),
             "customer": customerData,
-            "products": "[{productid: "+ productid +"}]",
+            "products": "[{\"productid\": \""+ productid +"\"}]",
             "date": finalDate,
             "total": 25
         }
@@ -243,8 +243,7 @@ const setCompany = (customerid, companyData) => {
 
 
 async function getCustomerData (customerid){
-    const customerData = await getCustomer(customerid);
-    return customerData;
+    return await getCustomer(customerid);
 };
 
 function getCustomer(customerid){
