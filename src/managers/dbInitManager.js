@@ -27,7 +27,7 @@ const init = async () => {
     }
 
 
-    const customerInfo = awaitgetCustomerData(customerid);
+    const customerInfo = await getCustomerData(customerid);
     function pad(s) { return (s < 10) ? '0' + s : s; }
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
