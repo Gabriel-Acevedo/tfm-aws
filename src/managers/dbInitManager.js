@@ -13,8 +13,8 @@ const companyTable = 'companies';
 const budgetTable = 'budgets'
 
 const init = async () => {
-    var productid;
-    var customerid
+    let productid;
+    let customerid
     for(var contadorProd = 1; contadorProd<=5; contadorProd++){
         productid = uuid.v1();
         createProduct(contadorProd, productid);
