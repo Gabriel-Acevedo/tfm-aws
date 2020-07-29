@@ -17,13 +17,13 @@ const init = async () => {
     var customerid
     for(var contadorProd = 1; contadorProd<=5; contadorProd++){
         productid = uuid.v1();
-        createProduct(contadorProd, productid);
+        await createProduct(contadorProd, productid);
     }
 
     for(var contador = 1; contador<=3; contador++){
         customerid = uuid.v1();
-        createCustomer(contador, customerid);
-        createCompany(contador, customerid);
+        await createCustomer(contador, customerid);
+        await createCompany(contador, customerid);
     }
 
 
