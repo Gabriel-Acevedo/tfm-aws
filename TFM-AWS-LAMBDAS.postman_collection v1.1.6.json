@@ -173,14 +173,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/customer/747bdca0-cdc4-11ea-a745-a5dd0fdc15f2",
+							"raw": "{{URL}}/api/customer/f7175fb0-d1c8-11ea-a251-b9225699a379",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"customer",
-								"747bdca0-cdc4-11ea-a745-a5dd0fdc15f2"
+								"f7175fb0-d1c8-11ea-a251-b9225699a379"
 							]
 						}
 					},
@@ -397,7 +397,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"products\": [\r\n        {\"productid\": \"f7c2b9e0-cf62-11ea-8e32-25a4d01107e6\"},\r\n        {\"productid\": \"355dd900-cf69-11ea-b1d4-df4fbf9c41dc\"}\r\n    ]\r\n}",
+							"raw": "{\r\n    \"products\": [\r\n        {\"productid\": \"bab3f0b0-d1d7-11ea-819a-15466c501082\"},\r\n        {\"productid\": \"ba396980-d1d7-11ea-819a-15466c501082\"}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -405,13 +405,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/37691020-cf5a-11ea-aa94-abf5b5595874/budget",
+							"raw": "{{URL}}/api/baea9110-d1d7-11ea-819a-15466c501082/budget",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"37691020-cf5a-11ea-aa94-abf5b5595874",
+								"baea9110-d1d7-11ea-819a-15466c501082",
 								"budget"
 							]
 						}
@@ -550,6 +550,53 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "POST - Add initial data to App",
+			"request": {
+				"auth": {
+					"type": "awsv4",
+					"awsv4": [
+						{
+							"key": "sessionToken",
+							"value": "{{AWS_SESSION}}",
+							"type": "string"
+						},
+						{
+							"key": "service",
+							"value": "CloudFormation",
+							"type": "string"
+						},
+						{
+							"key": "region",
+							"value": "{{AWS_REGION}}",
+							"type": "string"
+						},
+						{
+							"key": "secretKey",
+							"value": "{{AWS_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "accessKey",
+							"value": "{{AWS_ACCESS}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/api",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
