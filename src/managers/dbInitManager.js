@@ -31,12 +31,13 @@ const init = async () => {
     function pad(s) { return (s < 10) ? '0' + s : s; }
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
+    let jsonProd = JSON.parse("[{\"productid\": \"" + productid + "\"}]");
     const params = {
         TableName: budgetTable,
         Item: {
             "budgetid": uuid.v1(),
             "customer": customerInfo,
-            "products": "[{\"productid\": \"" + productid + "\"}]",
+            "products": jsonProd,
             "date": finalDate,
             "total": 25
         }
