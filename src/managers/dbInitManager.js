@@ -32,7 +32,7 @@ const init = () => {
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
     const params = {
-        TableName: tableBudgets,
+        TableName: budgetTable,
         Item: {
             "budgetid": uuid.v1(),
             "customer": customerData,
