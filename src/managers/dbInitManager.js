@@ -12,7 +12,7 @@ const customerTable = 'customers';
 const companyTable = 'companies';
 const budgetTable = 'budgets'
 
-const init = () => {
+const init = async () => {
     var productid;
     var customerid
     for(var contadorProd = 1; contadorProd<=5; contadorProd++){
@@ -27,7 +27,7 @@ const init = () => {
     }
 
 
-    let customerData = getCustomerData(customerid);
+    const customerInfo = await getCustomerData(customerid);
     function pad(s) { return (s < 10) ? '0' + s : s; }
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
@@ -35,8 +35,8 @@ const init = () => {
         TableName: budgetTable,
         Item: {
             "budgetid": uuid.v1(),
-            "customer": customerData,
-            "products": "[{\"productid\": \""+ productid +"\"}]",
+            "customer": customerInfo,
+            "products": `[{"productid": "` + productid +`"}]`,
             "date": finalDate,
             "total": 25
         }
@@ -243,7 +243,8 @@ const setCompany = (customerid, companyData) => {
 
 
 async function getCustomerData (customerid){
-    return await getCustomer(customerid);
+    const customerData = await getCustomer(customerid);
+    return customerData;
 };
 
 function getCustomer(customerid){
