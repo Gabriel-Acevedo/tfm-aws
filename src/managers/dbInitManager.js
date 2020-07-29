@@ -13,8 +13,8 @@ const companyTable = 'companies';
 const budgetTable = 'budgets'
 
 const init = async () => {
-    let productid;
-    let customerid
+    var productid;
+    var customerid
     for(var contadorProd = 1; contadorProd<=5; contadorProd++){
         productid = uuid.v1();
         createProduct(contadorProd, productid);
@@ -27,7 +27,7 @@ const init = async () => {
     }
 
 
-    const customerInfo = await getCustomerData(customerid);
+    const customerInfo = awaitgetCustomerData(customerid);
     function pad(s) { return (s < 10) ? '0' + s : s; }
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
@@ -36,7 +36,7 @@ const init = async () => {
         Item: {
             "budgetid": uuid.v1(),
             "customer": customerInfo,
-            "products": `[{"productid": "` + productid +`"}]`,
+            "products": "[{\"productid\": \"" + productid + "\"}]",
             "date": finalDate,
             "total": 25
         }
@@ -179,11 +179,12 @@ async function createCompany(contador, customerid){
 
 
 const addCompany = (contador, customerid) => {
+    var companyid = uuid.v1();
     if(contador == 1){
         const params = {
             TableName: companyTable,
             Item: {
-                "companyid": uuid.v1(),
+                "companyid": companyid,
                 "vatregnumber": "A1234567Z",
                 "name": "ACEVEDO",
                 "country": "SPAIN",
@@ -198,7 +199,7 @@ const addCompany = (contador, customerid) => {
         const params = {
             TableName: companyTable,
             Item: {
-                "companyid": uuid.v1(),
+                "companyid": companyid,
                 "vatregnumber": "H2465784C",
                 "name": "AMAZON",
                 "country": "AMERICA",
@@ -213,7 +214,7 @@ const addCompany = (contador, customerid) => {
         const params = {
             TableName: companyTable,
             Item: {
-                "companyid": uuid.v1(),
+                "companyid": companyid,
                 "vatregnumber": "W8749267L",
                 "name": "CARREFOUR",
                 "country": "FRANCE",
