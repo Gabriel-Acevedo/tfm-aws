@@ -51,10 +51,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [execute_sam]
     steps:
-    - name: Checkout and verify endpoint testing
+    - name: Checkout
       uses: actions/checkout@v2
-      run: echo ${{ secrets.AWS_EXECUTE_TEST }}
     - name: Testing API REST
+    - if: ${{ secrets.AWS_EXECUTE_TEST }} == 'Y'
       run: |
         curl -v ${{ secrets.AWS_REST_API_ENDPOINT }}/api/customers 
       env:
