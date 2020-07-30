@@ -55,7 +55,7 @@ jobs:
       uses: actions/checkout@v2      
     - name: Testing API REST
       run: |
-        if ${{ secrets.AWS_EXECUTE_ENDPOINT_TEST }} == 'Y' then curl -v ${{ secrets.AWS_REST_API_ENDPOINT }}/api/customers else echo Execute AWS Endpoint Tests is set to NO. fi
+        if ${{ secrets.AWS_EXECUTE_ENDPOINT_TEST }} == 'Y' then curl -v ${{ secrets.AWS_REST_API_ENDPOINT }}/api/customers else echo 'Execute AWS Endpoint Tests is set to NO.' fi
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
