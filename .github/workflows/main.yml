@@ -54,7 +54,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2      
     - name: Testing API REST
-      if: ${{ secrets.AWS_EXECUTE_TEST }} == 'Y'
       run: |
         curl -v ${{ secrets.AWS_REST_API_ENDPOINT }}/api/customers 
       env:
