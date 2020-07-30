@@ -15,15 +15,15 @@ const budgetTable = 'budgets'
 const init = async () => {
     var productid;
     var customerid
-    for(var contadorProd = 1; contadorProd<=5; contadorProd++){
+    for(var numberProd = 1; numberProd<=5; numberProd++){
         productid = uuid.v1();
-        await createProduct(contadorProd, productid);
+        await createProduct(numberProd, productid);
     }
 
-    for(var contador = 1; contador<=3; contador++){
+    for(var number = 1; number<=3; number++){
         customerid = uuid.v1();
-        await createCustomer(contador, customerid);
-        await createCompany(contador, customerid);
+        await createCustomer(number, customerid);
+        await createCompany(number, customerid);
     }
 
 
@@ -45,13 +45,13 @@ const init = async () => {
     return docClient.put(params).promise();
 };
 
-async function createProduct(contador, productid){
-    return await addProduct(contador, productid);
+async function createProduct(number, productid){
+    return await addProduct(number, productid);
 }
 
 
-const addProduct = (contador, productid) => {
-    if(contador == 1){
+const addProduct = (number, productid) => {
+    if(number == 1){
         const params = {
             TableName: productTable,
             Item: {
@@ -65,7 +65,7 @@ const addProduct = (contador, productid) => {
         return docClient.put(params).promise(); 
     }
 
-    if(contador == 2){
+    if(number == 2){
         const params = {
             TableName: productTable,
             Item: {
@@ -79,7 +79,7 @@ const addProduct = (contador, productid) => {
         return docClient.put(params).promise();
     }
 
-    if(contador == 3){
+    if(number == 3){
         const params = {
             TableName: productTable,
             Item: {
@@ -93,7 +93,7 @@ const addProduct = (contador, productid) => {
         return docClient.put(params).promise();
     }
 
-    if(contador == 4){
+    if(number == 4){
         const params = {
             TableName: productTable,
             Item: {
@@ -107,7 +107,7 @@ const addProduct = (contador, productid) => {
         return docClient.put(params).promise();
     }
 
-    if(contador == 5){
+    if(number == 5){
         const params = {
             TableName: productTable,
             Item: {
@@ -124,12 +124,12 @@ const addProduct = (contador, productid) => {
 }
 
 
-async function createCustomer(contador, customerid){
-    return await addCustomer(contador, customerid);
+async function createCustomer(number, customerid){
+    return await addCustomer(number, customerid);
 }
 
-const addCustomer = (contador, customerid) => {
-    if(contador == 1){
+const addCustomer = (number, customerid) => {
+    if(number == 1){
         const params = {
             TableName: customerTable,
             Item: {
@@ -143,7 +143,7 @@ const addCustomer = (contador, customerid) => {
         return docClient.put(params).promise(); 
     }
 
-    if(contador == 2){
+    if(number == 2){
         const params = {
             TableName: customerTable,
             Item: {
@@ -157,7 +157,7 @@ const addCustomer = (contador, customerid) => {
         return docClient.put(params).promise();
     }
 
-    if(contador == 3){
+    if(number == 3){
         const params = {
             TableName: customerTable,
             Item: {
@@ -174,14 +174,14 @@ const addCustomer = (contador, customerid) => {
 }
 
 
-async function createCompany(contador, customerid){
-    return await addCompany(contador, customerid);
+async function createCompany(number, customerid){
+    return await addCompany(number, customerid);
 }
 
 
-const addCompany = (contador, customerid) => {
+const addCompany = (number, customerid) => {
     var companyid = uuid.v1();
-    if(contador == 1){
+    if(number == 1){
         const params = {
             TableName: companyTable,
             Item: {
@@ -196,7 +196,7 @@ const addCompany = (contador, customerid) => {
         return docClient.put(params).promise();
     }
 
-    if(contador == 2){
+    if(number == 2){
         const params = {
             TableName: companyTable,
             Item: {
@@ -211,7 +211,7 @@ const addCompany = (contador, customerid) => {
         return docClient.put(params).promise();
     }
 
-    if(contador == 3){
+    if(number == 3){
         const params = {
             TableName: companyTable,
             Item: {
