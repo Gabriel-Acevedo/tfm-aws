@@ -43,7 +43,7 @@ jobs:
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
         sam build
         sam deploy --no-confirm-changeset --no-fail-on-empty-changeset
-        aws cloudformation describe-stacks --stack-name mystack --query 'Stacks[0].Outputs[?OutputKey==`ApiURL`].OutputValue' --output text
+        aws cloudformation describe-stacks --stack-name tfm-aws-lambda --query 'Stacks[0].Outputs[?OutputKey==`ApiURL`].OutputValue' --output text
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
