@@ -21,4 +21,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           FILE: release-${{ steps.get_version.outputs.VERSION }}.zip
           SOURCE: 's3://aws-artefacts-lambdas-tfm-aws/release-v1.1.4.zip'
-          DEST: './release-v1.1.4.zip'
+          DEST: './'
