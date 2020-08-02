@@ -268,6 +268,11 @@ const addBudget = (customerid, data, callback) => {
 const sendResponse = (statusCode, message, callback) => {
     const res = {
         statusCode: statusCode,
+        headers: {
+            "Access-Control-Allow-Headers" : "Content-Type",
+            "Access-Control-Allow-Origin": "https://www.example.com",
+            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+        },
         body: JSON.stringify(message)
     };
     callback(null, res);
