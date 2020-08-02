@@ -269,9 +269,8 @@ const sendResponse = (statusCode, message, callback) => {
     const res = {
         statusCode: statusCode,
         headers: {
-            "Access-Control-Allow-Headers" : "Content-Type",
-            "Access-Control-Allow-Origin": "https://acevedo.biz",
-            "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+            "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
+            "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
         },
         body: JSON.stringify(message)
     };
