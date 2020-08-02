@@ -269,8 +269,10 @@ const sendResponse = (statusCode, message, callback) => {
     const res = {
         statusCode: statusCode,
         headers: {
-            "Access-Control-Allow-Origin" : "*", // Required for CORS support to work
-            "Access-Control-Allow-Credentials" : true // Required for cookies, authorization headers with HTTPS
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Headers':'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token',
+            'Access-Control-Allow-Credentials' : true,
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(message)
     };
