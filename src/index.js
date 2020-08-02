@@ -270,9 +270,9 @@ const sendResponse = (statusCode, message, callback) => {
         statusCode: statusCode,
         headers: {
             'Access-Control-Allow-Origin' : '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Content-Type': 'application/json' 
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Headers': '*',
+            'Content-Type': '*' 
         },
         body: JSON.stringify(message)
     };
