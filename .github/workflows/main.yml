@@ -44,17 +44,64 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
 
-# Commenting this line for the moment:
-#  testing_endpoint:
-#    name: Testing Endpoints
-#    runs-on: ubuntu-latest
-#    steps:
-#    - name: Checkout
-#      uses: actions/checkout@v2      
-#    - name: Testing API REST
-#      run: |
-#        curl -v ${{ secrets.AWS_REST_API_ENDPOINT }}/api/customers 
-#      env:
-#        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+  testing_customer_endpoint:
+    name: Testing Customer Endpoints
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2      
+    - name: Testing API REST
+      run: |
+        curl -v ${{ secrets.AWS_API_GATEWAY_ENDPOINT }}/api/customers 
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  
+  testing_product_endpoint:
+    name: Testing Product Endpoints
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2      
+    - name: Testing API REST
+      run: |
+        curl -v ${{ secrets.AWS_API_GATEWAY_ENDPOINT }}/api/products 
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+  
+  testing_company_endpoint:
+    name: Testing Company Endpoints
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2      
+    - name: Testing API REST
+      run: |
+        curl -v ${{ secrets.AWS_API_GATEWAY_ENDPOINT }}/api/companies
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+  testing_budget_endpoint:
+    name: Testing Budget Endpoints
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2      
+    - name: Testing API REST
+      run: |
+        curl -v ${{ secrets.AWS_API_GATEWAY_ENDPOINT }}/api/budgets
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+
+
+
+
+        
