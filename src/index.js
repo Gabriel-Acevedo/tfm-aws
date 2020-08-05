@@ -51,8 +51,8 @@ exports.customerHandler = (event, context, callback) => {
 
 
 //Customer Functions
-const getAllCustomers = async (callback) => {
-    await dbCustomerManager.getAllCustomers()
+const getAllCustomers = (callback) => {
+    dbCustomerManager.getAllCustomers()
     .then((res) => {
         sendResponse(200, res, callback);
     })
@@ -62,8 +62,8 @@ const getAllCustomers = async (callback) => {
     });
 };
 
-const getCustomer = async (customerid, callback) => {
-    await dbCustomerManager.getCustomer(customerid)
+const getCustomer = (customerid, callback) => {
+    dbCustomerManager.getCustomer(customerid)
     .then((res) => {
         sendResponse(200, res, callback);
     })
@@ -74,10 +74,10 @@ const getCustomer = async (customerid, callback) => {
 };
 
 
-const addCustomer = async (data, callback) => {
+const addCustomer = (data, callback) => {
     data = JSON.parse(data);
 
-    await dbCustomerManager.addCustomer(data)
+    dbCustomerManager.addCustomer(data)
     .then((res) => {
         sendResponse(200, res, callback);
     })
