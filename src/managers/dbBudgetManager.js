@@ -116,7 +116,7 @@ const addBudgetToCustomer = (customerid, budgetData) => {
             '#Allbudgets' : 'budgets'
           },
           ExpressionAttributeValues : {
-            ':val' : [budgetData]
+            ':val' : [{budgetData}]
         },
         ReturnValues: 'UPDATED_NEW'
     };
