@@ -41,10 +41,11 @@ const addBudget = async (customerid, budgetData) => {
     const customer = await getCustomerData(customerid);
     var totalHours = await getTotalExpenseHours(budgetData.products);
 
+    const budgetId = uuid.v1();
     const params = {
         TableName: tableBudgets,
         Item: {
-            "budgetid": uuid.v1(),
+            "budgetid": budgetId,
             "customer": customer,
             "products": budgetData.products,
             "date": finalDate,
@@ -52,7 +53,14 @@ const addBudget = async (customerid, budgetData) => {
         }
     };
 
-    await setBudgetToCustomer(customerid, params);
+    const budgetCustomer = {
+        "budgetid": budgetId,
+        "products": budgetData.products,
+        "date": finalDate,
+        "total": totalHours
+    };
+
+    await setBudgetToCustomer(customerid, budgetCustomer);
 
     return docClient.put(params).promise();
 };
