@@ -39,6 +39,15 @@ const addBudget = async (customerid, budgetData) => {
     var newDate = new Date();
     var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
     const customer = await getCustomerData(customerid);
+    
+    const customerData = {
+        "customerid": customer.customerid,
+        "name": customer.name,
+        "lastname": customer.lastname,
+        "email": customer.email,
+        "company": customer.company
+    };
+    
     var totalHours = await getTotalExpenseHours(budgetData.products);
 
     const budgetId = uuid.v1();
@@ -46,11 +55,12 @@ const addBudget = async (customerid, budgetData) => {
         TableName: tableBudgets,
         Item: {
             "budgetid": budgetId,
-            "customer": customer,
+            "customer": customerData,
             "products": budgetData.products,
             "date": finalDate,
             "total": totalHours
-        }
+        },
+        ReturnValues: "ALL_NEW"
     };
 
     const budgetCustomer = {
