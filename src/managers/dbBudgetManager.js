@@ -117,7 +117,8 @@ const addBudgetToCustomer = (customerid, budgetData) => {
           },
           ExpressionAttributeValues : {
             ':budget' : budgetData
-        }
+        },
+        ReturnValues: 'UPDATED_NEW'
     };
     return docClient.update(params).promise();
     
