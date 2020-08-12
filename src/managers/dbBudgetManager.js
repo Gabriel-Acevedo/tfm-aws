@@ -111,7 +111,7 @@ const addBudgetToCustomer = (customerid, budgetData) => {
         Key: {
             "customerid": customerid
         },
-        UpdateExpression: 'SET #Allbudgets = :val)',
+        UpdateExpression: 'SET #Allbudgets = :val',
         ExpressionAttributeNames : {
             '#Allbudgets' : 'budgets'
           },
