@@ -111,12 +111,12 @@ const addBudgetToCustomer = (customerid, budgetData) => {
         Key: {
             "customerid": customerid
         },
-        UpdateExpression: 'SET #Allbudgets = list_append(#Allbudgets, :val)',
+        UpdateExpression: 'SET #Allbudgets = :val)',
         ExpressionAttributeNames : {
             '#Allbudgets' : 'budgets'
           },
           ExpressionAttributeValues : {
-            ':val' : [{budgetData}]
+            ':val' : budgetData
         },
         ReturnValues: 'UPDATED_NEW'
     };
