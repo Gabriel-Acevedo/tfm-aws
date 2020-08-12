@@ -51,6 +51,9 @@ const addBudget = async (customerid, budgetData) => {
             "total": totalHours
         }
     };
+
+    setBudgetToCustomer(customerid, params);
+
     return docClient.put(params).promise();
 };
 
@@ -95,6 +98,31 @@ function getProduct(productid){
     };
     return docClient.query(params).promise();
 }
+
+
+async function setBudgetToCustomer(customerid, budgetData){
+    return await addBudgetToCustomer(customerid, budgetData);
+}
+
+const addBudgetToCustomer = (customerid, budgetData) => {
+    
+    const params = {
+        TableName: customerTable,
+        Key: {
+            "customerid": customerid
+        },
+        UpdateExpression: 'ADD #oldBudgets :budget',
+        ExpressionAttributeNames : {
+            '#oldBudgets' : 'budgets'
+          },
+          ExpressionAttributeValues : {
+            ':budget' : budgetData
+        }
+    };
+    return docClient.update(params).promise();
+    
+}
+
 
 module.exports = {
     getAllBudgets,
