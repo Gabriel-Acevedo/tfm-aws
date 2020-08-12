@@ -34,11 +34,12 @@ const getCompany = (companyid) => {
 
 
 const addCompany = (customerid, companyData) => {
+    const companyid = uuid.v1();
 
     const params = {
         TableName: companyTable,
         Item: {
-            "companyid": uuid.v1(),
+            "companyid": companyid,
             "vatregnumber": companyData.vatregnumber,
             "name": companyData.name,
             "country": companyData.country,
@@ -46,7 +47,16 @@ const addCompany = (customerid, companyData) => {
         }
     };
 
-    setCompany(customerid, params);
+
+    const companyInfo = {
+        "companyid": companyid,
+        "vatregnumber": companyData.vatregnumber,
+        "name": companyData.name,
+        "country": companyData.country,
+        "industry": companyData.industry
+    };
+
+    setCompany(customerid, companyInfo);
 
     return docClient.put(params).promise();
 };
