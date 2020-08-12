@@ -41,11 +41,11 @@ const addBudget = async (customerid, budgetData) => {
     const customer = await getCustomerData(customerid);
     
     const customerData = {
-        "customerid": customer.customerid,
-        "name": customer.name,
-        "lastname": customer.lastname,
-        "email": customer.email,
-        "company": customer.company
+        "customerid": customer.Items.customerid,
+        "name": customer.Items.name,
+        "lastname": customer.Items.lastname,
+        "email": customer.Items.email,
+        "company": customer.Items.company
     };
     
     var totalHours = await getTotalExpenseHours(budgetData.products);
