@@ -52,7 +52,7 @@ const addBudget = async (customerid, budgetData) => {
         }
     };
 
-    setBudgetToCustomer(customerid, params);
+    await setBudgetToCustomer(customerid, params);
 
     return docClient.put(params).promise();
 };
@@ -116,7 +116,7 @@ const addBudgetToCustomer = (customerid, budgetData) => {
             '#oldBudgets' : 'budgets'
           },
           ExpressionAttributeValues : {
-            ':budget' : budgetData
+            ':budget' : docClient.createSet([budgetData])
         },
         ReturnValues: 'UPDATED_NEW'
     };
