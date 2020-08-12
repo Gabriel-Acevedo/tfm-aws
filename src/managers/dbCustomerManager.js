@@ -40,7 +40,8 @@ const addCustomer = (customerData) => {
             "name": customerData.name,
             "lastname": customerData.lastname,
             "email": customerData.email,
-            "company": customerData.company
+            "company": customerData.company,
+            "budgets": customerData.budgets || {}
         }
     };
     return docClient.put(params).promise();
