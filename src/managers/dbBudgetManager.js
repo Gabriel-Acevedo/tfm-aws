@@ -59,8 +59,7 @@ const addBudget = async (customerid, budgetData) => {
             "products": budgetData.products,
             "date": finalDate,
             "total": totalHours
-        },
-        ReturnValues: "ALL_NEW"
+        }
     };
 
     const budgetCustomer = {
