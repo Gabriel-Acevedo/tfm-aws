@@ -266,7 +266,7 @@ Resources:
             GlobalSecondaryIndexes:
                 -   IndexName: productscodeIndex
                     KeySchema: 
-                        AttributeName: productid
+                    -   AttributeName: productid
                         KeyType: HASH
                     Projection: 
                         NonKeyAttributes: 
