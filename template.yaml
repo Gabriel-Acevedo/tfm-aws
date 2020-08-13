@@ -263,16 +263,6 @@ Resources:
         Type: 'AWS::DynamoDB::Table'
         Properties:
             TableName: products
-            GlobalSecondaryIndexes:
-                -   IndexName: productscodeIndex
-                    KeySchema: 
-                    -   AttributeName: code
-                        KeyType: HASH
-                    Projection: 
-                        ProjectionType: ALL
-                    ProvisionedThroughput:
-                        ReadCapacityUnits: 5
-                        WriteCapacityUnits: 5
             AttributeDefinitions:
                 -   AttributeName: productid
                     AttributeType: S
