@@ -266,8 +266,12 @@ Resources:
             AttributeDefinitions:
                 -   AttributeName: productid
                     AttributeType: S
+                -   AttributeName: code
+                    AttributeType: S
             KeySchema:
                 -   AttributeName: productid
+                    KeyType: HASH
+                -   AttributeName: code
                     KeyType: HASH
             ProvisionedThroughput:
                 ReadCapacityUnits: 5
