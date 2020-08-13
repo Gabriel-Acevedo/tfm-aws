@@ -269,8 +269,6 @@ Resources:
                     -   AttributeName: productid
                         KeyType: HASH
                     Projection: 
-                        NonKeyAttributes: 
-                        -   code
                         ProjectionType: ALL
                     ProvisionedThroughput:
                         ReadCapacityUnits: 5
