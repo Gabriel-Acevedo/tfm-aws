@@ -70,7 +70,7 @@ const addBudget = async (customerid, budgetData) => {
         "total": totalHours
     };
 
-    await setBudgetToCustomer(customerid, budgetCustomer);
+    await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
 
     return docClient.put(params).promise();
 };
@@ -118,20 +118,20 @@ function getProduct(productid){
 }
 
 
-async function setBudgetToCustomer(customerid, budgetData){
-    return await addBudgetToCustomer(customerid, budgetData);
+async function setBudgetToCustomer(budgetId, customerid, budgetData){
+    return await addBudgetToCustomer(budgetId, customerid, budgetData);
 }
 
-const addBudgetToCustomer = (customerid, budgetData) => {
+const addBudgetToCustomer = (budgetId, customerid, budgetData) => {
     
     const params = {
         TableName: customerTable,
         Key: {
             "customerid": customerid
         },
-        UpdateExpression: 'SET #Allbudgets = :val',
+        UpdateExpression: 'SET budgets.#budgetid = :val',
         ExpressionAttributeNames : {
-            '#Allbudgets' : 'budgets'
+            '#budgetid' : budgetId
           },
           ExpressionAttributeValues : {
             ':val' : budgetData
