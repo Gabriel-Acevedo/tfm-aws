@@ -21,12 +21,12 @@ const getAllCompanies = () => {
 };
 
 
-const getCompany = (companyid) => {
+const getCompany = (vatregnumber) => {
     const params = {
         TableName: companyTable,        
-        KeyConditionExpression: "companyid = :companyid",
+        KeyConditionExpression: "vatregnumber = :vatregnumber",
         ExpressionAttributeValues: {
-            ":companyid": companyid
+            ":vatregnumber": vatregnumber
         },
     };
     return docClient.query(params).promise();

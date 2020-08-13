@@ -121,8 +121,8 @@ const addProduct = (data, callback) => {
 exports.companyHandler = (event, context, callback) => {
     switch (event.httpMethod) {     
         case 'GET':
-            if (event.pathParameters && event.pathParameters.companyid){
-                getCompany(event.pathParameters.companyid, callback);
+            if (event.pathParameters && event.pathParameters.vatregnumber){
+                getCompany(event.pathParameters.vatregnumber, callback);
             }else{
                 getAllCompanies(callback);         
             } 
@@ -148,8 +148,8 @@ const getAllCompanies = (callback) => {
     });
 };
 
-const getCompany = (companyid, callback) => {
-    dbCompanyManager.getCompany(companyid)
+const getCompany = (vatregnumber, callback) => {
+    dbCompanyManager.getCompany(vatregnumber)
     .then((res) => {
         sendResponse(200, res, callback);
     })
