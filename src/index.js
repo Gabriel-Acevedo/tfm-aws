@@ -1,35 +1,9 @@
 'use strict';
 
-const dbInitManager     = require('./managers/dbInitManager');
 const dbCustomerManager = require('./managers/dbCustomerManager');
 const dbProductManager  = require('./managers/dbProductManager');
 const dbCompanyManager  = require('./managers/dbCompanyManager');
 const dbBudgetManager   = require('./managers/dbBudgetManager');
-
-
-exports.initHandler = (event, context, callback) => {
-    switch (event.httpMethod) {    
-        case 'POST':
-            init(callback);
-            break;
-        default:
-            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
-    }
-};
-
-//Initite the app with some data
-const init = (callback) => {
-    dbInitManager.init()
-    .then((res) => {
-        sendResponse(200, res, callback);
-    })
-    .catch((err) => {
-        console.log(err);
-        sendResponse(400, err, callback);
-    });
-};
-//END init
-
 
 
 exports.customerHandler = (event, context, callback) => {
@@ -72,7 +46,6 @@ const getCustomer = (customerid, callback) => {
         sendResponse(400, err, callback);
     });
 };
-
 
 const addCustomer = (data, callback) => {
     data = JSON.parse(data);
@@ -119,7 +92,6 @@ const getAllProducts = (callback) => {
     });
 };
 
-
 const getProduct = (productid, callback) => {
     dbProductManager.getProduct(productid)
     .then((res) => {
@@ -130,7 +102,6 @@ const getProduct = (productid, callback) => {
         sendResponse(400, err, callback);
     });
 };
-
 
 const addProduct = (data, callback) => {
     data = JSON.parse(data);
@@ -177,7 +148,6 @@ const getAllCompanies = (callback) => {
     });
 };
 
-
 const getCompany = (companyid, callback) => {
     dbCompanyManager.getCompany(companyid)
     .then((res) => {
@@ -188,7 +158,6 @@ const getCompany = (companyid, callback) => {
         sendResponse(400, err, callback);
     });
 };
-
 
 const addCompany = (customerid, data, callback) => {
     data = JSON.parse(data);
@@ -224,7 +193,6 @@ exports.budgetHandler = (event, context, callback) => {
     }
 };
 
-
 //Budget Functions
 const getAllBudgets = (callback) => {
     dbBudgetManager.getAllBudgets()
@@ -237,7 +205,6 @@ const getAllBudgets = (callback) => {
     });
 };
 
-
 const getBudget = (budgetid, callback) => {
     dbBudgetManager.getBudget(budgetid)
     .then((res) => {
@@ -248,7 +215,6 @@ const getBudget = (budgetid, callback) => {
         sendResponse(400, err, callback);
     });
 };
-
 
 const addBudget = (customerid, data, callback) => {
     data = JSON.parse(data);
@@ -263,7 +229,6 @@ const addBudget = (customerid, data, callback) => {
     });
 };
 //END Budget Functions
-
 
 const sendResponse = (statusCode, message, callback) => {
     const res = {
