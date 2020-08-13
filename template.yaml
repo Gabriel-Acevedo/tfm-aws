@@ -276,8 +276,6 @@ Resources:
             AttributeDefinitions:
                 -   AttributeName: productid
                     AttributeType: S
-                -   AttributeName: code
-                    AttributeType: S
             KeySchema:
                 -   AttributeName: productid
                     KeyType: HASH
