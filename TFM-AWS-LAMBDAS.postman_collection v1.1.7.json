@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Saray\",\r\n    \"lastname\": \"Perez\",\r\n    \"email\": \"prueba2@gmail.com\"\r\n}\r\n",
+							"raw": "{\r\n    \"name\": \"Claudia\",\r\n    \"lastname\": \"Aguilar\",\r\n    \"email\": \"prueba2@gmail.com\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -274,13 +274,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/0cc5f2f0-cf89-11ea-822b-5f42cbd5cb4d/company",
+							"raw": "{{URL}}/api/e49a4e30-dd88-11ea-be80-3162e84282f6/company",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"0cc5f2f0-cf89-11ea-822b-5f42cbd5cb4d",
+								"e49a4e30-dd88-11ea-be80-3162e84282f6",
 								"company"
 							]
 						}
@@ -397,7 +397,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"products\": [\r\n        {\"productid\": \"bab3f0b0-d1d7-11ea-819a-15466c501082\"},\r\n        {\"productid\": \"ba396980-d1d7-11ea-819a-15466c501082\"}\r\n    ]\r\n}",
+							"raw": "{\r\n    \"products\": [\r\n        {\"productid\": \"b9acecf0-dd88-11ea-8a55-358213c7ab1c\"}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -405,13 +405,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/baea9110-d1d7-11ea-819a-15466c501082/budget",
+							"raw": "{{URL}}/api/e49a4e30-dd88-11ea-be80-3162e84282f6/budget",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"baea9110-d1d7-11ea-819a-15466c501082",
+								"e49a4e30-dd88-11ea-be80-3162e84282f6",
 								"budget"
 							]
 						}
@@ -424,6 +424,298 @@
 		{
 			"name": "Products",
 			"item": [
+				{
+					"name": "Individual Products",
+					"item": [
+						{
+							"name": "POST - AR Product",
+							"request": {
+								"auth": {
+									"type": "awsv4",
+									"awsv4": [
+										{
+											"key": "sessionToken",
+											"value": "{{AWS_SESSION}}",
+											"type": "string"
+										},
+										{
+											"key": "service",
+											"value": "CloudFormation",
+											"type": "string"
+										},
+										{
+											"key": "region",
+											"value": "{{AWS_REGION}}",
+											"type": "string"
+										},
+										{
+											"key": "secretKey",
+											"value": "{{AWS_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "accessKey",
+											"value": "{{AWS_ACCESS}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"AR\",\r\n    \"name\": \"Finanzas Avanzadas\",\r\n    \"description\": \"Orientado hacia empresas que requieran facturación recurrente a sus clientes.\",\r\n    \"expensehours\": 30\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/product",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST - AP Product",
+							"request": {
+								"auth": {
+									"type": "awsv4",
+									"awsv4": [
+										{
+											"key": "sessionToken",
+											"value": "{{AWS_SESSION}}",
+											"type": "string"
+										},
+										{
+											"key": "service",
+											"value": "CloudFormation",
+											"type": "string"
+										},
+										{
+											"key": "region",
+											"value": "{{AWS_REGION}}",
+											"type": "string"
+										},
+										{
+											"key": "secretKey",
+											"value": "{{AWS_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "accessKey",
+											"value": "{{AWS_ACCESS}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"AP\",\r\n    \"name\": \"Compras Avanzadas\",\r\n    \"description\": \"El módulo de Compras Avanzadas le ayudará llevando el control de sus compras relacionando las listas de precios autorizadas con los contratos que tiene activos.\",\r\n    \"expensehours\": 40\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/product",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST - GL Product",
+							"request": {
+								"auth": {
+									"type": "awsv4",
+									"awsv4": [
+										{
+											"key": "sessionToken",
+											"value": "{{AWS_SESSION}}",
+											"type": "string"
+										},
+										{
+											"key": "service",
+											"value": "CloudFormation",
+											"type": "string"
+										},
+										{
+											"key": "region",
+											"value": "{{AWS_REGION}}",
+											"type": "string"
+										},
+										{
+											"key": "secretKey",
+											"value": "{{AWS_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "accessKey",
+											"value": "{{AWS_ACCESS}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"GL\",\r\n    \"name\": \"Libros Contables\",\r\n    \"description\": \"Con el módulo de Contabilidad Múltiple no tendrá que preocuparse si registró los movimientos en los Libros correspondientes porque Netsuite lo hará de manera automática e inmediata sin crear duplicidades que deban ser eliminadas posteriormente.\",\r\n    \"expensehours\": 55\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/product",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST - ADMINISTRATION Product",
+							"request": {
+								"auth": {
+									"type": "awsv4",
+									"awsv4": [
+										{
+											"key": "sessionToken",
+											"value": "{{AWS_SESSION}}",
+											"type": "string"
+										},
+										{
+											"key": "service",
+											"value": "CloudFormation",
+											"type": "string"
+										},
+										{
+											"key": "region",
+											"value": "{{AWS_REGION}}",
+											"type": "string"
+										},
+										{
+											"key": "secretKey",
+											"value": "{{AWS_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "accessKey",
+											"value": "{{AWS_ACCESS}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"ADMINISTRATION\",\r\n    \"name\": \"Gestión de Sistemas\",\r\n    \"description\": \"Despliegue las mejoras que ha creado y comparta por medio de la solución documentos e información electrónica con el módulo de Gestión de Software.\",\r\n    \"expensehours\": 75\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/product",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST - RRH Product",
+							"request": {
+								"auth": {
+									"type": "awsv4",
+									"awsv4": [
+										{
+											"key": "sessionToken",
+											"value": "{{AWS_SESSION}}",
+											"type": "string"
+										},
+										{
+											"key": "service",
+											"value": "CloudFormation",
+											"type": "string"
+										},
+										{
+											"key": "region",
+											"value": "{{AWS_REGION}}",
+											"type": "string"
+										},
+										{
+											"key": "secretKey",
+											"value": "{{AWS_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "accessKey",
+											"value": "{{AWS_ACCESS}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"RRHH\",\r\n    \"name\": \"Asignación de Recursos\",\r\n    \"description\": \"El módulo de Asignación de Recursos le permite medir la ocupación de sus recursos y las actividades en las que están comprometidos con fechas de inicio y fin.\",\r\n    \"expensehours\": 25\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL}}/api/product",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"api",
+										"product"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
 				{
 					"name": "GET - All Products",
 					"request": {
@@ -550,53 +842,6 @@
 				}
 			],
 			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "POST - Add initial data to App",
-			"request": {
-				"auth": {
-					"type": "awsv4",
-					"awsv4": [
-						{
-							"key": "sessionToken",
-							"value": "{{AWS_SESSION}}",
-							"type": "string"
-						},
-						{
-							"key": "service",
-							"value": "CloudFormation",
-							"type": "string"
-						},
-						{
-							"key": "region",
-							"value": "{{AWS_REGION}}",
-							"type": "string"
-						},
-						{
-							"key": "secretKey",
-							"value": "{{AWS_SECRET}}",
-							"type": "string"
-						},
-						{
-							"key": "accessKey",
-							"value": "{{AWS_ACCESS}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{URL}}/api",
-					"host": [
-						"{{URL}}"
-					],
-					"path": [
-						"api"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"auth": {

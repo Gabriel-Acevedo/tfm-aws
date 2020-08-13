@@ -175,7 +175,6 @@ const addCompany = (customerid, data, callback) => {
 //END Company Functions
 
 
-
 exports.budgetHandler = (event, context, callback) => {
     switch (event.httpMethod) {     
         case 'GET':
