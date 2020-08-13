@@ -98,7 +98,7 @@ async function getTotalExpenseHours(products){
     let totalHours = 0;
 
     for(var i = 0; i< products.length; i++){
-        var productData = await getProduct(products[i].productcode);
+        var productData = await getProduct(products[i].code);
         hours = productData.Items[0].expensehours;
         totalHours = totalHours + hours;
     }
@@ -106,12 +106,12 @@ async function getTotalExpenseHours(products){
 }
 
 
-function getProduct(productcode){
+function getProduct(code){
     const params = {
         TableName: productTable,
-        KeyConditionExpression: "productcode = :productcode",
+        KeyConditionExpression: "code = :code",
         ExpressionAttributeValues: {
-            ":productcode": productcode
+            ":code": code
         },
     };
     return docClient.query(params).promise();
