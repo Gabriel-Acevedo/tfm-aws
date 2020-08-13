@@ -272,6 +272,9 @@ Resources:
                         NonKeyAttributes: 
                         -   code
                         ProjectionType: ALL
+                    ProvisionedThroughput:
+                        ReadCapacityUnits: 5
+                        WriteCapacityUnits: 5
             AttributeDefinitions:
                 -   AttributeName: productid
                     AttributeType: S
