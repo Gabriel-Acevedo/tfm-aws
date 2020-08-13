@@ -9,63 +9,6 @@
 			"name": "Customers",
 			"item": [
 				{
-					"name": "POST - New Customer",
-					"request": {
-						"auth": {
-							"type": "awsv4",
-							"awsv4": [
-								{
-									"key": "service",
-									"value": "CloudFormation",
-									"type": "string"
-								},
-								{
-									"key": "region",
-									"value": "{{AWS_REGION}}",
-									"type": "string"
-								},
-								{
-									"key": "sessionToken",
-									"value": "{{AWS_SESSION}}",
-									"type": "string"
-								},
-								{
-									"key": "secretKey",
-									"value": "{{AWS_SECRET}}",
-									"type": "string"
-								},
-								{
-									"key": "accessKey",
-									"value": "{{AWS_ACCESS}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Claudia\",\r\n    \"lastname\": \"Aguilar\",\r\n    \"email\": \"prueba2@gmail.com\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{URL}}/api/customer",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"api",
-								"customer"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "GET - All Customers",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -185,6 +128,63 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "POST - New Customer",
+					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Leo\",\r\n    \"lastname\": \"Gomez\",\r\n    \"email\": \"prueba@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/customer",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"customer"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -211,7 +211,7 @@
 					"response": []
 				},
 				{
-					"name": "GET - Company By ID",
+					"name": "GET - Company By VATREGNUMBER",
 					"request": {
 						"auth": {
 							"type": "awsv4",
@@ -246,14 +246,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/company/e7b9db30-cdc5-11ea-a745-a5dd0fdc15f2",
+							"raw": "{{URL}}/api/company/A1234567Z",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"company",
-								"e7b9db30-cdc5-11ea-a745-a5dd0fdc15f2"
+								"A1234567Z"
 							]
 						}
 					},
@@ -274,13 +274,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/e49a4e30-dd88-11ea-be80-3162e84282f6/company",
+							"raw": "{{URL}}/api/e91ff630-ddb0-11ea-b845-b9dcca192f0b/company",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"e49a4e30-dd88-11ea-be80-3162e84282f6",
+								"e91ff630-ddb0-11ea-b845-b9dcca192f0b",
 								"company"
 							]
 						}
@@ -397,7 +397,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"products\": [\r\n        {\"productid\": \"b9acecf0-dd88-11ea-8a55-358213c7ab1c\"}\r\n    ]\r\n}",
+							"raw": "{\r\n    \"products\": [\r\n        {\"productid\": \"20c47fc0-ddb1-11ea-bb90-e92a9092e018\"},\r\n        {\"productid\": \"23faf2a0-ddb1-11ea-bb90-e92a9092e018\"}\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -405,13 +405,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/api/e49a4e30-dd88-11ea-be80-3162e84282f6/budget",
+							"raw": "{{URL}}/api/e91ff630-ddb0-11ea-b845-b9dcca192f0b/budget",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"e49a4e30-dd88-11ea-be80-3162e84282f6",
+								"e91ff630-ddb0-11ea-b845-b9dcca192f0b",
 								"budget"
 							]
 						}
