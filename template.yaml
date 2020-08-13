@@ -269,7 +269,8 @@ Resources:
                         -   AttributeName: productid
                             KeyType: HASH
                     Projection: 
-                        -   NonKeyAttributes: code
+                        -   NonKeyAttributes: 
+                                -   code
                             ProjectionType: ALL
             AttributeDefinitions:
                 -   AttributeName: productid
