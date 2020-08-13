@@ -36,8 +36,10 @@ const getBudget = (budgetid) => {
 
 const addBudget = async (customerid, budgetData) => {
     function pad(s) { return (s < 10) ? '0' + s : s; }
-    var newDate = new Date();
-    var finalDate = [pad(newDate.getDate()), pad(newDate.getMonth()+1), newDate.getFullYear()].join('/');
+    var today = new Date();
+    var date = today.getDate();+'-'+(today.getMonth()+1)+'-'+today.getFullYear()
+    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date+' '+time;
     const customer = await getCustomerData(customerid);
     
     
@@ -58,7 +60,7 @@ const addBudget = async (customerid, budgetData) => {
             "budgetid": budgetId,
             "customer": customerData,
             "products": budgetData.products,
-            "date": finalDate,
+            "date": dateTime,
             "total": totalHours
         }
     };
@@ -66,7 +68,7 @@ const addBudget = async (customerid, budgetData) => {
     const budgetCustomer = {
         "budgetid": budgetId,
         "products": budgetData.products,
-        "date": finalDate,
+        "date": dateTime,
         "total": totalHours
     };
 
