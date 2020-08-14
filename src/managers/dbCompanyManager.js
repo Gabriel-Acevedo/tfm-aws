@@ -37,9 +37,10 @@ const addCompany = async (customerid, companyData) => {
     
     //Se verifica si existe ya la compañia
     var existingCompany = await checkCompany(companyData.vatregnumber);
-    
-    if (existingCompany !== undefined){
+    console.log("Company Data: " + existingCompany);
 
+    if (existingCompany == undefined){
+        console.log("IF 01.");
         const companyid = uuid.v1();
         const params = {
             TableName: companyTable,
@@ -66,7 +67,7 @@ const addCompany = async (customerid, companyData) => {
         return docClient.put(params).promise();
 
     }else{
-
+        console.log("IF 02.");
 
         const existingCompanyInfo = {
             "companyid": existingCompany.Items[0].companyid,
