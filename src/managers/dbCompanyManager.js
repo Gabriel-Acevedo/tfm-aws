@@ -38,7 +38,7 @@ const addCompany = async (customerid, companyData) => {
     //Se verifica si existe ya la compañia
     const existingCompany = await checkCompany(companyData.vatregnumber);
     
-    if (existingCompany == null){
+    if (existingCompany.Items[0].companyid == null){
 
         const companyid = uuid.v1();
         const params = {
