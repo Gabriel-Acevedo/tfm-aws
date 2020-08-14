@@ -39,8 +39,9 @@ const addCompany = async (customerid, companyData) => {
     var existingCompany = await checkCompany(companyData.vatregnumber);
     console.log("Company Data: " + existingCompany);
     console.log("Company id: " + typeof existingCompany);
+    console.log("Company id: " + typeof existingCompany.Items[0]);
 
-    if (typeof existingCompany.Items[0].companyid === 'undefined'){
+    if (typeof existingCompany.Items[0] === 'undefined'){
         const companyid = uuid.v1();
         const params = {
             TableName: companyTable,
