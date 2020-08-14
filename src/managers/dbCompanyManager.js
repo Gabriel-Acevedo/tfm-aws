@@ -33,34 +33,73 @@ const getCompany = (vatregnumber) => {
 };
 
 
-const addCompany = (customerid, companyData) => {
-    const companyid = uuid.v1();
+const addCompany = async (customerid, companyData) => {
+    
+    //Se verifica si existe ya la compañia
+    const existingCompany = await checkCompany(companyData.vatregnumber);
+    
+    if (existingCompany == undefined){
 
-    const params = {
-        TableName: companyTable,
-        Item: {
+        const companyid = uuid.v1();
+        const params = {
+            TableName: companyTable,
+            Item: {
+                "companyid": companyid,
+                "vatregnumber": companyData.vatregnumber,
+                "name": companyData.name,
+                "country": companyData.country,
+                "industry": companyData.industry
+            }
+        };
+    
+    
+        const companyInfo = {
             "companyid": companyid,
             "vatregnumber": companyData.vatregnumber,
             "name": companyData.name,
             "country": companyData.country,
             "industry": companyData.industry
-        }
-    };
+        };
+    
+        setCompany(customerid, companyInfo);
+
+        return docClient.put(params).promise();
+
+    }else{
+
+        const existingCompanyInfo = {
+            "companyid": existingCompany.Items[0].companyid,
+            "vatregnumber": existingCompany.Items[0].vatregnumber,
+            "name": existingCompany.Items[0].name,
+            "country": existingCompany.Items[0].country,
+            "industry": existingCompany.Items[0].industry
+        };
+
+        return await setCompany(customerid, existingCompanyInfo);
+
+    }
+       
 
 
-    const companyInfo = {
-        "companyid": companyid,
-        "vatregnumber": companyData.vatregnumber,
-        "name": companyData.name,
-        "country": companyData.country,
-        "industry": companyData.industry
-    };
-
-    setCompany(customerid, companyInfo);
-
-    return docClient.put(params).promise();
+    
 };
 
+
+async function checkCompany(vatregnumber){
+    const companyData = await getCompanyData(vatregnumber);
+    return companyData;
+}
+
+function getCompanyData(vatregnumber){
+    const params = {
+        TableName: companyTable,        
+        KeyConditionExpression: "vatregnumber = :vatregnumber",
+        ExpressionAttributeValues: {
+            ":vatregnumber": vatregnumber
+        },
+    };
+    return docClient.query(params).promise();
+} 
 
 async function setCompany(customerid, companyData){
     return await addCompanyToCustomer(customerid, companyData);
