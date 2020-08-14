@@ -38,7 +38,7 @@ const addCompany = async (customerid, companyData) => {
     //Se verifica si existe ya la compañia
     var existingCompany = await checkCompany(companyData.vatregnumber);
     console.log("Company Data: " + existingCompany);
-    console.log("Company id: " + typeof existingCompany.Items[0].companyid);
+    console.log("Company id: " + typeof existingCompany);
 
     if (typeof existingCompany.Items[0].companyid === 'undefined'){
         const companyid = uuid.v1();
