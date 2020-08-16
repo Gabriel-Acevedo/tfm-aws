@@ -32,11 +32,12 @@ const getProduct = (productid) => {
 };
 
 
-const addProduct = (productData) => {
+const addProduct = async (productData) => {
+    const productId = uuid.v1(); 
     const params = {
         TableName: productTable,
         Item: {
-            "productid": uuid.v1(),
+            "productid": productId,
             "code": productData.code,
             "name": productData.name,
             "description": productData.description,
@@ -44,7 +45,9 @@ const addProduct = (productData) => {
         }
     };
 
-    return docClient.put(params).promise();
+    await docClient.put(params).promise();
+
+    return productId;
 };
 
 

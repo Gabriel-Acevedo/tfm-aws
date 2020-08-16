@@ -61,7 +61,11 @@ const addCompany = async (customerid, companyData) => {
     
         setCompany(customerid, companyInfo);
 
-        return docClient.put(params).promise();
+        await docClient.put(params).promise();
+
+        return companyid;
+
+
 
     }else{
 
@@ -75,7 +79,7 @@ const addCompany = async (customerid, companyData) => {
 
         await setCompany(customerid, existingCompanyInfo);
         
-        return {};
+        return existingCompany.Items[0].companyid;
     }
        
 };

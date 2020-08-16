@@ -32,11 +32,12 @@ const getCustomer = (customerid) => {
 };
 
 
-const addCustomer = (customerData) => {
+const addCustomer = async (customerData) => {
+    const customerId = uuid.v1();
     const params = {
         TableName: customerTable,
         Item: {
-            "customerid": uuid.v1(),
+            "customerid": customerId,
             "name": customerData.name,
             "lastname": customerData.lastname,
             "email": customerData.email,
@@ -44,7 +45,9 @@ const addCustomer = (customerData) => {
             "budgets": customerData.budgets || {}
         }
     };
-    return docClient.put(params).promise();
+    await docClient.put(params).promise();
+
+    return customerId;
 };
 //END Customer APIs
 

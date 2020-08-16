@@ -74,7 +74,9 @@ const addBudget = async (customerid, budgetData) => {
 
     await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
 
-    return docClient.put(params).promise();
+    await docClient.put(params).promise();
+
+    return budgetId;
 };
 
 
