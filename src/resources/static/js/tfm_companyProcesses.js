@@ -4,7 +4,7 @@ var receiveidCustomerId = localStorage["customerid"];
 var API_POST_COMPANY = AWS_ENDPOINT + "/api/" + receiveidCustomerId  + "/company";
 
 async function addCompany(){
-   return await postCompany();
+	return await postCompany();
 };
 
 function postCompany(){
@@ -19,10 +19,9 @@ function postCompany(){
                                     "industry": $('#industry').val()
                                 }),
 					
-			succes: function(response){
+			success: function(response){
                console.log("Company id: " + response);
-			   location.reload(true);
 			}
 	});
 
-};	
+};
