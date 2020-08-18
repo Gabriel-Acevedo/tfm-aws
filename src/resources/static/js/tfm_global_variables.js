@@ -1,18 +1,6 @@
 //AWS:
-const awsEndpoint = "https://r8d74pu122.execute-api.us-east-1.amazonaws.com/Prod";
-
-//Drupal Pages:
-const customerDetailPage  = "/drupal/awsCustomerDetails";
-const customerCompanyPage = "/drupal/awsCustomerCompany";
+const awsEndpoint = "https://yh3fkv6r01.execute-api.us-east-1.amazonaws.com/Prod";
 
 function getAwsEndpoint() {
 	return awsEndpoint;
-};
-
-function getCustomerDetailPage(){
-	return customerDetailPage;
-};
-
-function getCustomerCompanyPage(){
-	return customerCompanyPage;
 };
