@@ -1,60 +1,35 @@
-<link href="/drupal/sites/default/files/css/custom/tfm_aws_main.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="/drupal/sites/default/files/js/custom/tfm_global_variables.js"></script><script type="text/javascript">
+<link href="/drupal/sites/default/files/css/custom/tfm_aws_main.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="/drupal/sites/default/files/js/custom/tfm_global_variables.js"></script><script src="/drupal/sites/default/files/js/custom/tfm_customerProcesses.js"></script>
+<div id="header">
+<div id="headline">
+<div style="background-color: #00E098; width: 20px;height: 3px; margin: 0% 0% 5% 0%;">&nbsp;</div>
 
-    var AWS_ENDPOINT = getAwsEndpoint();
-    var API_POST_CUSTOMER = AWS_ENDPOINT + "/api/customer";
-    
-    async function addCustomer(){
-       return await postCustomer();
-    };
-    
-    function postCustomer(){
-        $.ajax({
-                type: 'POST',
-                url: API_POST_CUSTOMER,
-                data: JSON.stringify({
-                                        "name": $('#name').val(),
-                                        "lastname": $('#lastname').val(),
-                                        "email": $('#email').val()
-                                    }),			
-                success: function(response){
-                    localStorage["customerid"] = response;
-                }
-        });
-    };		
-    
-    </script>
-    <div id="header">
-    <div id="headline">
-    <div style="background-color: #00E098; width: 20px;height: 3px; margin: 0% 0% 5% 0%;">&nbsp;</div>
-    
-    <table style="width: 100%;">
-        <tbody>
-            <tr>
-                <td><span class="title">Benefit Netsuite calculator</span></td>
-            </tr>
-            <tr>
-                <td>
-                <p class="subtitle">Fill out this form in a few steps to know the time of implementation of Netsuite in your business</p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <div style="background-color: #00E098; width: 20px;height: 3px; margin: 5% 0% 0% 0%;">&nbsp;</div>
-    </div>
-    
-    <div id="headlogo"><img alt="a_acevedo_verde" class="align-center" data-entity-type="file" src="/drupal/sites/default/files/inline-images/tfm_aws_a_acevedo_green.png" /></div>
-    </div>
-    
-    <div class="grid-container x-center-content">
-    <div class="form-card">
-    <form action="/drupal/awsCustomerCompany" id="createCustomer">
-    <h2 class="fs-title">Customer Details</h2>
-    <input id="name" name="name" placeholder="Name" required="" type="text" /> <input id="lastname" name="lastname" placeholder="Lastname" required="" type="text" /> <input id="email" name="email" placeholder="Email" required="" type="email" />
-    <div><input class="action-button" id="submitCustomer" onclick="addCustomer()" type="submit" value="Next" /></div>
-    </form>
-    </div>
-    
-    <div style="margin: 0 auto;"><img alt="oracle logo" class="align-center" src="/drupal/sites/default/files/inline-images/tfm_aws_oracle_netsuite_logo.png" /></div>
-    </div>
-    
+<table style="width: 100%;">
+	<tbody>
+		<tr>
+			<td><span class="title">Benefit Netsuite calculator</span></td>
+		</tr>
+		<tr>
+			<td>
+			<p class="subtitle">Fill out this form in a few steps to know the time of implementation of Netsuite in your business</p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div style="background-color: #00E098; width: 20px;height: 3px; margin: 5% 0% 0% 0%;">&nbsp;</div>
+</div>
+
+<div id="headlogo"><img alt="a_acevedo_verde" class="align-center" data-entity-type="file" src="/drupal/sites/default/files/inline-images/tfm_aws_a_acevedo_green.png" /></div>
+</div>
+
+<div class="grid-container x-center-content">
+<div class="form-card">
+<form action="/drupal/awsCustomerCompany" id="createCustomer" onsubmit="addCustomer()">
+<h2 class="fs-title">Customer Details</h2>
+<input id="name" name="name" placeholder="Name" required="" type="text" /> <input id="lastname" name="lastname" placeholder="Lastname" required="" type="text" /> <input id="email" name="email" placeholder="Email" required="" type="email" />
+<div><input class="action-button" id="submitCustomer" type="submit" /></div>
+</form>
+</div>
+
+<div style="margin: 0 auto;"><img alt="oracle logo" class="align-center" src="/drupal/sites/default/files/inline-images/tfm_aws_oracle_netsuite_logo.png" /></div>
+</div>
