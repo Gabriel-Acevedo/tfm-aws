@@ -15,7 +15,7 @@ function postCustomer(){
 									"email": $('#email').val()
 								}),			
 			success: function(response){
-                localStorage["customerid"] = response;
+				setCustomerId(response);
 			}
 	});
 };		

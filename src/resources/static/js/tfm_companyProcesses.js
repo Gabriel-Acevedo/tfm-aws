@@ -1,7 +1,10 @@
 var AWS_ENDPOINT = getAwsEndpoint();
-var receiveidCustomerId = localStorage["customerid"];
 
-var API_POST_COMPANY = AWS_ENDPOINT + "/api/" + receiveidCustomerId  + "/company";
+var newCustomerId = getCustomerId();
+
+var API_POST_COMPANY = AWS_ENDPOINT + "/api/" + newCustomerId  + "/company";
+
+
 
 async function addCompany(){
 	return await postCompany();
@@ -20,8 +23,8 @@ function postCompany(){
                                 }),
 					
 			success: function(response){
-               console.log("Company id: " + response);
+              setCompanyId(response);
 			}
 	});
 
-};
+};	
