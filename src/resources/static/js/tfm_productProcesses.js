@@ -7,7 +7,6 @@ var API_GET_PRODUCTS = AWS_ENDPOINT + "/api/products";
 
 var API_POST_BUDGET  = AWS_ENDPOINT + "/api/" + customerId  + "/budget";
 
-console.log("AWS: " + API_POST_BUDGET);
 
 var productsSelected = [];
 
@@ -64,23 +63,21 @@ function selectProduct(product, button) {
 		    document.getElementById("next-button").disabled = true;
 		    document.getElementById("next-button").style.backgroundColor = "#b7b7b7";
 	    }
+		
 
 };
 
 async function addBudget(){
-	return await postBudget();
+	return await createBudget();
 };
 
-function postBudget(){
-
+function createBudget(){
 	$.ajax({
-	    	type: 'POST',
-			url: API_POST_BUDGET  ,
-		    data: '{\"products\": [' + productsSelected + '] }',
+            type: 'POST',
+			url: API_POST_BUDGET,
+			data: '{\"products\": [' + productsSelected + ']}',		
 			success: function(response){
-				console.log("Budget: " + response);
-                setBudgetId(response);
+				setBudgetId(response);
 			}
 	});
-
 };

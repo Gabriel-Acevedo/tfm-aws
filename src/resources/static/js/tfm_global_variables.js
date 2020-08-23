@@ -1,5 +1,5 @@
 //AWS:
-const awsEndpoint = "https://e69r1txiva.execute-api.us-east-1.amazonaws.com/Prod";
+const awsEndpoint = "https://3lqqfnpsrj.execute-api.us-east-1.amazonaws.com/Prod";
 
 
 function getAwsEndpoint() {
