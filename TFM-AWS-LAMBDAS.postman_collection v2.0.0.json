@@ -344,17 +344,47 @@
 				{
 					"name": "GET - Budget by ID",
 					"request": {
+						"auth": {
+							"type": "awsv4",
+							"awsv4": [
+								{
+									"key": "sessionToken",
+									"value": "{{AWS_SESSION}}",
+									"type": "string"
+								},
+								{
+									"key": "service",
+									"value": "CloudFormation",
+									"type": "string"
+								},
+								{
+									"key": "region",
+									"value": "{{AWS_REGION}}",
+									"type": "string"
+								},
+								{
+									"key": "secretKey",
+									"value": "{{AWS_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "accessKey",
+									"value": "{{AWS_ACCESS}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/api/budget/",
+							"raw": "{{URL}}/api/budget/e1caa480-e4bc-11ea-87a6-bb6ad95751ad",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
 								"budget",
-								""
+								"e1caa480-e4bc-11ea-87a6-bb6ad95751ad"
 							]
 						}
 					},
