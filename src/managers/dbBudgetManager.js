@@ -126,7 +126,7 @@ async function setBudgetToCustomer(budgetId, customerid, budgetData){
     return await addBudgetToCustomer(budgetId, customerid, budgetData);
 }
 
-const addBudgetToCustomer = (budgetId, customerid, budgetData) => {
+function addBudgetToCustomer(budgetId, customerid, budgetData){
     
     const params = {
         TableName: customerTable,
