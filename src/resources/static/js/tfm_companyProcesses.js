@@ -1,8 +1,8 @@
 var AWS_ENDPOINT = getAwsEndpoint();
 
-var newCustomerId = getCustomerId();
+var customerId = getSessionStorageId('CUSTOMERID');
 
-var API_POST_COMPANY = AWS_ENDPOINT + "/api/" + newCustomerId  + "/company";
+var API_POST_COMPANY = AWS_ENDPOINT + "/api/" + customerId + "/company";
 
 
 
@@ -23,7 +23,7 @@ function postCompany(){
                                 }),
 					
 			success: function(response){
-              setCompanyId(response);
+                                setSessionStorageId('COMPANYID', response);
 			}
 	});
 

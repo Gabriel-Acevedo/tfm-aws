@@ -1,7 +1,7 @@
 var AWS_ENDPOINT = getAwsEndpoint();
 
-var customerId = getCustomerId();
-var companyId = getCompanyId();
+var customerId = getSessionStorageId('CUSTOMERID');
+var companyId  = getSessionStorageId('COMPANYID');
 
 var API_GET_PRODUCTS = AWS_ENDPOINT + "/api/products"; 
 
@@ -67,6 +67,7 @@ function selectProduct(product, button) {
 
 };
 
+
 async function addBudget(){
 	return await createBudget();
 };
@@ -77,7 +78,7 @@ function createBudget(){
 			url: API_POST_BUDGET,
 			data: '{\"products\": [' + productsSelected + ']}',		
 			success: function(response){
-				setBudgetId(response);
+				setSessionStorageId('BUDGETID', response);
 			}
 	});
 };

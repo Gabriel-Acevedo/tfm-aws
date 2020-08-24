@@ -1,8 +1,8 @@
 var AWS_ENDPOINT = getAwsEndpoint();
 
-var newbudgetId = getBudgetId();
+var budgetId = getSessionStorageId('BUDGETID')
 
-var API_GET_BUDGET = AWS_ENDPOINT + "/api/budget/" + newbudgetId ; 
+var API_GET_BUDGET = AWS_ENDPOINT + "/api/budget/" + budgetId; 
 
 $(document).ready(async function(){
     await loadBudget();

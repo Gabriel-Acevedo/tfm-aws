@@ -1,5 +1,5 @@
 //AWS:
-const awsEndpoint = "https://3lqqfnpsrj.execute-api.us-east-1.amazonaws.com/Prod";
+const awsEndpoint = "https://do51n87nb6.execute-api.us-east-1.amazonaws.com/Prod";
 
 
 function getAwsEndpoint() {
@@ -7,32 +7,10 @@ function getAwsEndpoint() {
 };
 
 
-function setCustomerId(p_customerId){
-	sessionStorage.setItem('CUSTOMERID', p_customerId);
+function setSessionStorageId(p_name, p_value){
+        sessionStorage.setItem(p_name, p_value);
 };
 
-
-function getCustomerId(){
-	var customerid = sessionStorage.getItem('CUSTOMERID');
-	return customerid;
-};
-
-
-
-function setCompanyId(p_companyId){
-	sessionStorage.setItem('COMPANYID', p_companyId);
-};
-function getCompanyId(){
-	var companyid = sessionStorage.getItem('COMPANYID');
-	return companyid;
-};
-
-
-
-function setBudgetId(p_budgetId){
-	sessionStorage.setItem('BUDGETID', p_budgetId);
-};
-function getBudgetId(){
-	var budgetid = sessionStorage.getItem('BUDGETID');
-	return budgetid;
+function getSessionStorageId(p_name){
+        return sessionStorage.getItem(p_name);
 };

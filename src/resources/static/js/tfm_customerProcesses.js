@@ -1,6 +1,11 @@
 var AWS_ENDPOINT = getAwsEndpoint();
 var API_POST_CUSTOMER = AWS_ENDPOINT + "/api/customer";
 
+setSessionStorageId('CUSTOMERID', '');
+setSessionStorageId('COMPANYID', '');
+setSessionStorageId('BUDGETID', '');
+
+
 async function addCustomer(){
    return await postCustomer();
 };
@@ -15,7 +20,7 @@ function postCustomer(){
 									"email": $('#email').val()
 								}),			
 			success: function(response){
-				setCustomerId(response);
+				setSessionStorageId('CUSTOMERID', response);
 			}
 	});
 };		
