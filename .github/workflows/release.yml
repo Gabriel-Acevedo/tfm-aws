@@ -1,4 +1,4 @@
-name: "CD: Publish Release and Zip Files"
+name: "CI: Publish Release and Zip Files"
 
 on:
   push:
