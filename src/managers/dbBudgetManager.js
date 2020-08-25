@@ -53,40 +53,39 @@ const addBudget = async (customerid, budgetData) => {
     
     var totalHours = await getTotalExpenseHours(budgetData.products);
 
-    const budgetId = uuid.v1();
-    const params = {
-        TableName: tableBudgets,
-        Item: {
+    totalHours.then(async function(val){
+        const budgetId = uuid.v1();
+        const params = {
+            TableName: tableBudgets,
+            Item: {
+                "budgetid": budgetId,
+                "customer": customerData,
+                "products": budgetData.products,
+                "date": dateTime,
+                "total": totalHours
+            }
+        };
+    
+        const budgetCustomer = {
             "budgetid": budgetId,
-            "customer": customerData,
             "products": budgetData.products,
             "date": dateTime,
             "total": totalHours
-        }
-    };
+        };
 
-    const budgetCustomer = {
-        "budgetid": budgetId,
-        "products": budgetData.products,
-        "date": dateTime,
-        "total": totalHours
-    };
+        await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
 
-    await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
+        await docClient.put(params).promise();
+    
+        return budgetId;
 
-    await docClient.put(params).promise();
+    });
 
-    return budgetId;
 };
 
 
-async function getCustomerData (customerid){
-    const customerData = await getCustomer(customerid);
-    return customerData;
-};
-
-function getCustomer(customerid){
-    const params = {
+function getCustomerData (customerid){
+   const params = {
         TableName: customerTable,        
         KeyConditionExpression: "customerid = :customerid",
         ExpressionAttributeValues: {
@@ -94,7 +93,7 @@ function getCustomer(customerid){
         },
     };
     return docClient.query(params).promise();
-}
+};
 
 
 async function getTotalExpenseHours(products){
@@ -106,7 +105,7 @@ async function getTotalExpenseHours(products){
         hours = productData.Items[0].expensehours;
         totalHours = totalHours + hours;
     }
-    return totalHours;
+    return Promise.resolve(totalHours);
 }
 
 
@@ -122,12 +121,7 @@ function getProduct(productid){
 }
 
 
-async function setBudgetToCustomer(budgetId, customerid, budgetData){
-    return await addBudgetToCustomer(budgetId, customerid, budgetData);
-}
-
-function addBudgetToCustomer(budgetId, customerid, budgetData){
-    
+function setBudgetToCustomer(budgetId, customerid, budgetData){
     const params = {
         TableName: customerTable,
         Key: {
@@ -143,9 +137,8 @@ function addBudgetToCustomer(budgetId, customerid, budgetData){
         ReturnValues: 'UPDATED_NEW'
     };
     return docClient.update(params).promise();
-    
-}
 
+}
 
 module.exports = {
     getAllBudgets,
