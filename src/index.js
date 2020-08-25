@@ -233,7 +233,8 @@ const sendResponse = (statusCode, message, callback) => {
     const res = {
         statusCode: statusCode,
         headers: {
-            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Origin' : 'https://acevedo.biz',
+            'Access-Control-Allow-Credentials' : true,
             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
             'Access-Control-Allow-Headers': 'Content-Type',
             'Content-Type': 'application/json' 
@@ -242,3 +243,4 @@ const sendResponse = (statusCode, message, callback) => {
     };
     callback(null, res);
 };
+
