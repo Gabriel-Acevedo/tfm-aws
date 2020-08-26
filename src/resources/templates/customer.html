@@ -1,3 +1,4 @@
+<p>&nbsp;</p>
 <link href="/drupal/sites/default/files/css/custom/tfm_aws_main.css" rel="stylesheet" /><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><script src="/drupal/sites/default/files/js/custom/tfm_global_variables.js"></script><script src="/drupal/sites/default/files/js/custom/tfm_customerProcesses.js"></script>
 <div id="header">
 <div id="headline">
@@ -24,12 +25,14 @@
 
 <div class="grid-container x-center-content">
 <div class="form-card">
-<form action="/drupal/awsCustomerCompany" id="createCustomer" onsubmit="addCustomer()">
+<form>
 <h2 class="fs-title">Customer Details</h2>
 <input id="name" name="name" placeholder="Name" required="" type="text" /> <input id="lastname" name="lastname" placeholder="Lastname" required="" type="text" /> <input id="email" name="email" placeholder="Email" required="" type="email" />
-<div><input class="action-button" id="submitCustomer" type="submit" /></div>
+<div><button class="action-button" onclick="changeUrl()">Next</button></div>
 </form>
 </div>
 
 <div style="margin: 0 auto;"><img alt="oracle logo" class="align-center" src="/drupal/sites/default/files/inline-images/tfm_aws_oracle_netsuite_logo.png" /></div>
 </div>
+
+<p>&nbsp;</p>
