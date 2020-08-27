@@ -50,33 +50,39 @@ const addBudget = async (customerid, budgetData) => {
         "email": customer.Items[0].email,
         "company": customer.Items[0].company
     };
+    
+     var totalHours = await getTotalExpenseHours(budgetData.products);
 
-    const budgetId = uuid.v1();
-    const params = {
-        TableName: tableBudgets,
-        Item: {
+    totalHours.then(async function(val){
+        const budgetId = uuid.v1();
+        const params = {
+            TableName: tableBudgets,
+            Item: {
+                "budgetid": budgetId,
+                "customer": customerData,
+                "products": budgetData.products,
+                "date": dateTime,
+                "total": totalHours
+            }
+        };
+    
+        const budgetCustomer = {
             "budgetid": budgetId,
-            "customer": customerData,
             "products": budgetData.products,
             "date": dateTime,
             "total": totalHours
-        }
-    };
+        };
+
+        await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
+
+        await docClient.put(params).promise();
     
-    const budgetCustomer = {
-        "budgetid": budgetId,
-        "products": budgetData.products,
-        "date": dateTime,
-        "total": totalHours
-    };
+        return budgetId;
 
-    await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
-
-    await docClient.put(params).promise();
-
-    return budgetId;
+    });
 
 };
+
 
 function getCustomerData (customerid){
    const params = {
@@ -88,6 +94,32 @@ function getCustomerData (customerid){
     };
     return docClient.query(params).promise();
 };
+
+
+async function getTotalExpenseHours(products){
+    let hours;
+    let totalHours = 0;
+
+    for(var i = 0; i< products.length; i++){
+        var productData = await getProduct(products[i].productid);
+        hours = productData.Items[0].expensehours;
+        totalHours = totalHours + hours;
+    }
+    return Promise.resolve(totalHours);
+}
+
+
+function getProduct(productid){
+    const params = {
+        TableName: productTable,
+        KeyConditionExpression: "productid = :productid",
+        ExpressionAttributeValues: {
+            ":productid": productid
+        },
+    };
+    return docClient.query(params).promise();
+}
+
 
 function setBudgetToCustomer(budgetId, customerid, budgetData){
     const params = {

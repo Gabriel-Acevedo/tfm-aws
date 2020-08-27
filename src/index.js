@@ -1,147 +1,242 @@
-const uuid = require('uuid');
-const AWS = require('aws-sdk');
-const REGION = "us-east-1";
+'use strict';
 
-AWS.config.update({
-    endpoint: "https://dynamodb." + REGION + ".amazonaws.com"
-});
-
-
-const docClient = new AWS.DynamoDB.DocumentClient();
-const tableBudgets = 'budgets';
-const customerTable = 'customers';
-const productTable = 'products';
+const dbCustomerManager = require('./managers/dbCustomerManager');
+const dbProductManager  = require('./managers/dbProductManager');
+const dbCompanyManager  = require('./managers/dbCompanyManager');
+const dbBudgetManager   = require('./managers/dbBudgetManager');
 
 
-const getAllBudgets = () => {
-    const params = {
-        TableName: tableBudgets
-    };
-
-    return docClient.scan(params).promise();
-};
-
-
-const getBudget = (budgetid) => {
-    const params = {
-        TableName: tableBudgets,        
-        KeyConditionExpression: "budgetid = :budgetid",
-        ExpressionAttributeValues: {
-            ":budgetid": budgetid
-        },
-    };
-    return docClient.query(params).promise();
-};
-
-
-const addBudget = async (customerid, budgetData) => {
-    function pad(s) { return (s < 10) ? '0' + s : s; }
-    var today = new Date();
-    var date = [pad(today.getDate()), pad(today.getMonth()+1), today.getFullYear()].join('-');
-    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateTime = date+' '+time;
-    const customer = await getCustomerData(customerid);
-    
-    
-    const customerData = {
-        "customerid": customer.Items[0].customerid,
-        "name": customer.Items[0].name,
-        "lastname": customer.Items[0].lastname,
-        "email": customer.Items[0].email,
-        "company": customer.Items[0].company
-    };
-    
-     var totalHours = await getTotalExpenseHours(budgetData.products);
-
-    totalHours.then(async function(val){
-        const budgetId = uuid.v1();
-        const params = {
-            TableName: tableBudgets,
-            Item: {
-                "budgetid": budgetId,
-                "customer": customerData,
-                "products": budgetData.products,
-                "date": dateTime,
-                "total": totalHours
-            }
-        };
-    
-        const budgetCustomer = {
-            "budgetid": budgetId,
-            "products": budgetData.products,
-            "date": dateTime,
-            "total": totalHours
-        };
-
-        await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
-
-        await docClient.put(params).promise();
-    
-        return budgetId;
-
-    });
-
-};
-
-
-function getCustomerData (customerid){
-   const params = {
-        TableName: customerTable,        
-        KeyConditionExpression: "customerid = :customerid",
-        ExpressionAttributeValues: {
-            ":customerid": customerid
-        },
-    };
-    return docClient.query(params).promise();
-};
-
-
-async function getTotalExpenseHours(products){
-    let hours;
-    let totalHours = 0;
-
-    for(var i = 0; i< products.length; i++){
-        var productData = await getProduct(products[i].productid);
-        hours = productData.Items[0].expensehours;
-        totalHours = totalHours + hours;
+exports.customerHandler = (event, context, callback) => {
+    switch (event.httpMethod) {     
+        case 'GET':
+            if (event.pathParameters && event.pathParameters.customerid){
+                getCustomer(event.pathParameters.customerid, callback);
+            }else{
+                getAllCustomers(callback);            
+            } 
+            break;
+        case 'POST':
+            addCustomer(event.body, callback);
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
     }
-    return Promise.resolve(totalHours);
-}
+};
 
 
-function getProduct(productid){
-    const params = {
-        TableName: productTable,
-        KeyConditionExpression: "productid = :productid",
-        ExpressionAttributeValues: {
-            ":productid": productid
-        },
-    };
-    return docClient.query(params).promise();
-}
+//Customer Functions
+const getAllCustomers = (callback) => {
+    dbCustomerManager.getAllCustomers()
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback());
+    });
+};
+
+const getCustomer = (customerid, callback) => {
+    dbCustomerManager.getCustomer(customerid)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+
+const addCustomer = (data, callback) => {
+    data = JSON.parse(data);
+
+    dbCustomerManager.addCustomer(data)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+//End Customer Functions
 
 
-function setBudgetToCustomer(budgetId, customerid, budgetData){
-    const params = {
-        TableName: customerTable,
-        Key: {
-            "customerid": customerid
-        },
-        UpdateExpression: 'SET budgets.#budgetid = :val',
-        ExpressionAttributeNames : {
-            '#budgetid' : budgetId
-          },
-          ExpressionAttributeValues : {
-            ':val' : budgetData
-        },
-        ReturnValues: 'UPDATED_NEW'
-    };
-    return docClient.update(params).promise();
+exports.productHandler = (event, context, callback) => {
+    switch (event.httpMethod) {     
+        case 'GET':
+            if (event.pathParameters && event.pathParameters.productid){
+                getProduct(event.pathParameters.productid, callback);
+            }else{
+                getAllProducts(callback);         
+            } 
+            break;
+        case 'POST':
+            addProduct(event.body, callback);            
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
+    }
+};
 
-}
+//Product Functions
+const getAllProducts = (callback) => {
+    dbProductManager.getAllProducts()
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
 
-module.exports = {
-    getAllBudgets,
-    getBudget,
-    addBudget
+const getProduct = (productid, callback) => {
+    dbProductManager.getProduct(productid)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+
+const addProduct = (data, callback) => {
+    data = JSON.parse(data);
+	
+	dbProductManager.addProduct(data)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+//End Product Functions
+
+
+exports.companyHandler = (event, context, callback) => {
+    switch (event.httpMethod) {     
+        case 'GET':
+            if (event.pathParameters && event.pathParameters.vatregnumber){
+                getCompany(event.pathParameters.vatregnumber, callback);
+            }else{
+                getAllCompanies(callback);         
+            } 
+            break;
+        case 'POST':
+            addCompany(event.pathParameters.customerid, event.body, callback);            
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
+    }
+};
+
+//Company Functions
+const getAllCompanies = (callback) => {
+    dbCompanyManager.getAllCompanies()
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+
+const getCompany = (vatregnumber, callback) => {
+    dbCompanyManager.getCompany(vatregnumber)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+
+const addCompany = (customerid, data, callback) => {
+    data = JSON.parse(data);
+
+    dbCompanyManager.addCompany(customerid, data)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+//END Company Functions
+
+
+exports.budgetHandler = (event, context, callback) => {
+    switch (event.httpMethod) {     
+        case 'GET':
+            if (event.pathParameters && event.pathParameters.budgetid){
+                getBudget(event.pathParameters.budgetid, callback);
+            }else{
+                getAllBudgets(callback);         
+            } 
+            break;
+        case 'POST':
+            addBudget(event.pathParameters.customerid,event.body, callback);            
+            break;
+        default:
+            sendResponse(400, `Unsupported method ${event.httpMethod}`, callback);
+	}
+};
+
+//Budget Functions
+const getAllBudgets = (callback) => {
+    dbBudgetManager.getAllBudgets()
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+
+const getBudget = (budgetid, callback) => {
+    dbBudgetManager.getBudget(budgetid)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+
+const addBudget = (customerid, data, callback) => {
+    data = JSON.parse(data);
+
+    dbBudgetManager.addBudget(customerid, data)
+    .then((res) => {
+        sendResponse(200, res, callback);
+    })
+    .catch((err) => {
+        console.log(err);
+        sendResponse(400, err, callback);
+    });
+};
+//END Budget Functions
+
+const sendResponse = (statusCode, message, callback) => {
+    const res = {
+        statusCode: statusCode,
+        headers: {
+            'Access-Control-Allow-Origin' : 'https://acevedo.biz',
+            'Access-Control-Allow-Credentials' : true,
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Content-Type': 'application/json' 
+		},
+		body: JSON.stringify(message)
+	};
+    callback(null, res);
 };
