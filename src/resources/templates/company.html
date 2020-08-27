@@ -24,7 +24,7 @@
 
 <div class="grid-container x-center-content">
 <div class="form-card">
-<form action="/drupal/en/awsCustomerProducts" id="createCompany" onsubmit="addCompany()">
+<form>
 <h2 class="fs-title">Company Information</h2>
 <input id="vatregnumber" name="vatregnumber" placeholder="Vat Reg Number" required="" type="text" /> <input id="name" name="name" placeholder="Company name" required="" type="text" />
 <div style="display: flex;">
@@ -36,9 +36,9 @@
 <p>Industry:</p>
 <select id="industry" name="industry" required=""><option value="">Select Industry</option><option value="Accounting">Accounting</option><option value="Consumer Goods">Consumer Goods</option><option value="Food Production">Food Production</option><option value="Furniture">Furniture</option><option value="Information Technology/IT">Information Technology/IT</option><option value="Logistics">Logistics</option><option value="Others">Others</option><option value="Telecommunications">Telecommunications</option><option value="Textiles">Textiles</option><option value="Services">Services</option> </select></div>
 </div>
-
-<div><input class="action-button" id="submitCompany" type="submit" /></div>
 </form>
+
+<div style="margin: 0% auto 5% auto; text-align: center;"><button class="action-button" onclick="changeToProductUrl()">Next</button></div>
 </div>
 
 <div style="margin: 0 auto;"><img alt="oracle logo" class="align-center" src="/drupal/sites/default/files/inline-images/tfm_aws_oracle_netsuite_logo.png" /></div>
