@@ -1,4 +1,6 @@
 var AWS_ENDPOINT = getAwsEndpoint();
+var companyURL = getUrl("custCompanyURL");
+
 var API_POST_CUSTOMER = AWS_ENDPOINT + "/api/customer";
 
 function validateEmail(email) {
@@ -16,22 +18,21 @@ function changeUrl(){
                         type: 'POST',
 			url: API_POST_CUSTOMER,
 			data: JSON.stringify({
-									"name": $('#name').val(),
-									"lastname": $('#lastname').val(),
-									"email": $('#email').val()
-									}),			
+						"name": $('#name').val(),
+						"lastname": $('#lastname').val(),
+						"email": $('#email').val()
+					     }),			
 			success: function(response){
-                             window.location.replace("https://acevedo.biz/drupal/en/awsCustomerCompany?custid="+response);
+                             window.location.replace(companyURL + "?custid="+response);
 			},
-			error: function(response){
-					alert ("Unexpected error ocurred calling Rest API!!");
-			}
+                        error: function(response){
+                             alert ("Unexpected error ocurred calling Rest API!!");
+                        }
 		});
                 
             }else{
                 alert ("Please enter a valid email!");
             }
 	 }
-		 return false;
-		 
+         return false;
 }

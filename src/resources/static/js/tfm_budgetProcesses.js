@@ -1,12 +1,14 @@
 var AWS_ENDPOINT = getAwsEndpoint();
+var customerURL = getUrl("custDetailsURL");
+var budgid = getUrlVars()["budgid"];
 
-var budgetId = getSessionStorageId('BUDGETID')
+var API_GET_BUDGET = AWS_ENDPOINT + "/api/budget/" + budgid; 
 
-var API_GET_BUDGET = AWS_ENDPOINT + "/api/budget/" + budgetId; 
 
 $(document).ready(async function(){
     await loadBudget();
 });
+
 
 function loadBudget(){
 
@@ -30,6 +32,10 @@ function loadBudget(){
 				bcustomercountry.innerText = budget.customer.company.country;
 				btotalhours.innerText = budget.total;
 			})
-		}
-    });
+	    }
+       });
+};
+
+function changeUrlToCustomer(){
+     window.location.replace(customerURL);
 };

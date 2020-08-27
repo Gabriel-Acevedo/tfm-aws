@@ -1,12 +1,9 @@
 var AWS_ENDPOINT = getAwsEndpoint();
-
-var customerId = getSessionStorageId('CUSTOMERID');
-var companyId  = getSessionStorageId('COMPANYID');
+var budgetURL = getUrl("custBudgetURL");
+var custid = getUrlVars()["custid"];
 
 var API_GET_PRODUCTS = AWS_ENDPOINT + "/api/products"; 
-
-var API_POST_BUDGET  = AWS_ENDPOINT + "/api/" + customerId  + "/budget";
-
+var API_POST_BUDGET  = AWS_ENDPOINT + "/api/" + custid  + "/budget";
 
 var productsSelected = [];
 
@@ -40,9 +37,9 @@ function loadProducts(){
 };
 
 function selectProduct(product, button) {
-		var singleProductId = document.getElementById(product);
+	var singleProductId = document.getElementById(product);
 	
-		var addProduct = '{\"productid\": \"' + singleProductId.textContent +'\"}';
+	var addProduct = {productid:  singleProductId.textContent };
 
         if(button.innerText == '+ Add'){
             productsSelected.push(addProduct);
@@ -54,31 +51,25 @@ function selectProduct(product, button) {
             productsSelected.splice(productsSelected.indexOf(addProduct),1);	
 		    button.innerText = '+ Add';
 		    button.style.backgroundColor = "#616161";
-        }
-
-	    if(productsSelected.length > 0){
-		    document.getElementById("next-button").disabled = false;
-		    document.getElementById("next-button").style.backgroundColor = "#00E098";
-	    }else{
-		    document.getElementById("next-button").disabled = true;
-		    document.getElementById("next-button").style.backgroundColor = "#b7b7b7";
-	    }
-		
-
+        }	
 };
 
 
-async function addBudget(){
-	return await createBudget();
-};
-
-function createBudget(){
-	$.ajax({
-            type: 'POST',
+function changeToBudgetUrl(){
+	if(productsSelected.length == 0){
+		alert ("Please select a Product from the products available!");
+	}else{
+		$.ajax({
+			type: 'POST',
 			url: API_POST_BUDGET,
-			data: '{\"products\": [' + productsSelected + ']}',		
+			data: JSON.stringify({ "products": productsSelected }),	
 			success: function(response){
-				setSessionStorageId('BUDGETID', response);
+				window.location.replace(budgetURL + "?budgid="+response)
+			},
+			error: function(response){
+				 alert ("Unexpected error ocurred calling Rest API!!");
 			}
-	});
+		});
+	}
+	return false;
 };
