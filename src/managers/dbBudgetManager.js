@@ -51,36 +51,28 @@ const addBudget = async (customerid, budgetData) => {
         "company": customer.Items[0].company
     };
     
-     var totalHours = await getTotalExpenseHours(budgetData.products);
-
-    totalHours.then(async function(val){
-        const budgetId = uuid.v1();
-        const params = {
-            TableName: tableBudgets,
-            Item: {
-                "budgetid": budgetId,
-                "customer": customerData,
-                "products": budgetData.products,
-                "date": dateTime,
-                "total": totalHours
-            }
-        };
+    var totalHours = await getTotalExpenseHours(budgetData.products);
     
-        const budgetCustomer = {
+    const budgetId = uuid.v1();
+    const params = {
+        TableName: tableBudgets,
+        Item: {
             "budgetid": budgetId,
+            "customer": customerData,
             "products": budgetData.products,
             "date": dateTime,
             "total": totalHours
-        };
-
-        await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
-
-        await docClient.put(params).promise();
-    
-        return budgetId;
-
-    });
-
+        }
+    };
+    const budgetCustomer = {
+        "budgetid": budgetId,
+        "products": budgetData.products,
+        "date": dateTime,
+        "total": totalHours
+    };
+    await setBudgetToCustomer(budgetId, customerid, budgetCustomer);
+    await docClient.put(params).promise();
+    return budgetId;
 };
 
 
