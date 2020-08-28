@@ -74,6 +74,11 @@ Resources:
                     Properties:
                         Path: /api/products
                         Method: GET
+                lambdaGetProduct:
+                    Type: Api
+                    Properties:
+                        Path: /api/product/{productid}
+                        Method: GET
                 lambdaAddProduct:
                     Type: Api
                     Properties:
