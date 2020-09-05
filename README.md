@@ -24,6 +24,7 @@ Se deberán de tener en cuenta los siguientes requisitios:
   ```
 
 
+
 ## Otros datos
 
 Se ha añadido una coleccion de postman para la ejecucion de los endpoints de las API REST. Esta coleccion contiene una serie de variables:
