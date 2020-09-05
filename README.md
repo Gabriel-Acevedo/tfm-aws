@@ -1,5 +1,11 @@
 # TFM - AWS Lambda
 
+## API DOC
+
+* ### [REST](API-REST.md)
+
+* ### [WEB](API-WEB.md)
+
 ## Modelo
 
 ![](https://www.planttext.com/api/plantuml/png/Z971IWCn48RlUOgSbRx07gJOKl0W27eJ3saoh85aPaacOX6Vp8EFr5TekfisQtSfvX32_vEPR-RV__mk8wl0oJiX15js85ysZqBcqr_QgHZbAaKc3-6hruxdrff6FY1N0PM7HZvpiDXMDN_dUGUyicugQ_ATmbqZLyEZTxulWPu2cQJv6eycCzDrdiL0rC5sR0bdG3yxm0Zlb4AiFIP8XVSQqeVY02qcluNmNpHD2JdifeP5arEvS2PKzycqy7TFezebrkOSSFMwOSDvuhBhrxVHlXHdr7M-gyR4AkUvfhHrC8OvrPOtYyNTELOna1Nnr7uibhv34R64FAzt1m000F__0m00)
