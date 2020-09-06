@@ -52,10 +52,3 @@ The following requirements must be taken into account:
     confirm_changeset = true
     capabilities = "CAPABILITY_IAM"
     ```
-
-## Repository code Analysis
-
-The analysis of the repository code will be done using Sonar Cloud. Sonar Cloud is a service that allows the analysis of project code located in the GitHub repository, performing a thorough analysis of the application and showing a detailed report of the problems encountered.
-
-One of the drawbacks of Sonar Cloud is that in order to analyze free repositories without having a subscription account, the repository must be public and that is why the repository had to be made public so that the code could be analyzed.
-
