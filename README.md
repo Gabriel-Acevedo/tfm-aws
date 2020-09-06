@@ -15,7 +15,7 @@ This project raises two technological perspectives notably distanced:
 
 ## AWS DOC
 
-* ### [LAMBDA Functions and API Gateway](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-LAMBDA-GATEWAY.md)
+* ### [APPLICATION CONTENT](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-APPLICATION-CONTENTS.md)
 
 * ### [Continuous Integration & Continuous Deployment](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-CI-CD.md)
 
@@ -35,15 +35,16 @@ The following requirements must be taken into account:
   - **AWS Account**: A normal AWS account is required. AWS Educate accounts won´t work due to the temporary credentials.
   - **S3 Bucket**: A S3 Bucket must be created previously and added to the **samconfig.yml** template file.
 
-  ```
-  version = 0.1
-  [default]
-  [default.deploy]
-  [default.deploy.parameters]
-  stack_name = "tfm-aws-lambda"
-  s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-tfm2020"
-  s3_prefix = "tfm-aws-lambda"
-  region = "us-east-1"
-  confirm_changeset = true
-  capabilities = "CAPABILITY_IAM"
-  ```
+    ```
+    version = 0.1
+    [default]
+    [default.deploy]
+    [default.deploy.parameters]
+    stack_name = "tfm-aws-lambda"
+    s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-tfm2020"
+    s3_prefix = "tfm-aws-lambda"
+    region = "us-east-1"
+    confirm_changeset = true
+    capabilities = "CAPABILITY_IAM"
+    ```
+
