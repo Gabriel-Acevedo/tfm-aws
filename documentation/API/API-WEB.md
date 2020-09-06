@@ -6,7 +6,7 @@
 
 ## CUSTOMER
 
-_Customer information form_
+_Customer information form._
 
 * ### TEMPLATE: [_customer.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/customer.html)
 
@@ -22,7 +22,7 @@ _Customer information form_
 
 ## SAVE CUSTOMER INFO
 
-_Saves the information of the form and creates a new Customer_
+_Saves the information of the form and creates a new Customer._
 
 * ### METHOD: POST
 
@@ -33,7 +33,7 @@ _Saves the information of the form and creates a new Customer_
 
 ## COMPANY
 
-_Customers Company information form_
+_Customers Company information form._
 
 * ### TEMPLATE: [_company.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/company.html)
 
@@ -49,7 +49,7 @@ _Customers Company information form_
 
 ## SAVE COMPANY INFO
 
-_Saves the information of the form, creates a new Company and adds the new Company to the Customer_
+_Saves the information of the form, creates a new Company and adds the new Company to the Customer._
 
 * ### METHOD: POST
 
@@ -59,15 +59,15 @@ _Saves the information of the form, creates a new Company and adds the new Compa
 
 ## PRODUCT
 
-_Product selection form_
+_Product selection form._
 
-* ### TEMPLATE: [_product.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/_product.html)
+* ### TEMPLATE: [_product.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/product.html)
 
 * ### CSS: [_tfm_product.css_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_product.css)
 
 * ### JAVASCRIPT:
     - #### [_tfm_global_variables.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
-    - #### [_tfm_companyProcesses.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_productProcesses.js)
+    - #### [_tfm_productProcesses.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_productProcesses.js)
 
 ![product.html](../images/webTemplates/product.png)
 
@@ -75,7 +75,7 @@ _Product selection form_
 
 ## GET PRODUCTS
 
-_Returns the actual products available to be selected by the Customer_
+_Returns the actual products available to be selected by the Customer._
 
 * ### METHOD: GET
 
@@ -85,7 +85,7 @@ _Returns the actual products available to be selected by the Customer_
 
 ## SAVE NEW BUDGET
 
-_Creates a new budget with the information of the selected products by the Customer_
+_Creates a new budget with the information of the selected products by the Customer._
 
 * ### METHOD: POST
 
@@ -93,9 +93,9 @@ _Creates a new budget with the information of the selected products by the Custo
 
 ***
 
-## BUDET
+## BUDGET
 
-_Summary of the Budget_
+_Summary of the Budget._
 
 * ### TEMPLATE: [_budget.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/budget.html)
 
@@ -111,7 +111,7 @@ _Summary of the Budget_
 
 ## GET BUDGET
 
-_Returns the information of the recently created Budget_
+_Returns the information of the recently created Budget._
 
 * ### METHOD: GET
 
