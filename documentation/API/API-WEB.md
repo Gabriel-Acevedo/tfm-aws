@@ -8,13 +8,13 @@
 
 _Customer information form_
 
-* ### TEMPLATE: _customer.html_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/customer.html)
+* ### TEMPLATE: [_customer.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/customer.html)
 
-* ### CSS: _tfm_aws_main.css_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_aws_main.css)
+* ### CSS: [_tfm_aws_main.css_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_aws_main.css)
 
 * ### JAVASCRIPT:
-    - #### _tfm_global_variables.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
-    - #### _tfm_customerProcesses.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_customerProcesses.js)
+    - #### [_tfm_global_variables.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
+    - #### [_tfm_customerProcesses.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_customerProcesses.js)
 
 ![customer.html](../images/webTemplates/customer.png)
 
@@ -35,13 +35,13 @@ _Saves the information of the form and creates a new Customer_
 
 _Customers Company information form_
 
-* ### TEMPLATE: _company.html_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/company.html)
+* ### TEMPLATE: [_company.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/company.html)
 
-* ### CSS: _tfm_aws_main.css_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_aws_main.css)
+* ### CSS: [_tfm_aws_main.css_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_aws_main.css)
 
 * ### JAVASCRIPT:
-    - #### _tfm_global_variables.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
-    - #### _tfm_companyProcesses.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_customerProcesses.js)
+    - #### [_tfm_global_variables.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
+    - #### [_tfm_companyProcesses.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_companyProcesses.js)
 
 ![company.html](../images/webTemplates/company.png)
 
@@ -61,13 +61,13 @@ _Saves the information of the form, creates a new Company and adds the new Compa
 
 _Product selection form_
 
-* ### TEMPLATE: _product.html_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/_product.html)
+* ### TEMPLATE: [_product.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/_product.html)
 
-* ### CSS: _tfm_product.css_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_product.css)
+* ### CSS: [_tfm_product.css_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_product.css)
 
 * ### JAVASCRIPT:
-    - #### _tfm_global_variables.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
-    - #### _tfm_companyProcesses.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_productProcesses.js)
+    - #### [_tfm_global_variables.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
+    - #### [_tfm_companyProcesses.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_productProcesses.js)
 
 ![product.html](../images/webTemplates/product.png)
 
@@ -97,13 +97,13 @@ _Creates a new budget with the information of the selected products by the Custo
 
 _Summary of the Budget_
 
-* ### TEMPLATE: budget.html_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/budget.html)
+* ### TEMPLATE: [_budget.html_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/templates/budget.html)
 
-* ### CSS: _tfm_aws_main.css_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_aws_main.css)
+* ### CSS: [_tfm_aws_main.css_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/css/tfm_aws_main.css)
 
 * ### JAVASCRIPT:
-    - #### _tfm_global_variables.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
-    - #### _tfm_budgetProcesses.js_ [View code](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_budgetProcesses.js)
+    - #### [_tfm_global_variables.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_global_variables.js)
+    - #### [_tfm_budgetProcesses.js_](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/src/resources/static/js/tfm_budgetProcesses.js)
 
 ![budget.html](../images/webTemplates/budget.png)
 
