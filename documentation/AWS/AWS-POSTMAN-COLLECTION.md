@@ -10,4 +10,7 @@ The following postman collection will be helpful to execute E2E test. To use thi
   - **{{AWS_SECRET}}**: AWS secret access token.
   - **{{AWS_REGION}}**: AWS Region where the LAMBDA functions are deployed.
 
-  * ### [POSTMAN](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/TFM-AWS-LAMBDAS.postman_collection%20v2.0.0.json)
+  * ### [POSTMAN-COLLECTION](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/TFM-AWS-LAMBDAS.postman_collection%20v2.0.0.json)
+
+
+  ### [Go to repository](https://github.com/Gabriel-Acevedo/tfm-aws)
