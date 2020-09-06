@@ -1,4 +1,4 @@
-# API-POSTMAN-COLLECTION
+# AWS-POSTMAN-COLLECTION
 
 The following postman collection will be helpful to execute E2E test. To use this collection, there has to be made some previous environment configuration to have the postman collection to work:
 
@@ -7,4 +7,4 @@ The following postman collection will be helpful to execute E2E test. To use thi
   - **{{AWS_SECRET}}**: AWS secret access token.
   - **{{AWS_REGION}}**: AWS Region where the LAMBDA functions are deployed.
 
-  * ### [POSTMAN](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/API/TFM-AWS-LAMBDAS.postman_collection v2.0.0.json)
+  * ### [POSTMAN](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/TFM-AWS-LAMBDAS.postman_collection%20v2.0.0.json)

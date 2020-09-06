@@ -19,6 +19,8 @@ This project raises two technological perspectives notably distanced:
 
 * ### [Continuous Integration & Continuous Deployment](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-CI-CD.md)
 
+* ### [POSTMAN-COLLECTION](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-POSTMAN-COLLECTION.md)
+
 
 ## API DOC
 
@@ -30,8 +32,8 @@ This project raises two technological perspectives notably distanced:
 ## AWS - Requirements
 
 The following requirements must be taken into account:
-  **AWS Account**: A normal AWS account is required. AWS Educate accounts won´t work due to the temporary credentials.
-  **S3 Bucket**: A S3 Bucket must be created previously and added to the **samconfig.yml** template file.
+  - **AWS Account**: A normal AWS account is required. AWS Educate accounts won´t work due to the temporary credentials.
+  - **S3 Bucket**: A S3 Bucket must be created previously and added to the **samconfig.yml** template file.
 
   ```
   version = 0.1
