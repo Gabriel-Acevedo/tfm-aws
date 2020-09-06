@@ -13,7 +13,7 @@ This project raises two technological perspectives notably distanced:
 - The second option is based on *AWS serverless* technologies, using *API Gateway*, *Lambda* functions, *DynamoDB* database and *SAM*.  **This option is explained in the current repository**.
 
 
-## AWS DOC
+## AWS Documentation
 
 * ### [Application Content](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-APPLICATION-CONTENTS.md)
 
@@ -22,11 +22,16 @@ This project raises two technological perspectives notably distanced:
 * ### [Postman Collection](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-POSTMAN-COLLECTION.md)
 
 
-## API DOC
+## API Doumentation
 
 * ### [Rest](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/API/API-REST.md)
 
 * ### [Web](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/API/API-WEB.md)
+
+
+## Development Model
+
+* ### [Trunk Based Development](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/TBD/TBD.md)
 
 
 ## AWS - Requirements
@@ -47,4 +52,10 @@ The following requirements must be taken into account:
     confirm_changeset = true
     capabilities = "CAPABILITY_IAM"
     ```
+
+## Repository code Analysis
+
+The analysis of the repository code will be done using Sonar Cloud. Sonar Cloud is a service that allows the analysis of project code located in the GitHub repository, performing a thorough analysis of the application and showing a detailed report of the problems encountered.
+
+One of the drawbacks of Sonar Cloud is that in order to analyze free repositories without having a subscription account, the repository must be public and that is why the repository had to be made public so that the code could be analyzed.
 
