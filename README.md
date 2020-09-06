@@ -15,18 +15,18 @@ This project raises two technological perspectives notably distanced:
 
 ## AWS DOC
 
-* ### [APPLICATION CONTENT](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-APPLICATION-CONTENTS.md)
+* ### [Application Content](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-APPLICATION-CONTENTS.md)
 
 * ### [Continuous Integration & Continuous Deployment](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-CI-CD.md)
 
-* ### [POSTMAN-COLLECTION](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-POSTMAN-COLLECTION.md)
+* ### [Postman Collection](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/AWS/AWS-POSTMAN-COLLECTION.md)
 
 
 ## API DOC
 
-* ### [REST](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/API/API-REST.md)
+* ### [Rest](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/API/API-REST.md)
 
-* ### [WEB](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/API/API-WEB.md)
+* ### [Web](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/API/API-WEB.md)
 
 
 ## AWS - Requirements
