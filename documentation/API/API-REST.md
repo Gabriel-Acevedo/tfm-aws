@@ -261,22 +261,22 @@ _Get a list of all products available._
             {
                 "code": "GL",
                 "expensehours": 55,
-                "description": "Con el módulo de Contabilidad Múltiple no tendrá que preocuparse si registró los movimientos en los Libros correspondientes porque Netsuite lo hará de manera automática e inmediata sin crear duplicidades que deban ser eliminadas posteriormente.",
-                "name": "Libros Contables",
+                "description": "With the Multiple Accounting module you will not have to worry if you recorded the movements in the corresponding Books because Netsuite will do it automatically and immediately without creating duplicates that need to be eliminated later.",
+                "name": "Ledgers",
                 "productid": "c0f61e70-f04b-11ea-945a-e18826a01862"
             },
             {
                 "code": "AR",
                 "expensehours": 30,
-                "description": "Orientado hacia empresas que requieran facturación recurrente a sus clientes.",
-                "name": "Finanzas Avanzadas",
+                "description": "Oriented towards companies that require recurring billing to their customers.",
+                "name": "Advanced Finance",
                 "productid": "c80a0f10-f04a-11ea-945a-e18826a01862"
             },
             {
                 "code": "AP",
                 "expensehours": 40,
-                "description": "El módulo de Compras Avanzadas le ayudará llevando el control de sus compras relacionando las listas de precios autorizadas con los contratos que tiene activos.",
-                "name": "Compras Avanzadas",
+                "description": "The Advanced Purchasing module will help you by taking control of your purchases by relating the authorized price lists to the contracts you have assets.",
+                "name": "Advance Purchasing",
                 "productid": "ca9092e0-f04a-11ea-945a-e18826a01862"
             }
         ],
