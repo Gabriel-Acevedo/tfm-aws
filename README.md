@@ -2,7 +2,7 @@
 
 Web application created by Acevedoapps that allows you to calculate a budget for the implementation of Oracle NETSuite in your business quickly and easily.
 
-![acevedo.png](images/logos/acevedo.png) ![oracleNetsuite.png](images/logos/oracleNetsuite.png)
+![acevedo.png](documentation/images/logos/acevedo.png) ![oracleNetsuite.png](documentation/images/logos/oracleNetsuite.png)
 
 It is based on an intuitive form, in charge of collecting basic data from the client and his company to store them in an independent database that serves to study the bulk of interested clients, as well as their business characteristics.
 
