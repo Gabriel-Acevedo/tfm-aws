@@ -46,7 +46,7 @@ After the IAM roles creation, CodeBuild configuration is as follows:
     ![tfm-aws-MasterCloudapps2020-v1_1.2.png](../images/ci_cd/tfm-aws-MasterCloudapps2020-v1_1.2.png)
 
 
-* **tfm-aws-MasterCloudapps2020-SAM-BUILD-v1:** CodeBuild that has the configuration to execute the corresponding commands to only build SAM template to verify that everything is correct.
+* **tfm-aws-MasterCloudapps2020-SAM-BUILD-v1:** CodeBuild that has the configuration to execute the corresponding commands to only build CloudFormation template using SAM to verify that the syntaxis is correct in the template.
 
     ![tfm-aws-MasterCloudapps2020-SAM-BUILD-v1_1.0.png](../images/ci_cd/tfm-aws-MasterCloudapps2020-SAM-BUILD-v1_1.0.png)
 
@@ -57,7 +57,7 @@ After the IAM roles creation, CodeBuild configuration is as follows:
     ![tfm-aws-MasterCloudapps2020-SAM-BUILD-v1_1.3.png](../images/ci_cd/tfm-aws-MasterCloudapps2020-SAM-BUILD-v1_1.3.png)
 
 
-* **tfm-aws-MasterCloudapps2020-SAM-v1:** CodeBuild that has the configuration to execute the corresponding commands to build and deploy SAM template.
+* **tfm-aws-MasterCloudapps2020-SAM-v1:** CodeBuild that has the configuration to execute the corresponding commands to build and deploy CloudFormation template.
 
     ![tfm-aws-MasterCloudapps2020-SAM-v1_1.0.png](../images/ci_cd/tfm-aws-MasterCloudapps2020-SAM-v1_1.0.png)
 
@@ -92,7 +92,7 @@ The final step is to create the CodePipeline, which has been divided into the fo
 
 * **Continuous-Delivery**: The objective of this last stage is to deploy the application into production environment.
 
-![cdConfig_1.0.png](../images/ci_cd/cdConfig_1.0.png) ![cdConfig_1.1.png](../images/ci_cd/cdConfig_1.0.png)
+![cdConfig_1.0.png](../images/ci_cd/cdConfig_1.0.png) ![cdConfig_1.1.png](../images/ci_cd/cdConfig_1.1.png)
 
 
 
@@ -100,7 +100,7 @@ The final step is to create the CodePipeline, which has been divided into the fo
 
 Another continuous integration apart from CodePipeline is the analysis of the repository code. This will be done by Sonar Cloud via GitHub Actions when push or pull request are merged into master branch. Sonar Cloud is a service that allows the analysis of project code located in the GitHub repository, performing a thorough analysis of the application and afterwads showing a detailed report of the bugs and problems found.
 
-Before executing the SonarCloud job, ther emust exist in the repository a sonar-project.properties file, which will help SonarCloud to know the repository to be analysed. After this configuration the job will execute succesfully and show at the SonarCloud console the result of the analysis.
+Before executing the SonarCloud job, there must exist in the repository a sonar-project.properties file, which will help SonarCloud to know the repository to be analysed. After this configuration the job will execute succesfully and show at the SonarCloud console the result of the analysis.
 
 * **Files:**
     - **[sonar-project.properties](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/sonar-project.properties)**
