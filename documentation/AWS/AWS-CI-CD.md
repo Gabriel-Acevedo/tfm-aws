@@ -36,27 +36,45 @@ Due to the security and service restrictions on AWS, some IAM roles had to be cr
 
 For this application the defined stages where the following:
 
-- **[codepipelineStages.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/codepipelineStages.png)**
+![codepipelineStages.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/codepipelineStages.png)
 
 
 * **Source:** First stage to be executed and its primary objective is to retrieve the files from GitHub repository and create output artefacts to be used in the next stages.
 
-- **[sourceConfig_1.0.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/sourceConfig_1.0.png)**
+![sourceConfig_1.0.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/sourceConfig_1.0.png)
 
 * **Continuous-Integration:** 
 
-- **Build-Node:** Compiles the code of the application.
+    - **Build-Node:** Compiles the code of the application.
 
-- **[ciConfig_1.0.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/ciConfig_1.0.png)**
+- ![ciConfig_1.0.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/ciConfig_1.0.png)
 
-- **Build-SAM:** Builds the CloudFormation template.
+    - **Build-SAM:** Builds the CloudFormation template.
 
-- **[ciConfig_1.1.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/ciConfig_1.1.png)**
+- ![[ciConfig_1.1.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/ciConfig_1.1.png)
 
 
 * **Continuous-Delivery:** Last stage to be executed and its main objective is to deploy the app into production environment.
 
-- **[cdConfig_1.0.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/cdConfig_1.0.png)**
+- ![cdConfig_1.0.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/cdConfig_1.0.png)
+
+
+The configuration for the different actions in CodePipeline where CodeBuild has been used are the following:
+
+
+* **tfm-aws-MasterCloudapps2020-v1:** Compilation of the code of the node application.
+
+- ![tfm-aws-MasterCloudapps2020-v1.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/tfm-aws-MasterCloudapps2020-v1.png)
+
+
+* **tfm-aws-MasterCloudapps2020-SAM-BUILD-v1:** Build of the CloudFormation template.
+
+- ![tfm-aws-MasterCloudapps2020-SAM-BUILD-v1.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/tfm-aws-MasterCloudapps2020-SAM-BUILD-v1.png)
+
+
+* **tfm-aws-MasterCloudapps2020-SAM-BUILD-v1:**  Build and deployment of the CloudFormation template.
+
+- ![tfm-aws-MasterCloudapps2020-SAM-v1.png](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/documentation/images/ci_cd/tfm-aws-MasterCloudapps2020-SAM-v1.png)
 
 
 ## Analysis of the Application code
