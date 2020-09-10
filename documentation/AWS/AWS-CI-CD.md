@@ -81,11 +81,8 @@ The configuration for the different actions in CodePipeline where CodeBuild has 
 
 Another continuous integration apart from CodePipeline is the analysis of the repository code. This will be done by Sonar Cloud via GitHub Actions when push or pull request are merged into master branch. Sonar Cloud is a service that allows the analysis of project code located in the GitHub repository, performing a thorough analysis of the application and afterwads showing a detailed report of the bugs and problems found.
 
-Before executing the SonarCloud job, there must exist in the repository a sonar-project.properties file, which will help SonarCloud to know the repository to be analysed. After this configuration the job will execute succesfully and show at the SonarCloud console the result of the analysis.
+Before executing the SonarCloud job, there must exist in the repository a **[sonar-project.properties](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/sonar-project.properties)** file, which will help SonarCloud to know the repository to be analysed. After this configuration the **[workflow](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/.github/workflows/sonarcloud.yml)** will execute succesfully and show at the SonarCloud console the result of the analysis.
 
-* **Files:**
-    - **[sonar-project.properties](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/sonar-project.properties)**
-    - **[sonarcloud.yml](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/.github/workflows/sonarcloud.yml)**
 
 Example of an excuted analysis of the code:
 
@@ -94,10 +91,7 @@ Example of an excuted analysis of the code:
 
 ## Releases
 
-The final continuous integration is a GitHub Actions that will be executed when uploading a tag starting with v or V. This GitHub Actions is composed of a job divided into different stages and will be responsible for backing up the code. The main actions are the creation of a new release, generating a zip file with the application code and uploading this generated zip file to S3 Bucket in AWS, which will be used as an artifact and back up code repository.
-
-* **File:**
-    - **[release.yml](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/.github/workflows/release.yml)**
+The final continuous integration is a GitHub Actions that will be executed when uploading a tag starting with v or V. This GitHub Actions is composed of a job divided into different stages and will be responsible for backing up the code. The main actions of this **[workflow](https://github.com/Gabriel-Acevedo/tfm-aws/blob/master/.github/workflows/release.yml)** are the creation of a new release, generating a zip file with the application code and uploading this generated zip file to S3 Bucket in AWS, which will be used as an artifact and back up code repository.
 
 Example of saved zip file in S3 Bucket:
 
